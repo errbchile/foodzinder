@@ -11,18 +11,9 @@
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-   <!-- Scripts -->
-   <script src="{{ asset('js/app.js') }}" defer></script>
-
    <!-- Fonts -->
    <link rel="dns-prefetch" href="//fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-   <!-- Styles -->
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
-
 
     <title>Food Zinder - Restaurantes de Cádiz y España en un solo lugar</title>
 
@@ -36,7 +27,8 @@
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
-    <!-- BASE CSS -->
+	 <!-- BASE CSS -->
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="{{ asset('plantilla/css/bootstrap_customized.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plantilla/css/style.css') }}" rel="stylesheet">
 
@@ -54,34 +46,138 @@
 <body>
 				
 	<header class="header clearfix element_to_stick">
-      <div class="container">
-         <div id="logo">
-            <a href="index.html">
-               <img src="{{ asset('plantilla/img/logo.svg') }}" width="140" height="35" alt="" class="logo_normal">
-               <img src="{{ asset('plantilla/img/logo_sticky.svg') }}" width="140" height="35" alt="" class="logo_sticky">
-            </a>
-         </div>
-         <ul id="top_menu">
-            <li><a href="#sign-in-dialog" id="sign-in" class="login">Inicia Sesión</a></li>
-         </ul>   
-         <!-- /top_menu -->
-         <a href="#0" class="open_close">
-            <i class="icon_menu"></i><span>Menu</span>
-         </a>
-         <nav class="main-menu">
-            <div id="header_menu">
-               <a href="#0" class="open_close">
-                  <i class="icon_close"></i><span>Menu</span>
-               </a>
-               <a href="index.html"><img src="{{ asset('plantilla/img/logo.svg') }}" width="140" height="35" alt=""></a>
+		<div class="container">
+            <div id="logo">
+            <a href="{{ url('/') }}">
+                    <img src="{{asset('plantilla/img/logo.svg')}}" width="140" height="35" alt="" class="logo_normal">
+                    <img src="{{asset('plantilla/img/logo_sticky.svg')}}" width="140" height="35" alt="" class="logo_sticky">
+                </a>
             </div>
-            <ul>
-                  <li><a href="index.html">Inicio</a></li>
-                  <li><a href="directorio.html">Directorio</a></li>
-                  <li><a href="submit-restaurant.html">Agregar Restaurant</a></li>
+            <ul id="top_menu" class="drop_user">
+                <li>
+                    @guest
+                        <ul id="top_menu">
+                            <li><a href="#sign-in-dialog" id="sign-in" class="login">Inicia Sesión</a></li>
+                        </ul> 
+                    @else
+                        <div class="dropdown user clearfix">
+                            <a href="#" data-toggle="dropdown">
+                                <figure><img src="{{asset('plantilla/img/avatar1.jpg')}}" alt=""></figure>{{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-menu-content">
+                                    <ul>
+                                        <li><a href="#0"><i class="icon_cog"></i>Mi Perfil</a></li>
+                                        {{-- <li><a href="#0"><i class="icon_document"></i>Bookings</a></li> --}}
+                                        <li><a href="#0"><i class="icon_heart"></i>Favoritos</a></li>
+													 <li>
+															<a class="dropdown-item" href="{{ route('logout') }}"
+																onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+																<i class="icon_key"></i>Cerrar Sesión
+															</a>
+															<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+																@csrf
+															</form>
+													</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endguest
+                    <!-- /dropdown -->
+                </li>
             </ul>
-         </nav>
-      </div>
+            <!-- /top_menu -->
+            <a href="#0" class="open_close">
+                <i class="icon_menu"></i><span>Menu</span>
+            </a>
+            <nav class="main-menu">
+                <div id="header_menu">
+                    <a href="#0" class="open_close">
+                        <i class="icon_close"></i><span>Menu</span>
+                    </a>
+                    <a href="{{url('/')}}"><img src="{{asset('plantilla/img/logo.svg')}}" width="140" height="35" alt=""></a>
+                </div>
+                <ul>
+                    <li class="submenu">
+                        <a href="#0" class="show-submenu">Home</a>
+                        <ul>
+                            <li><a href="index.html">Default</a></li>
+                            <li><a href="index-2.html">Video Background</a></li>
+                            <li><a href="index-3.html">Slider</a></li>
+                            <li><a href="index-5.html">Address Autocomplete</a></li>
+                            <li><a href="index-6.html">Search Version 2</a></li>
+                            <li><a href="index-7.html">Delivery/Takeaway version</a></li>
+                            <li><a href="modal-advertise.html">Modal Advertise</a></li>
+                            <li><a href="modal-newsletter.html">Modal Newsletter</a></li>
+                            <li><a href="index-4.html">GDPR Cookie Bar EU Law</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#0" class="show-submenu">Listing</a>
+                        <ul>
+                            <li class="third-level"><a href="#0">List pages</a>
+                                <ul>
+                                    <li><a href="grid-listing-filterscol.html">List default</a></li>
+                                    <li><a href="grid-listing-filterscol-map.html">List with map</a></li>
+                                    <li><a href="listing-map.html">List side map</a></li>
+                                    <li><a href="grid-listing-filterscol-full-width.html">List full width</a></li>
+                                    <li><a href="grid-listing-filterscol-full-masonry.html">List Masonry Filter</a></li>
+                                    <li><a href="grid-listing-filterscol-delivery.html">List Delivery/Takeaway</a></li>
+                                </ul>
+                            </li>
+                            <li class="third-level"><a href="#0">Detail pages</a>
+                                <ul>
+                                    <li><a href="detail-restaurant.html">Detail page 1</a></li>
+                                    <li><a href="detail-restaurant-2.html">Detail page 2</a></li>
+                                    <li><a href="detail-restaurant-3.html">Mobile Fixed Booking</a></li>
+                                    <li><a href="detail-restaurant-delivery.html">Delivery/Takeaway</a></li>
+                                    <li><a href="detail-restaurant-4.html">Detail Menu Thumbs</a></li>
+                                    <li><a href="detail-restaurant-5.html">Detail Contact Form</a></li>
+                                    <li><a href="detail-restaurant-6.html">Detail Instagram Feed</a></li>
+                                </ul>
+                            </li>
+                            <li class="third-level"><a href="#0">OpenStreetMap</a>
+                                <ul>
+                                    <li><a href="grid-listing-filterscol-map-openstreetmap.html">List with map</a></li>
+                                    <li><a href="listing-map-openstreetmap.html">List side map</a></li>
+                                    <li><a href="grid-listing-filterscol-full-width-openstreetmap.html">List full width</a></li>
+                                    <li><a href="grid-listing-filterscol-full-masonry-openstreetmap.html">List Masonry Filter</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="submit-restaurant.html">Submit Restaurant</a></li>
+                            <li><a href="submit-rider.html">Submit Rider</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="booking.html">Booking</a></li>
+                            <li><a href="confirm.html">Confirm Booking</a></li>
+                            <li><a href="confirm-delivery.html">Confirm Order</a></li>
+                            <li><a href="booking-delivery-2.html">Order Delivery/Takeaway</a></li>
+                            <li><a href="booking-delivery.html">Order Delivery/Takeaway 2</a></li>
+                            <li><a href="admin_section/index.html" target="_blank">Admin Section</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#0" class="show-submenu">Other Pages</a>
+                        <ul>
+                            <li><a href="404.html">404 Error</a></li>
+                            <li><a href="help.html">Help and Faq</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="leave-review.html">Leave a review</a></li>
+                            <li><a href="user-logged-1.html">User Logged 1</a></li>
+                            <li><a href="user-logged-2.html">User Logged 2</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="coming_soon/index.html">Coming Soon</a></li>
+                            <li><a href="account.html">Sign Up</a></li>
+                            <li><a href="icon-pack-1.html">Icon Pack 1</a></li>
+                            <li><a href="icon-pack-2.html">Icon Pack 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="submit-restaurant.html">Submit</a></li>
+                    <li><a href="#0">Buy this template</a></li>
+                </ul>
+            </nav>
+        </div>
 	</header>
 	<!-- /header -->
 	
@@ -177,33 +273,35 @@
 		<div class="modal_header">
 			<h3>Inicia Sesión</h3>
 		</div>
-		<form>
+		<form method="POST" action="{{ route('login') }}">
+			@csrf
 			<div class="sign-in-wrapper">
 				<a href="#0" class="social_bt facebook">Continuar con Facebook</a>
 				<a href="#0" class="social_bt google">Continuar con Google</a>
 				<div class="divider"><span>O</span></div>
 				<div class="form-group">
 					<label>Email</label>
-					<input type="email" class="form-control" name="email" id="email">
+					<input type="email" class="form-control" name="email" id="email" required>
 					<i class="icon_mail_alt"></i>
 				</div>
 				<div class="form-group">
-					<label>Password</label>
-					<input type="password" class="form-control" name="password" id="password" value="">
+					<label>Contraseña</label>
+					<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" required>
 					<i class="icon_lock_alt"></i>
 				</div>
 				<div class="clearfix add_bottom_15">
 					<div class="checkboxes float-left">
 						<label class="container_check">Recuérdame
-						  <input type="checkbox">
+							<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 						  <span class="checkmark"></span>
 						</label>
 					</div>
-					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Olvidaste tu contraseña?</a></div>
+					<div class="float-right mt-1"><a id="forgot" href="{{ route('password.request') }}">Olvidaste tu contraseña?</a></div>
 				</div>
 				<div class="text-center">
-					<input type="submit" value="Iniciar Sesión" class="btn_1 full-width mb_5">
-					¿Aún no tienes cuenta? <a href="account.html">Regístrate gratis</a>
+					<button type="submit" class="btn_1 full-width mb_5"> Iniciar Sesión</button>
+					{{-- <input type="submit" value="Iniciar Sesión" class="btn_1 full-width mb_5"> --}}
+					¿Aún no tienes cuenta? <a href="{{ route('register') }}">Regístrate gratis</a>
 				</div>
 				<div id="forgot_pw">
 					<div class="form-group">
