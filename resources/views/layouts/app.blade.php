@@ -101,21 +101,21 @@
                 </div>
                 <ul>
                     <li class="submenu">
-                        <a href="#0" class="show-submenu">Home</a>
+                        <a href="#0" class="show-submenu">Inicio</a>
                         <ul>
-                            <li><a href="index.html">Default</a></li>
-                            <li><a href="index-2.html">Video Background</a></li>
-                            <li><a href="index-3.html">Slider</a></li>
-                            <li><a href="index-5.html">Address Autocomplete</a></li>
-                            <li><a href="index-6.html">Search Version 2</a></li>
-                            <li><a href="index-7.html">Delivery/Takeaway version</a></li>
-                            <li><a href="modal-advertise.html">Modal Advertise</a></li>
-                            <li><a href="modal-newsletter.html">Modal Newsletter</a></li>
-                            <li><a href="index-4.html">GDPR Cookie Bar EU Law</a></li>
+                            <li><a href="{{asset('plantilla/index.html')}}">Default</a></li>
+                            <li><a href="{{asset('plantilla/index-2.html')}}">Video Background</a></li>
+                            <li><a href="{{asset('plantilla/index-3.html')}}">Slider</a></li>
+                            <li><a href="{{asset('plantilla/index-5.html')}}">Address Autocomplete</a></li>
+                            <li><a href="{{asset('plantilla/index-6.html')}}">Search Version 2</a></li>
+                            <li><a href="{{asset('plantilla/index-7.html')}}">Delivery/Takeaway version</a></li>
+                            <li><a href="{{asset('plantilla/modal-advertise.html')}}">Modal Advertise</a></li>
+                            <li><a href="{{asset('plantilla/modal-newsletter.html')}}">Modal Newsletter</a></li>
+                            <li><a href="{{asset('plantilla/index-4.html')}}">GDPR Cookie Bar EU Law</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#0" class="show-submenu">Listing</a>
+                        <a href="#0" class="show-submenu">Directorio</a>
                         <ul>
                             <li class="third-level"><a href="#0">List pages</a>
                                 <ul>
@@ -157,24 +157,7 @@
                             <li><a href="admin_section/index.html" target="_blank">Admin Section</a></li>
                         </ul>
                     </li>
-                    <li class="submenu">
-                        <a href="#0" class="show-submenu">Other Pages</a>
-                        <ul>
-                            <li><a href="404.html">404 Error</a></li>
-                            <li><a href="help.html">Help and Faq</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="leave-review.html">Leave a review</a></li>
-                            <li><a href="user-logged-1.html">User Logged 1</a></li>
-                            <li><a href="user-logged-2.html">User Logged 2</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="coming_soon/index.html">Coming Soon</a></li>
-                            <li><a href="account.html">Sign Up</a></li>
-                            <li><a href="icon-pack-1.html">Icon Pack 1</a></li>
-                            <li><a href="icon-pack-2.html">Icon Pack 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="submit-restaurant.html">Submit</a></li>
-                    <li><a href="#0">Buy this template</a></li>
+                    <li><a href="{{asset('plantilla/submit-restaurant.html')}}">Agregar Restaurant</a></li>
                 </ul>
             </nav>
         </div>
@@ -194,7 +177,7 @@
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
 							<li><a href="#0">Acerca de</a></li>
-							<li><a href="submit-restaurant.html">Agregar restaurante</a></li>
+							<li><a href="{{asset('plantilla/submit-restaurant.html')}}">Agregar restaurante</a></li>
 							<li><a href="#0">Ayuda</a></li>
 							<li><a href="account.html">Mi Cuenta</a></li>
 							<li><a href="#0">Contáctanos</a></li>
@@ -205,10 +188,10 @@
 					<h3 data-target="#collapse_2">Categorías</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="directorio.html">Tendencias</a></li>
-							<li><a href="directorio.html">Mejor valorados</a></li>
-							<li><a href="directorio.html">Mejores precios</a></li>
-							<li><a href="directorio.html">Más recientes</a></li>
+							<li><a href="{{asset('plantilla/directorio.html')}}">Tendencias</a></li>
+							<li><a href="{{asset('plantilla/directorio.html')}}">Mejor valorados</a></li>
+							<li><a href="{{asset('plantilla/directorio.html')}}">Mejores precios</a></li>
+							<li><a href="{{asset('plantilla/directorio.html')}}">Más recientes</a></li>
 						</ul>
 					</div>
 				</div>
@@ -227,7 +210,7 @@
 					<div class="collapse dont-collapse-sm" id="collapse_4">
 						<div id="newsletter">
 							<div id="message-newsletter"></div>
-							<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
+							<form method="post" action="{{asset('plantilla/assets/newsletter.php')}}" name="newsletter_form" id="newsletter_form">
 								<div class="form-group">
 									<input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Tu email">
 									<button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
@@ -256,7 +239,7 @@
 					<ul class="additional_links">
 						<li><a href="#0">Términos y condiciones</a></li>
 						<li><a href="#0">Políticas de privacidad</a></li>
-						<li><span>2020 © Foond Zinder</span></li>
+						<li><span>{{ date('Y') }} © Foond Zinder</span></li>
 					</ul>
 				</div>
 			</div>

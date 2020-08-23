@@ -302,11 +302,13 @@
     <div class="call_section lazy" data-bg="url(plantilla/img/bg_call_section.jpg)">
         <div class="container clearfix">
             <div class="col-lg-5 col-md-6 float-right wow">
-                <div class="box_1">
-                    <h3>¿Eres dueño de un lugar?</h3>
-                    <p>Únete gratis a nuestro directorio para aumentar la visibilidad de tu restaurante y alcanzar a más clientes que amarán tu restaurante.</p>
-                    <a href="submit-restaurant.html" class="btn_1">Unirme ahora</a>
-                </div>
+                @guest
+                    <div class="box_1">
+                        <h3>¿Eres dueño de un lugar?</h3>
+                        <p>Únete gratis a nuestro directorio para aumentar la visibilidad de tu restaurante y alcanzar a más clientes que amarán tu restaurante.</p>
+                        <a href="{{ route('register') }}" class="btn_1">Unirme ahora</a>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>
