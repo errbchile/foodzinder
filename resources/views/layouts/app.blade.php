@@ -39,7 +39,7 @@
     @yield('custom_links')
 
     <!-- YOUR CUSTOM CSS -->
-    @yield('custom_css')
+	 @yield('custom_css')
 
 </head>
 
@@ -57,7 +57,8 @@
                 <li>
                     @guest
                         <ul id="top_menu">
-                            <li><a href="#sign-in-dialog" id="sign-in" class="login">Inicia Sesión</a></li>
+									<li><a href="{{ route('login') }}" class="login">Login</a></li>
+                            {{-- <li><a href="#sign-in-dialog" id="sign-in" class="login">Inicia Sesión</a></li> --}}
                         </ul> 
                     @else
                         <div class="dropdown user clearfix">
@@ -266,11 +267,21 @@
 					<label>Email</label>
 					<input type="email" class="form-control" name="email" id="email" required>
 					<i class="icon_mail_alt"></i>
+					@error('email')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+			  		@enderror
 				</div>
 				<div class="form-group">
 					<label>Contraseña</label>
 					<input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" required>
 					<i class="icon_lock_alt"></i>
+					@error('password')
+						<span class="invalid-feedback" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+			  		@enderror
 				</div>
 				<div class="clearfix add_bottom_15">
 					<div class="checkboxes float-left">
@@ -293,7 +304,11 @@
 						<i class="icon_mail_alt"></i>
 					</div>
 					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
-					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+					<div class="text-center">
+						<a href="{{ route('password.request') }}">
+							<input type="submit" value="Reset Password" class="btn_1">
+						</a>
+					</div>
 				</div>
 			</div>
 		</form>
