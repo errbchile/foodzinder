@@ -1791,7 +1791,7 @@ header.header.sticky .logo_sticky {
   display: inline-block;
 }
 header.header_in {
-  padding: 15px 0;
+  padding: 10px 0;
   min-height:40px;
   background-color: #fff;
   position: relative;
@@ -1846,6 +1846,7 @@ header.sticky a.open_close, .header_in a.open_close {
 
 #logo {
   float: left;
+  margin: 10px 0 0 20px;
 }
 @media (max-width: 991px) {
   #logo {
@@ -1888,7 +1889,8 @@ header.sticky a.open_close, .header_in a.open_close {
 /*First level styles */
 .main-menu > ul > li > a {
   color: #fff;
-  padding: 0 8px 10px  8px;
+  padding: 8px 20px;
+  margin-top: 6px;
   font-size: 14px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2370,9 +2372,9 @@ ul#top_menu li a.login:before {
   -ms-border-radius: 5px;
   border-radius: 5px;
   margin-top: 10px;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 }
 @media (max-width: 991px) {
   .custom-search-input {
@@ -2385,9 +2387,9 @@ ul#top_menu li a.login:before {
 .custom-search-input input {
   border: 0;
   height: 50px;
-  padding: 12px 10px 10px 20px;
+  padding: 12px 10px 10px 50px;
   border-right: 1px solid #d2d8dd;
-  font-weight: 500;
+  font-weight: 400;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
@@ -2437,8 +2439,8 @@ ul#top_menu li a.login:before {
   background-color: #fff;
   line-height: 50px;
   top: 0;
-  right: 1px;
-  padding-right: 15px;
+  left: 1px;
+  padding-left: 15px;
   display: block;
   width: 20px;
   box-sizing: content-box;
@@ -2812,7 +2814,7 @@ ul#top_menu li a.login:before {
   top: 0;
   border: 0;
   padding: 0 15px;
-  height: 40px;
+  height: 60px;
   cursor: pointer;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -2826,7 +2828,8 @@ ul#top_menu li a.login:before {
   transition: all 0.3s ease-in-out;
 }
 .search_bar_list input[type='submit']:hover {
-  background-color: #121921;
+  -webkit-filter: brightness(115%);
+  filter: brightness(115%);
 }
 .search_bar_list input[type='submit']:focus {
   box-shadow: none;
@@ -4319,8 +4322,8 @@ footer .links ul li a:after {
   display: block;
 }
 .follow_us ul li a img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 .follow_us ul li a:hover {
   -webkit-transform: translateY(-5px);
@@ -4353,7 +4356,6 @@ ul.additional_links {
   margin: 0;
   padding: 8px 0 0 0;
   color: #555;
-  float: right;
   font-size: 13px;
   font-size: 0.8125rem;
 }
@@ -5389,6 +5391,22 @@ a.social_bt.google {
 /************** DARIO **************/
 /***********************************/
 
+.add_top_menu_listing {
+  padding-top:80px;
+}
+
+.buscador-directorio {
+  background-color: #fff;
+  padding: 5px 5px 5px 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+}
 .rosa {
   font-weight: 600;
   color: #F67599;
@@ -5396,6 +5414,7 @@ a.social_bt.google {
 
 .home .box_booking_2 {
   margin:10% 0;
+  max-width:480px;
 }
 
 .home .titulo {
@@ -5418,6 +5437,7 @@ a.social_bt.google {
     width: 35vw;
     height: 550px;
     overflow:hidden;
+    margin:auto;
 }
 .img-slider .slider-container {
     position: absolute;
@@ -5445,4 +5465,110 @@ a.social_bt.google {
     30%, 55%{left: -100%}
     
     60%, 85%{left: -200%}
+}
+
+/* Slider home 2 */
+.slider-home {
+  width: 550px;
+  height: 550px;
+  position: relative;
+  margin:auto;
+}
+
+.slider-home img {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  opacity: 0;
+  transition: 1s;
+}
+
+.slider-home .active {
+  opacity: 1;
+}
+
+small.verde {
+  color:#3ade60 !important;
+}
+
+small.azul {
+  color:#4090f7 !important;
+}
+
+small.rojo {
+  color:#de3f3a !important;
+}
+
+small.morado {
+  color:#f03af0 !important;
+}
+
+small.vinotinto {
+  color:#b52816 !important;
+}
+
+.small, small {
+  font-weight: 600;
+}
+
+.footer {
+  align-self:center;
+}
+
+.caracteristicas .container_check {
+  margin-bottom:20px;
+}
+
+.title-directorio {
+  font-size:2.5rem;
+  font-weight: 600;
+  margin-bottom:30px;
+}
+
+.form-busqueda {
+  margin: -7px 0px 5px;
+}
+
+.resultados .col-md-4 {
+  padding:0;
+}
+
+.resultados {
+  background: #fff;
+  margin-bottom:50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.resultados h2 {
+  font-weight: 900;
+  font-size:1.5rem;
+  margin-bottom: 20px;
+}
+
+.resultados .icon {
+  padding: 0 20px;
+}
+
+.resultados .info {
+  padding: 30px 30px 0 30px !important;
+}
+
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ubicacion::before {
+  font-family: "Font Awesome 5 Free"; color: #F67599; font-weight: 900; content: "\f3c5"; margin-left: -18px; padding-right: 3px;
+}
+
+.icon a {
+  font-weight: 600;
+}
+
+.telefono::before {
+  font-family: "Font Awesome 5 Free"; color: #F67599; font-weight: 900; content: "\f879"; margin-left: -18px; padding-right: 3px;
 }
