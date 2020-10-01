@@ -119,8 +119,9 @@ a.btn_filters i {
 }
 
 .filter_col {
+  background: #fff;
   border: 1px solid #ededed;
-  padding: 15px;
+  padding: 15px 15px 0px 15px;
   margin-bottom: 25px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -189,7 +190,7 @@ a.btn_filters i {
 
 .filter_type {
   border-bottom: 1px solid #ededed;
-  margin: 0 -15px 15px -15px;
+  margin: 0 -15px -1px -15px;
   padding: 0 15px;
 }
 .filter_type label {
@@ -321,7 +322,7 @@ a.btn_filters i {
 }
 .switch-field label:hover {
   cursor: pointer;
-  color: #589442;
+  color: #F67599;
 }
 
 /* Lsiting Map */
@@ -417,7 +418,7 @@ a.address:before {
   display: inline-block;
 }
 a.address:hover {
-  color: #589442;
+  color: #F67599;
 }
 @media (max-width: 991px) {
   a.address {
@@ -465,7 +466,7 @@ a.address:hover {
 }
 
 .rangeslider__fill {
-  background: #589442;
+  background: #F67599;
   position: absolute;
 }
 
@@ -481,7 +482,7 @@ a.address:hover {
 
 .rangeslider__handle {
   background: white;
-  border: 2px solid #589442;
+  border: 2px solid #F67599;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   display: inline-block;
@@ -554,14 +555,14 @@ input[type="range"]:focus + .rangeslider .rangeslider__handle {
   width: 36px !important;
   height: 36px !important;
   line-height: 36px !important;
-  background-color: #589442 !important;
+  background-color: #F67599 !important;
   background-image: none !important;
 }
 
 .cluster-visible:before {
-  border: 7px solid #589442;
+  border: 7px solid #F67599;
   opacity: 0.2;
-  box-shadow: inset 0 0 0 4px #589442;
+  box-shadow: inset 0 0 0 4px #F67599;
   content: '';
   position: absolute;
   border-radius: 50%;
@@ -696,14 +697,14 @@ a.btn_infobox_detail:before {
   color: #ccc;
 }
 a.btn_infobox_detail:before:hover {
-  color: #589442;
+  color: #F67599;
 }
 
 .btn_infobox_get_directions, a.btn_infobox_phone {
   border: none;
   display: inline-block;
   font-weight: 500;
-  color: #589442;
+  color: #F67599;
   background: none;
   cursor: pointer;
   font-size: 13px;
