@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Directorio;
 use Illuminate\Http\Request;
+use App\Restaurant;
 
 class DirectorioController extends Controller
 {
@@ -12,9 +13,16 @@ class DirectorioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('directorio');
+        if ($request->input("palabra_busqueda")) {
+            $palabra_busqueda = $request->input("palabra_busqueda");
+            $restaurants = Restaurant::where('nombre', 'like', '%'.$palabra_busqueda.'%')->get();
+        } else {
+            $restaurants = Restaurant::all();
+        }
+
+        return view('directorio', ["request" => $request, "restaurants" => $restaurants]);
     }
 
     /**

@@ -112,19 +112,24 @@
 					<div class="col-md-6">
 						<h1 class="titulo">Todos los <span class="rosa">menús</span> de restaurantes <span class="rosa">en imágenes</span></h1>
 						<div class="box_booking_2">
-							
+							<form method="post" action="{{ route('directorio') }}">
+								@csrf
 								<div class="main">
 									<div class="form-group">
-										<input class="form-control" placeholder="Tipo de cocina, nombre del restaurante...">
+										<input name="palabra_busqueda" class="form-control" placeholder="Tipo de cocina, nombre del restaurante...">
 										<i class="icon_search"></i>
 									</div>
 									<div class="form-group">
-										<input class="form-control" placeholder="Ciudad">
+										<input name="ciudad" class="form-control" placeholder="Ciudad">
 										<i class="icon_pin_alt"></i>
 									</div>
-								<a href="{{ route('directorio') }}" class="btn_1 full-width mb_5">Buscar</a>
+									<button type="submit" class="btn_1 full-width mb_5">Buscar</button>
 								</div>
-							</div>
+							</form>
+						
+
+
+						</div>
 					</div>
 			<!-- columna 2-->
 					<div class="col-md-6">

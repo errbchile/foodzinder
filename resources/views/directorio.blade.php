@@ -33,7 +33,7 @@
 </head>
 
 <body>
-				
+			<?php dd($request); ?>	
 	<header class="header_in clearfix is_sticky">
          <div id="logo">
             <a href="{{url('/')}}">
@@ -46,13 +46,13 @@
                   <div class="row no-gutters custom-search-input">
                      <div class="col-lg-6">
                         <div class="form-group">
-                           <input class="form-control" type="text" placeholder="Tipo de cocina, nombre del restaurante...">
+                           <input class="form-control" type="text" value="{{ ($request->palabra_busqueda != null) ? $request->palabra_busqueda : "" }}" placeholder="Tipo de cocina, nombre del restaurante...">
                            <i class="icon_search"></i>
                         </div>
                      </div>
                      <div class="col-lg-4">
                         <div class="form-group">
-                           <input class="form-control no_border_r" type="text" placeholder="Ciudad">
+								<input class="form-control no_border_r" value="{{ ($request->ciudad != null) ? $request->ciudad : "" }}" type="text" placeholder="Ciudad">
                            <i class="icon_pin_alt"></i>
                         </div>
                      </div>
