@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/directorio', 'DirectorioController@index')->name('directorio');
+Route::get('/directorio', 'DirectorioController@index')->name('directorio');
 
 Route::get('/restaurant/create', 'RestaurantController@create')->name('restaurant.create');
 Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant.store');

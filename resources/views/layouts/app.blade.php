@@ -113,6 +113,7 @@
 						<h1 class="titulo">Todos los <span class="rosa">menús</span> de restaurantes <span class="rosa">en imágenes</span></h1>
 						<div class="box_booking_2">
 							<form method="post" action="{{ route('directorio') }}">
+								<input name="_method" type="hidden" value="get">
 								@csrf
 								<div class="main">
 									<div class="form-group">

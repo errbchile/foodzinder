@@ -15,14 +15,14 @@ class DirectorioController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->input("palabra_busqueda")) {
-            $palabra_busqueda = $request->input("palabra_busqueda");
-            $restaurants = Restaurant::where('nombre', 'like', '%'.$palabra_busqueda.'%')->get();
-        } else {
-            $restaurants = Restaurant::all();
-        }
+        $palabra_busqueda = (!empty($request->input("palabra_busqueda"))) ? '%'.$request->input("palabra_busqueda").'%' : "%";
+        $ciudad = (!empty($request->input("ciudad"))) ? '%'.$request->input("ciudad").'%' : '%';
 
-        return view('directorio', ["request" => $request, "restaurants" => $restaurants]);
+        $restaurantes = Restaurant::where([['nombre', 'like', $palabra_busqueda],
+                                                  ['ciudad', 'like', $ciudad]
+                                                ])->paginate(10);
+
+        return view('directorio', ["request" => $request, "restaurantes" => $restaurantes]);
     }
 
     /**

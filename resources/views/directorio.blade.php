@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Foogra - Discover & Book the best restaurants at the best price">
+    <meta name="description" content="Foogra - Discover & Book the best restaurantes at the best price">
     <meta name="author" content="Ansonika">
     <title>Lista de restaurantes en imágenes - Food Zinder</title>
 
@@ -33,7 +33,7 @@
 </head>
 
 <body>
-			<?php dd($request); ?>	
+			<?php //dd($request); ?>	
 	<header class="header_in clearfix is_sticky">
          <div id="logo">
             <a href="{{url('/')}}">
@@ -419,8 +419,9 @@
 
 				<div class="col-lg-9">
 					<div class="row">
-						<h2 class="title-directorio">42 resultados</h2>
+						<h2 class="title-directorio">{{count($restaurantes)}} resultados</h2>
 					</div>
+					@foreach ($restaurantes as $restaurant)
 						<div class="row resultados">
 							<div class="col-md-4">
 								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
@@ -430,121 +431,29 @@
 							</div>
 							<div class="col-md-4 info">
 								<h2>
-									Mamma Pronto
+									{{ $restaurant->nombre }}
 								</h2>
 								<p class="icon ubicacion">
-									Calle Presidente Rivadavia, 2, 11001 Cádiz <a href="#">VER MAPA</a>
+									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="#">VER MAPA</a>
 								</p>
 								<p class="icon telefono">
-									<a href="#">605 84 42 22</a>
+									<a href="#">{{ $restaurant->telefono }}</a>
 								</p>
 								<p>
 									<a class="btn_1" href="#">Ver menú completo »</a>
 								</p>
 							</div>
 						</div>
+					@endforeach
 
-						<div class="row resultados">
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla3.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4 info">
-								<h2>
-									Mamma Pronto
-								</h2>
-								<p class="icon ubicacion">
-									Calle Presidente Rivadavia, 2, 11001 Cádiz <a href="#">VER MAPA</a>
-								</p>
-								<p class="icon telefono">
-									<a href="#">605 84 42 22</a>
-								</p>
-								<p>
-									<a class="btn_1" href="#">Ver menú completo »</a>
-								</p>
-							</div>
-						</div>
-
-						<div class="row resultados">
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla3.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4 info">
-								<h2>
-									Mamma Pronto
-								</h2>
-								<p class="icon ubicacion">
-									Calle Presidente Rivadavia, 2, 11001 Cádiz <a href="#">VER MAPA</a>
-								</p>
-								<p class="icon telefono">
-									<a href="#">605 84 42 22</a>
-								</p>
-								<p>
-									<a class="btn_1" href="#">Ver menú completo »</a>
-								</p>
-							</div>
-						</div>
-
-						<div class="row resultados">
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla3.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4 info">
-								<h2>
-									Mamma Pronto
-								</h2>
-								<p class="icon ubicacion">
-									Calle Presidente Rivadavia, 2, 11001 Cádiz <a href="#">VER MAPA</a>
-								</p>
-								<p class="icon telefono">
-									<a href="#">605 84 42 22</a>
-								</p>
-								<p>
-									<a class="btn_1" href="#">Ver menú completo »</a>
-								</p>
-							</div>
-						</div>
-
-						<div class="row resultados">
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla3.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
-							<div class="col-md-4 info">
-								<h2>
-									Mamma Pronto
-								</h2>
-								<p class="icon ubicacion">
-									Calle Presidente Rivadavia, 2, 11001 Cádiz <a href="#">VER MAPA</a>
-								</p>
-								<p class="icon telefono">
-									<a href="#">605 84 42 22</a>
-								</p>
-								<p>
-									<a class="btn_1" href="#">Ver menú completo »</a>
-								</p>
-							</div>
-						</div>
 
 					<!-- /row -->
 					<div class="pagination_fg">
-					  <a href="#">&laquo;</a>
-					  <a href="#" class="active">1</a>
-					  <a href="#">2</a>
-					  <a href="#">3</a>
-					  <a href="#">4</a>
-					  <a href="#">5</a>
-					  <a href="#">&raquo;</a>
+						<a href="{{ $restaurantes->links()->elements[0][1] }}">&laquo;</a>
+						@foreach ($restaurantes->links()->elements[0] as $posicion => $elemento)
+							<a href="{{ $elemento }}" class="{{ ($restaurantes->links()->paginator->currentPage() == $posicion) ? 'active' : '' }}">{{ $posicion }}</a>
+						@endforeach
+						<a href="{{ $restaurantes->links()->elements[0][ count($restaurantes->links()->elements[0]) ] }}">&raquo;</a>
 					</div>
 				</div>
 				<!-- /col -->
