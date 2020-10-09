@@ -42,17 +42,18 @@
          </div>
          <div class="row justify-content-center text-center">
             <div class="col-xl-8 col-lg-10 col-md-8">						
-               <form method="post" action="grid-listing-filterscol.html" class="form-busqueda">
+					<form method="post" action="{{ route('directorio') }}" class="form-busqueda">
+						<input name="_method" type="hidden" value="get">
                   <div class="row no-gutters custom-search-input">
                      <div class="col-lg-6">
                         <div class="form-group">
-                           <input class="form-control" type="text" value="{{ ($request->palabra_busqueda != null) ? $request->palabra_busqueda : "" }}" placeholder="Tipo de cocina, nombre del restaurante...">
+                           <input name="palabra_busqueda" class="form-control" type="text" value="{{ ($request->palabra_busqueda != null) ? $request->palabra_busqueda : "" }}" placeholder="Tipo de cocina, nombre del restaurante...">
                            <i class="icon_search"></i>
                         </div>
                      </div>
                      <div class="col-lg-4">
                         <div class="form-group">
-								<input class="form-control no_border_r" value="{{ ($request->ciudad != null) ? $request->ciudad : "" }}" type="text" placeholder="Ciudad">
+								<input name="ciudad" class="form-control no_border_r" value="{{ ($request->ciudad != null) ? $request->ciudad : "" }}" type="text" placeholder="Ciudad">
                            <i class="icon_pin_alt"></i>
                         </div>
                      </div>

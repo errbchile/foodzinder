@@ -20,7 +20,7 @@ class DirectorioController extends Controller
 
         $restaurantes = Restaurant::where([['nombre', 'like', $palabra_busqueda],
                                                   ['ciudad', 'like', $ciudad]
-                                                ])->paginate(10);
+                                                ])->paginate(6);
 
         return view('directorio', ["request" => $request, "restaurantes" => $restaurantes]);
     }
