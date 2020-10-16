@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Foogra - Discover & Book the best restaurantes at the best price">
-    <meta name="author" content="Ansonika">
+	 <meta name="author" content="Ansonika">
+	 <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Lista de restaurantes en imágenes - Food Zinder</title>
 
     <!-- Favicons-->
@@ -42,7 +43,7 @@
          </div>
          <div class="row justify-content-center text-center">
             <div class="col-xl-8 col-lg-10 col-md-8">						
-					<form method="post" action="{{ route('directorio') }}" class="form-busqueda">
+					<form id="form_principal" method="post" action="{{ route('directorio') }}" class="form-busqueda">
 						<input name="_method" type="hidden" value="get">
                   <div class="row no-gutters custom-search-input">
                      <div class="col-lg-6">
@@ -141,7 +142,7 @@
                         <div class="add_bottom_15"><input type="range" min="1" max="50" step="1" value="5" data-orientation="horizontal"></div>
                         <div class="distance"><span></span> km</div>
 							</div>
-                        </div>
+								</div>
                         <!-- /filter_type -->
 						<div class="filter_type">
 							<h4><a href="#filter_2" data-toggle="collapse" class="opened">Precio</a></h4>
@@ -149,19 +150,19 @@
 								<ul>
 										<li>
 											<label class="container_check">€ - Baratos<small>11</small>
-											  <input type="checkbox">
+											  <input {{ $request->precio1 != null ? 'checked': '' }} name="precio1" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">€€ - Gama media<small>08</small>
-											  <input type="checkbox">
+											  <input {{ $request->precio2 != null ? 'checked': '' }} name="precio2" class="inputs" onchange="consultar()" name="precio2" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">€€€ - Elegante<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->precio3 != null ? 'checked': '' }} name="precio3" class="inputs" onchange="consultar()" name="precio3" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
@@ -175,19 +176,19 @@
 								<ul>
 										<li>
 											<label class="container_check">Restaurante<small>11</small>
-											  <input type="checkbox">
+											  <input {{ $request->restaurante != null ? 'checked': '' }} name="restaurante" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Cafetería<small>08</small>
-											  <input type="checkbox">
+											  <input {{ $request->cafeteria != null ? 'checked': '' }} name="cafeteria" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Bar<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->bar != null ? 'checked': '' }} name="bar" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
@@ -201,55 +202,55 @@
 								<ul>
 										<li>
 											<label class="container_check">Admite reservas<small>11</small>
-											  <input type="checkbox">
+											  <input {{ $request->admite_reservas != null ? 'checked': '' }} name="admite_reservas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Para llevar<small>08</small>
-											  <input type="checkbox">
+											  <input {{ $request->para_llevar != null ? 'checked': '' }} name="para_llevar" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">A domicilio<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->domicilio != null ? 'checked': '' }} name="domicilio" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
 											<label class="container_check">Terraza Exterior<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->terraza_exterior != null ? 'checked': '' }} name="terraza_exterior" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
 											<label class="container_check">Wifi gratuito<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->wifi_gratuito != null ? 'checked': '' }} name="wifi_gratuito" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
 											<label class="container_check">Sin gluten<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->sin_gluten != null ? 'checked': '' }} name="sin_gluten" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Accesible<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->accesible != null ? 'checked': '' }} name="accesible" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Admite mascotas<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->admite_mascotas != null ? 'checked': '' }} name="admite_mascotas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
 											<label class="container_check">Plastic Free<small>05</small>
-											  <input type="checkbox">
+											  <input {{ $request->plastic_free != null ? 'checked': '' }} name="plastic_free" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                               </li>
@@ -263,25 +264,25 @@
 								<ul>
                            <li>
                               <label class="container_check">Desayuno<small>11</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->desayuno != null ? 'checked': '' }} name="desayuno" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Brunch<small>08</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->brunch != null ? 'checked': '' }} name="brunch" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Almuerzo<small>05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->almuerzo != null ? 'checked': '' }} name="almuerzo" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Cena<small>05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->cena != null ? 'checked': '' }} name="cena" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
@@ -295,13 +296,13 @@
 								<ul>
                            <li>
                               <label class="container_check">Dulce<small>11</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->dulce != null ? 'checked': '' }} name="dulce" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Salado<small>08</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->salado != null ? 'checked': '' }} name="salado" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
@@ -315,25 +316,25 @@
 								<ul>
                            <li>
                               <label class="container_check">Local<small>11</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->local != null ? 'checked': '' }} name="local" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Nacional<small>08</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->nacional != null ? 'checked': '' }} name="nacional" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Internacional<small>05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->internacional != null ? 'checked': '' }} name="internacional" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Fusión<small>05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->fusion != null ? 'checked': '' }} name="fusion" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
@@ -347,67 +348,67 @@
 								<ul>
                            <li>
                               <label class="container_check">Vegetariano<small class="verde">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->vegetariano != null ? 'checked': '' }} name="vegetariano" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Vegano<small class="verde">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->vegano != null ? 'checked': '' }} name="vegano" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Marisco<small class="azul">11</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->marisco != null ? 'checked': '' }} name="marisco" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Atún<small class="azul">08</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->atun != null ? 'checked': '' }} name="atun" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Sushi<small class="azul">08</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->sushi != null ? 'checked': '' }} name="sushi" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Pescado<small class="azul">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->pescado != null ? 'checked': '' }} name="pescado" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Carne<small class="rojo">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->carne != null ? 'checked': '' }} name="carne" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Paella<small class="rojo">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->paella != null ? 'checked': '' }} name="paella" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Pasta<small class="morado">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->pasta != null ? 'checked': '' }} name="pasta" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Pizza<small class="morado">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->pizza != null ? 'checked': '' }} name="pizza" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
                               <label class="container_check">Zumos y Batidos<small class="vinotinto">05</small>
-                                 <input type="checkbox">
+                                 <input {{ $request->zumos_y_batidos != null ? 'checked': '' }} name="zumos_y_batidos" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
@@ -523,7 +524,35 @@
 
     <!-- SPECIFIC SCRIPTS -->
     <script src="{{asset('plantilla/js/sticky_sidebar.min.js')}}"></script>
-    <script src="{{asset('plantilla/js/specific_listing.js')}}"></script>
+	 <script src="{{asset('plantilla/js/specific_listing.js')}}"></script>
+	 
+	<script>
+
+		function consultar()
+		{
+			let formulario = $('#form_principal');
+			let all_inputs = $('.inputs');
+			for (let i = 0; i < all_inputs.length; i++) {
+				var input = all_inputs[i];
+				input.style.display = "none";
+				formulario.append(input);
+			}
+			formulario.submit();
+		}
+
+		function broadcast(informacion_a_transmitir, url) {
+			$.ajax({
+				url: url,
+				type: "POST",
+				data: informacion_a_transmitir,
+				headers: {
+						'X-CSRF-TOKEN': $('meta[name ="csrf-token"]').attr("content")
+				}
+			})
+		}
+		
+
+	</script>
 
 </body>
 </html>
