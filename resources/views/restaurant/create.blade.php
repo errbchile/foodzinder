@@ -28,15 +28,26 @@
                   <div class="form-group col-md-4">
                      <label for="ciudad">Ciudad</label>
                      <select name="ciudad" id="ciudad" value="{{ old('ciudad') }}" class="form-control">
-                       <option value="" selected>-- Seleccione --</option>
+                       <option value="" disabled selected>-- Seleccione --</option>
                        <option value="Madrid">Madrid</option>
                        <option value="Barcelona">Barcelona</option>
+                       <option value="Sevilla">Sevilla</option>
+                       <option value="Bilbao">Bilbao</option>
+                       <option value="Zaragoza">Zaragoza</option>
+                       <option value="Granada">Granada</option>
+                       <option value="Córdoba">Córdoba</option>
+                       <option value="San Sebastián">San Sebastián</option>
+                       <option value="Salamanca">Salamanca</option>
+                       <option value="Valencia">Valencia</option>
+                       <option value="Toledo">Toledo</option>
+                       <option value="Burgos">Burgos</option>
+                       <option value="Málaga">Málaga</option>
                      </select>
                   </div>
                   <div class="form-group col-md-4">
                      <label for="pais">País</label>
                      <select name="pais" id="pais" class="form-control">
-                       <option value="" selected>-- Seleccione --</option>
+                       <option value="" disabled selected>-- Seleccione --</option>
                        <option value="España">España</option>
                      </select>
                   </div>
@@ -297,7 +308,10 @@
               
 
 
-               <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-success">Guardar</button>
+              <a href="{{ url('/') }}">
+                <button type="button" class="btn btn-primary">Home</button>
+              </a>
              </form>
          </div>
       </div>
