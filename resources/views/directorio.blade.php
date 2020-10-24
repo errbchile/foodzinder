@@ -34,7 +34,6 @@
 </head>
 
 <body>
-			<?php //dd($request); ?>	
 	<header class="header_in clearfix is_sticky">
          <div id="logo">
             <a href="{{url('/')}}">

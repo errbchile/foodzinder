@@ -11,6 +11,7 @@
 
 
 @section('content')
+
     <div class="hero_single version_2">
         <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
             <div class="container">
