@@ -476,15 +476,18 @@
 						</div>
 					@endforeach
 
+					{{-- PAGINACIÓN --}}
+					{{$restaurantes->links()}}
 
-					<!-- /row -->
+
+					{{-- <!-- /row -->
 					<div class="pagination_fg">
 						<a href="{{ $restaurantes->links()->elements[0][1] }}">&laquo;</a>
 						@foreach ($restaurantes->links()->elements[0] as $posicion => $elemento)
 							<a href="{{ $elemento }}" class="{{ ($restaurantes->links()->paginator->currentPage() == $posicion) ? 'active' : '' }}">{{ $posicion }}</a>
 						@endforeach
 						<a href="{{ $restaurantes->links()->elements[0][ count($restaurantes->links()->elements[0]) ] }}">&raquo;</a>
-					</div>
+					</div> --}}
 				</div>
 				<!-- /col -->
 			</div>		
@@ -500,8 +503,8 @@
 				<div class="col-lg-6 col-md-6 footer">
 					<div class="follow_us">
 						<ul>
-							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
-							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/instagram_icon.svg" alt="" class="lazy"></a></li>
+							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('plantilla/img/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
+							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('plantilla/img/instagram_icon.svg')}}" alt="" class="lazy"></a></li>
 						</ul>
 					</div>
 					<ul class="additional_links">
