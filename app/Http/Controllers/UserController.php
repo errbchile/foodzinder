@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::where('id', '!=' , 1)->get();
+        $users = User::where('email', '!=' , "admin@admin.com")->get();
         return view("users.index", ['users' => $users]);
     }
     public function edit($id)
@@ -23,7 +23,7 @@ class UserController extends Controller
         $user->profile = $request->input('profile');
         $user->update();
 
-        $users = User::where('id', '!=' , 1)->get();
+        $users = User::where('email', '!=' , "admin@admin.com")->get();
         return view("users.index", ['users' => $users]);
     }
 }
