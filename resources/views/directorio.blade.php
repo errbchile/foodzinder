@@ -87,6 +87,7 @@
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 								<a class="dropdown-item" href="{{ route('restaurant.create') }}">Registrar Restaurante</a>
 								<a class="dropdown-item" href="{{ route('directorio') }}">Listar Restaurantes</a>
+								<a class="dropdown-item" href="{{ route('users.index') }}">Listar Usuarios</a>
 								<a class="dropdown-item" href="{{ route('logout') }}"
 									onclick="event.preventDefault();
 													document.getElementById('logout-form').submit();">

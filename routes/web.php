@@ -29,3 +29,7 @@ Route::get('/restaurant/edit/{id}', 'RestaurantController@edit')->name('restaura
 Route::post('/restaurant/update/{id}', 'RestaurantController@update')->name('restaurant.update');
 Route::post('/restaurant/destroy/{id}', 'RestaurantController@destroy')->name('restaurant.destroy');
 
+Route::get('/users/index', 'UserController@index')->name('users.index');
+Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit');
+Route::post('/users/update', 'UserController@update')->name('users.update');
+
