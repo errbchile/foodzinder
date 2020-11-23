@@ -8,10 +8,13 @@
     <meta name="description" content="Foogra - Discover & Book the best restaurantes at the best price">
 	 <meta name="author" content="Ansonika">
 	 <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Lista de restaurantes en imágenes - Food Zinder</title>
+	 <title>Lista de restaurantes en imágenes - Food Zinder</title>
+	 
+	 <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="{{asset('plantilla/image/x-icon')}}">
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="plantilla/image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="{{asset('plantilla/img/apple-touch-icon-57x57-precomposed.png')}}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('plantilla/img/apple-touch-icon-72x72-precomposed.png')}}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('plantilla/img/apple-touch-icon-114x114-precomposed.png')}}">
@@ -416,19 +419,45 @@
                   <!-- /filter_type -->
 					</div>
 				</aside>
-
 				<div class="col-lg-9">
 					<div class="row">
 						<h2 class="title-directorio">{{count($restaurantes)}} resultados</h2>
 					</div>
 					@foreach ($restaurantes as $restaurant)
 						<div class="row resultados">
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla2.png')}}" style="min-width: 100%; min-height: auto;">
+							{{-- START - SLIDER --}}
+							<div class="col-md-8">
+								<div id="carouselExampleIndicators_{{ $restaurant->id }}" class="carousel slide" data-ride="carousel">
+									<ol class="carousel-indicators">
+									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="0" class="active"></li>
+									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="1"></li>
+									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="2"></li>
+									</ol>
+									<div class="carousel-inner">
+									<div class="carousel-item d-flex active">
+										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id }}/768/236" alt="First slide">
+										{{-- <img class="d-block w-100" src="..." alt="First slide"> --}}
+									</div>
+									<div class="carousel-item">
+										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 2 }}/768/236" alt="Second slide">
+										{{-- <img class="d-block w-100" src="..." alt="Second slide"> --}}
+									</div>
+									<div class="carousel-item">
+										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 3 }}/768/236" alt="Third slide">
+										{{-- <img class="d-block w-100" src="..." alt="Third slide"> --}}
+									</div>
+									</div>
+									<a class="carousel-control-prev" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+									</a>
+									<a class="carousel-control-next" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+									</a>
+								</div>
 							</div>
-							<div class="col-md-4">
-								<img src="{{asset('plantilla/img/platos/pla3.png')}}" style="min-width: 100%; min-height: auto;">
-							</div>
+							{{-- END - SLIDER --}}
 							<div class="col-md-4 info">
 								<h2>
 									{{ $restaurant->nombre }}
@@ -551,6 +580,9 @@
 		
 
 	</script>
+	{{-- <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> --}}
 
 </body>
 </html>
