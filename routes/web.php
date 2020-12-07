@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/directorio', 'DirectorioController@index')->name('directorio');
+Route::get('/directorio/detail/{id}', 'DirectorioController@show')->name('directorio.detail');
 
 Route::get('/restaurant/create', 'RestaurantController@create')->name('restaurant.create');
 Route::post('/restaurant/store', 'RestaurantController@store')->name('restaurant.store');

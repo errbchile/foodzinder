@@ -3486,7 +3486,7 @@ ul#top_menu li a.login:before {
   margin-bottom: 5px;
   overflow: hidden;
   position: relative;
-  height: 190px;
+  height: 150px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -3507,7 +3507,7 @@ ul#top_menu li a.login:before {
   -ms-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
-  width: 100%;
+  width: 130%;
   z-index: 1;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -3760,6 +3760,11 @@ ul#top_menu li a.login:before {
 .add_top_menu {
   padding-top: 100px;
 }
+
+.add_top_menu_90 {
+  padding-top: 85px;
+}
+
 
 .bg_gray {
   background-color: #f4f4f4;

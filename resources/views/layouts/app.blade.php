@@ -145,7 +145,7 @@
 				<div class="container margin_60_40"></div>	    
 			</div>
 			<!-- /container -->
-			<div class="call_section lazy" data-bg="url(plantilla/img/bg-duenos-cta-min.jpg">
+			<div class="call_section lazy" data-bg="url({{asset('plantilla/img/bg-duenos-cta-min.jpg')}})">
 				<div class="container clearfix">
 					<div class="col-lg-5 col-md-6 float-right wow">
 							<div class="box_1">

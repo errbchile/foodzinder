@@ -470,7 +470,7 @@
 									<a href="#">{{ $restaurant->telefono }}</a>
 								</p>
 								<p>
-									<a class="btn_1" href="#">Ver menú completo »</a>
+								<a class="btn_1" href="{{ route('directorio.detail', ['id' => $restaurant->id]) }}">Ver menú completo »</a>
 								</p>
 							</div>
 						</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="utf-8">
@@ -10,86 +10,128 @@
 	<title>Mamma Pronto - Food Zinder</title>
 
 	<!-- Favicons-->
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('plantilla/img/favicon.ico')}}" >
+	<link rel="apple-touch-icon" type="image/x-icon" href="{{asset('plantilla/img/apple-touch-icon-57x57-precomposed.png')}}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{{asset('plantilla/img/apple-touch-icon-72x72-precomposed.png')}}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{{asset('plantilla/img/apple-touch-icon-114x114-precomposed.png')}}">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{{asset('plantilla/img/apple-touch-icon-144x144-precomposed.png')}}">
 
 	<!-- GOOGLE WEB FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
 
 	<!-- BASE CSS -->
-	<link href="css/bootstrap_customized.min.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="{{asset('plantilla/css/bootstrap_customized.min.css')}}" rel="stylesheet">
+	<link href="{{asset('plantilla/css/style.css')}}" rel="stylesheet">
 
 	<!-- SPECIFIC CSS -->
-	<link href="css/detail-page.css" rel="stylesheet">
+	<link href="{{asset('plantilla/css/detail-page.css')}}" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
-	<link href="css/custom.css" rel="stylesheet">
+	<link href="{{asset('plantilla/css/custom.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 </head>
 
 <body>
-				
 	<header class="header_in clearfix is_sticky">
-		<div>
-				<div id="logo">
-					<a href="index.html">
-						<img src="img/logo.svg" width="200" height="50" alt="">
-					</a>
-				</div>
-				<div class="row justify-content-center text-center">
-					<div class="col-xl-8 col-lg-10 col-md-8">						
-						<form method="post" action="grid-listing-filterscol.html" class="form-busqueda">
-							<div class="row no-gutters custom-search-input">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Tipo de cocina, nombre del restaurante...">
-										<i class="icon_search"></i>
-									</div>
-								</div>
-								<div class="col-lg-4">
-									<div class="form-group">
-										<input class="form-control no_border_r" type="text" placeholder="Ciudad">
-										<i class="icon_pin_alt"></i>
-									</div>
-								</div>
-								<div class="col-lg-2">
-									<input type="submit" value="Buscar">
-								</div>
-							</div>
-							<!-- /row -->
-						</form>
-					</div>
-					<nav class="main-menu">
-						<div id="header_menu">
-							<a href="#0" class="open_close">
-								<i class="icon_close"></i><span>Menu</span>
-							</a>
-							<a href="index.html"><img src="img/logo.svg" width="140" height="35" alt=""></a>
-						</div>
-						<ul>
-							<li><a href="login.html" class="ico-login">Iniciar Sesión</a></li>
-						</ul>
-					</nav>
-				</div>
-		</div>
-		</header>
+      <div id="logo">
+         <a href="{{url('/')}}">
+            <img src="{{asset('plantilla/img/logo.svg')}}" width="200" height="50" alt="">
+         </a>
+      </div>
+      <div class="row justify-content-center text-center">
+         <div class="col-xl-8 col-lg-10 col-md-8">						
+            <form id="form_principal" method="post" action="{{ route('directorio') }}" class="form-busqueda">
+               <input name="_method" type="hidden" value="get">
+               <div class="row no-gutters custom-search-input">
+                  <div class="col-lg-6">
+                     <div class="form-group">
+                        <input name="palabra_busqueda" class="form-control" type="text" placeholder="Tipo de cocina, nombre del restaurante...">
+                        <i class="icon_search"></i>
+                     </div>
+                  </div>
+                  <div class="col-lg-4">
+                     <div class="form-group">
+                     <input name="ciudad" class="form-control no_border_r" type="text" placeholder="Ciudad">
+                        <i class="icon_pin_alt"></i>
+                     </div>
+                  </div>
+                  <div class="col-lg-2">
+                     <input type="submit" value="Buscar">
+                  </div>
+               </div>
+               <!-- /row -->
+            </form>
+         </div>
+         <nav class="main-menu">
+            <div id="header_menu">
+               <a href="#0" class="open_close">
+                  <i class="icon_close"></i><span>Menu</span>
+               </a>
+               <a href="{{ url('/') }}"><img src="{{asset('plantilla/img/logo.svg')}}" width="140" height="35" alt=""></a>
+            </div>
+            @guest
+               <ul>
+                  <li><a href="{{ route('login') }}" class="ico-login">Iniciar Sesión / Registrarse</a></li>
+               </ul>
+            @else
+               @if(Auth::User()->profile === 1)
+                  <div class="dropdown show">
+                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Administrador
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="{{ route('restaurant.create') }}">Registrar Restaurante</a>
+                     <a class="dropdown-item" href="{{ route('directorio') }}">Listar Restaurantes</a>
+                     <a class="dropdown-item" href="{{ route('users.index') }}">Listar Usuarios</a>
+                     <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                     </a>
+
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                     </form>
+                     </div>
+                  </div>
+               @else
+                  <div class="dropdown show">
+                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                     <a class="dropdown-item" href="{{ route('directorio') }}">Listar Restaurantes</a>
+                     <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                     </a>
+
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                     </form>
+                     </div>
+                  </div>
+               @endif
+
+            @endguest
+         </nav>
+      </div>
+   </header>
+<!-- /header -->
 	
 	<main class="bg_gray pattern add_top_menu_90">
 
-		<div class="hero_in detail_page background-image" data-background="url(img/header-detail-page-min.jpg)">
+		<div class="hero_in detail_page background-image" data-background="url({{asset('plantilla/img/header-detail-page-min.jpg')}})">
 			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 				
 				<div class="container">
 					<div class="main_info">
 						<div class="row">
 							<div class="col-xl-4 col-lg-5 col-md-6">
-								<h1>Mamma Pronto</h1>
-								Calle Presidente Rivadavia, 2, 11001 Cádiz - <a href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361" target="blank">Ver en mapa</a>
+								<h1>{{$restaurant->nombre}}</h1>
+								{{$restaurant->direccion}} - <a href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361" target="blank">Ver en mapa</a>
 							</div>
 							<div class="col-xl-8 col-lg-7 col-md-6">
 								<div class="buttons clearfix">
@@ -156,8 +198,8 @@
 												<div class="col-md-4">
 													<div class="item">
 														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+															<a href="#" class="strip_info">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -169,8 +211,8 @@
 												<div class="col-md-4">
 													<div class="item">
 														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+															<a href="#" class="strip_info">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -182,50 +224,8 @@
 												<div class="col-md-4">
 													<div class="item">
 														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+															<a href="#" class="strip_info">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -246,7 +246,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -259,7 +259,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -272,7 +272,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -288,7 +288,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -301,7 +301,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -314,7 +314,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -335,7 +335,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -348,7 +348,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -361,7 +361,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -377,7 +377,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -390,7 +390,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -403,7 +403,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -424,7 +424,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -437,7 +437,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -450,7 +450,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -466,7 +466,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -479,7 +479,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -492,7 +492,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -513,7 +513,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -526,7 +526,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -539,7 +539,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -555,7 +555,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -568,7 +568,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -581,7 +581,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -602,7 +602,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -615,7 +615,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -628,7 +628,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -644,7 +644,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -657,7 +657,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -670,7 +670,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -691,7 +691,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -704,7 +704,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -717,7 +717,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -733,7 +733,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -746,7 +746,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -759,7 +759,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -780,7 +780,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -793,7 +793,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -806,7 +806,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -822,7 +822,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -835,7 +835,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -848,7 +848,7 @@
 													<div class="item">
 														<div class="strip">
 															<a href="detail-restaurant.html" class="strip_info">
-																<img src="img/places/arrebol-min.jpg" class="owl-lazy plate-100" alt="">
+																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
 																<div class="item_title_ind">
 																	<h3>Pan de ajo con mozarella</h3>
 																	<span>35€</span>
@@ -887,8 +887,8 @@
 				<div class="col-lg-6 col-md-6 footer">
 					<div class="follow_us">
 						<ul>
-							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
-							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/instagram_icon.svg" alt="" class="lazy"></a></li>
+							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('plantilla/img/facebook_icon.svg')}}" alt="" class="lazy"></a></li>
+							<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{asset('plantilla/img/instagram_icon.svg')}}" alt="" class="lazy"></a></li>
 						</ul>
 					</div>
 					<ul class="additional_links">
@@ -981,15 +981,15 @@
 	<!-- /Sign In Modal -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.min.js"></script>
-    <script src="js/common_func.js"></script>
-    <script src="assets/validate.js"></script>
+    <script src="{{asset('plantilla/js/common_scripts.min.js')}}"></script>
+    <script src="{{asset('plantilla/js/common_func.js')}}"></script>
+    <script src="{{asset('plantilla/assets/validate.js')}}"></script>
 
     <!-- SPECIFIC SCRIPTS -->
-    <script src="js/sticky_sidebar.min.js"></script>
-    <script src="js/specific_detail.js"></script>
-	<script src="js/datepicker.min.js"></script>
-	<script src="js/datepicker_func_1.js"></script>
+    <script src="{{asset('plantilla/js/sticky_sidebar.min.js')}}"></script>
+    <script src="{{asset('plantilla/js/specific_detail.js')}}"></script>
+	<script src="{{asset('plantilla/js/datepicker.min.js')}}"></script>
+	<script src="{{asset('plantilla/js/datepicker_func_1.js')}}"></script>
 
 </body>
 </html>

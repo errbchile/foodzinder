@@ -128,9 +128,11 @@ class DirectorioController extends Controller
      * @param  \App\Directorio  $directorio
      * @return \Illuminate\Http\Response
      */
-    public function show(Directorio $directorio)
+    public function show(Request $request, $id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+
+        return view("restaurant_detail", ['restaurant' => $restaurant]);
     }
 
     /**
