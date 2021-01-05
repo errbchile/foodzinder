@@ -31,6 +31,11 @@
 	
 	<!-- SPECIFIC CSS -->
 	<link href="{{asset('plantilla/css/detail-page.css')}}" rel="stylesheet">
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+	</style>
 </head>
 
 <body>
