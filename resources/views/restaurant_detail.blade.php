@@ -141,7 +141,7 @@
 							</div>
 							<div class="col-xl-8 col-lg-7 col-md-6">
 								<div class="buttons clearfix">
-									<a href="#0" class="btn_hero wishlist"><i class="icon_heart"></i>Agregar a favoritos</a>
+									<a id="agregar_a_favoritos" onclick="guardarEnLocalStorage()" data-restaurantid="{{ $restaurant->id }}" href="#0" class="btn_hero wishlist"><i class="icon_heart"></i>Agregar a favoritos</a>
 								</div>
 							</div>
 						</div>
@@ -996,6 +996,37 @@
     <script src="{{asset('plantilla/js/specific_detail.js')}}"></script>
 	<script src="{{asset('plantilla/js/datepicker.min.js')}}"></script>
 	<script src="{{asset('plantilla/js/datepicker_func_1.js')}}"></script>
+
+	<script>
+		let agregar_a_favoritos = document.querySelector('#agregar_a_favoritos');
+		let restaurantId = agregar_a_favoritos.dataset.restaurantid;
+
+		// buscamos el item en local storage:
+		let favorito = localStorage.getItem(`restaurantid${restaurantId}`);
+		if (!favorito) {
+			// no existe en local storage
+			localStorage.setItem(`restaurantid${restaurantId}`, 'unliked');
+		} else {
+			revisarLocalStorage();
+		}
+
+		function guardarEnLocalStorage(){
+			if (agregar_a_favoritos.classList.contains('liked')) {
+				localStorage.setItem(`restaurantid${restaurantId}`, 'unliked');
+			} else {
+				localStorage.setItem(`restaurantid${restaurantId}`, 'liked');
+			}
+		}
+
+		function revisarLocalStorage(){
+			if (favorito == 'liked') {
+				agregar_a_favoritos.classList.add('liked');
+			} else {
+				agregar_a_favoritos.classList.remove('liked');
+			}
+		}
+
+	</script>
 
 </body>
 </html>
