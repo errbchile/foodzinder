@@ -31,7 +31,7 @@
     <link href="{{asset('plantilla/css/listing.css')}}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-	<link href="{{('plantilla/css/custom.css')}}" rel="stylesheet">
+	<link href="{{asset('plantilla/css/custom.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 </head>
@@ -150,25 +150,25 @@
 							<h4><a href="#filter_2" data-toggle="collapse" class="opened">Precio</a></h4>
 							<div class="collapse show" id="filter_2">
 								<ul>
-										<li>
-											<label class="container_check">€ - Baratos<small>11</small>
-											  <input {{ $request->precio1 != null ? 'checked': '' }} name="precio1" class="inputs" onchange="consultar()" type="checkbox">
-											  <span class="checkmark"></span>
-											</label>
-										</li>
-										<li>
-											<label class="container_check">€€ - Gama media<small>08</small>
-											  <input {{ $request->precio2 != null ? 'checked': '' }} name="precio2" class="inputs" onchange="consultar()" name="precio2" class="inputs" onchange="consultar()" type="checkbox">
-											  <span class="checkmark"></span>
-											</label>
-										</li>
-										<li>
-											<label class="container_check">€€€ - Elegante<small>05</small>
-											  <input {{ $request->precio3 != null ? 'checked': '' }} name="precio3" class="inputs" onchange="consultar()" name="precio3" class="inputs" onchange="consultar()" type="checkbox">
-											  <span class="checkmark"></span>
-											</label>
-										</li>
-									</ul>
+									<li>
+										<label class="container_check">€ - Baratos<small>{{ count($cantidades['precio1']) }}</small>
+											<input {{ $request->precio1 != null ? 'checked': '' }} name="precio1" class="inputs" onchange="consultar()" type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</li>
+									<li>
+										<label class="container_check">€€ - Gama media<small>{{ count($cantidades['precio2']) }}</small>
+											<input {{ $request->precio2 != null ? 'checked': '' }} name="precio2" class="inputs" onchange="consultar()" name="precio2" class="inputs" onchange="consultar()" type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</li>
+									<li>
+										<label class="container_check">€€€ - Elegante<small>{{ count($cantidades['precio3']) }}</small>
+											<input {{ $request->precio3 != null ? 'checked': '' }} name="precio3" class="inputs" onchange="consultar()" name="precio3" class="inputs" onchange="consultar()" type="checkbox">
+											<span class="checkmark"></span>
+										</label>
+									</li>
+								</ul>
 							</div>
                         </div>
                         <!-- /filter_type -->
@@ -177,19 +177,19 @@
 							<div class="collapse show" id="filter_3">
 								<ul>
 										<li>
-											<label class="container_check">Restaurante<small>11</small>
+											<label class="container_check">Restaurante<small>{{ count($cantidades['restaurante']) }}</small>
 											  <input {{ $request->restaurante != null ? 'checked': '' }} name="restaurante" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Cafetería<small>08</small>
+											<label class="container_check">Cafetería<small>{{ count($cantidades['cafeteria']) }}</small>
 											  <input {{ $request->cafeteria != null ? 'checked': '' }} name="cafeteria" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Bar<small>05</small>
+											<label class="container_check">Bar<small>{{ count($cantidades['bar']) }}</small>
 											  <input {{ $request->bar != null ? 'checked': '' }} name="bar" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
@@ -203,55 +203,55 @@
 							<div class="collapse show" id="filter_4">
 								<ul>
 										<li>
-											<label class="container_check">Admite reservas<small>11</small>
+											<label class="container_check">Admite reservas<small>{{ count($cantidades['admite_reservas']) }}</small>
 											  <input {{ $request->admite_reservas != null ? 'checked': '' }} name="admite_reservas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Para llevar<small>08</small>
+											<label class="container_check">Para llevar<small>{{ count($cantidades['para_llevar']) }}</small>
 											  <input {{ $request->para_llevar != null ? 'checked': '' }} name="para_llevar" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">A domicilio<small>05</small>
+											<label class="container_check">A domicilio<small>{{ count($cantidades['domicilio']) }}</small>
 											  <input {{ $request->domicilio != null ? 'checked': '' }} name="domicilio" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Terraza Exterior<small>05</small>
+											<label class="container_check">Terraza Exterior<small>{{ count($cantidades['terraza_exterior']) }}</small>
 											  <input {{ $request->terraza_exterior != null ? 'checked': '' }} name="terraza_exterior" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Wifi gratuito<small>05</small>
+											<label class="container_check">Wifi gratuito<small>{{ count($cantidades['wifi_gratuito']) }}</small>
 											  <input {{ $request->wifi_gratuito != null ? 'checked': '' }} name="wifi_gratuito" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Sin gluten<small>05</small>
+											<label class="container_check">Sin gluten<small>{{ count($cantidades['sin_gluten']) }}</small>
 											  <input {{ $request->sin_gluten != null ? 'checked': '' }} name="sin_gluten" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Accesible<small>05</small>
+											<label class="container_check">Accesible<small>{{ count($cantidades['accesible']) }}</small>
 											  <input {{ $request->accesible != null ? 'checked': '' }} name="accesible" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Admite mascotas<small>05</small>
+											<label class="container_check">Admite mascotas<small>{{ count($cantidades['admite_mascotas']) }}</small>
 											  <input {{ $request->admite_mascotas != null ? 'checked': '' }} name="admite_mascotas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Plastic Free<small>05</small>
+											<label class="container_check">Plastic Free<small>{{ count($cantidades['plastic_free']) }}</small>
 											  <input {{ $request->plastic_free != null ? 'checked': '' }} name="plastic_free" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
@@ -265,25 +265,25 @@
 							<div class="collapse show" id="filter_5">
 								<ul>
                            <li>
-                              <label class="container_check">Desayuno<small>11</small>
+                              <label class="container_check">Desayuno<small>{{ count($cantidades['desayuno']) }}</small>
                                  <input {{ $request->desayuno != null ? 'checked': '' }} name="desayuno" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Brunch<small>08</small>
+                              <label class="container_check">Brunch<small>{{ count($cantidades['brunch']) }}</small>
                                  <input {{ $request->brunch != null ? 'checked': '' }} name="brunch" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Almuerzo<small>05</small>
+                              <label class="container_check">Almuerzo<small>{{ count($cantidades['almuerzo']) }}</small>
                                  <input {{ $request->almuerzo != null ? 'checked': '' }} name="almuerzo" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Cena<small>05</small>
+                              <label class="container_check">Cena<small>{{ count($cantidades['cena']) }}</small>
                                  <input {{ $request->cena != null ? 'checked': '' }} name="cena" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
@@ -297,13 +297,13 @@
 							<div class="collapse show" id="filter_6">
 								<ul>
                            <li>
-                              <label class="container_check">Dulce<small>11</small>
+                              <label class="container_check">Dulce<small>{{ count($cantidades['dulce']) }}</small>
                                  <input {{ $request->dulce != null ? 'checked': '' }} name="dulce" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Salado<small>08</small>
+                              <label class="container_check">Salado<small>{{ count($cantidades['salado']) }}</small>
                                  <input {{ $request->salado != null ? 'checked': '' }} name="salado" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
@@ -317,25 +317,25 @@
 							<div class="collapse show" id="filter_7">
 								<ul>
                            <li>
-                              <label class="container_check">Local<small>11</small>
+                              <label class="container_check">Local<small>{{ count($cantidades['local']) }}</small>
                                  <input {{ $request->local != null ? 'checked': '' }} name="local" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Nacional<small>08</small>
+                              <label class="container_check">Nacional<small>{{ count($cantidades['nacional']) }}</small>
                                  <input {{ $request->nacional != null ? 'checked': '' }} name="nacional" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Internacional<small>05</small>
+                              <label class="container_check">Internacional<small>{{ count($cantidades['internacional']) }}</small>
                                  <input {{ $request->internacional != null ? 'checked': '' }} name="internacional" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Fusión<small>05</small>
+                              <label class="container_check">Fusión<small>{{ count($cantidades['fusion']) }}</small>
                                  <input {{ $request->fusion != null ? 'checked': '' }} name="fusion" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
@@ -349,67 +349,67 @@
 							<div class="collapse show" id="filter_8">
 								<ul>
                            <li>
-                              <label class="container_check">Vegetariano<small class="verde">05</small>
+                              <label class="container_check">Vegetariano<small class="verde">{{ count($cantidades['vegetariano']) }}</small>
                                  <input {{ $request->vegetariano != null ? 'checked': '' }} name="vegetariano" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Vegano<small class="verde">05</small>
+                              <label class="container_check">Vegano<small class="verde">{{ count($cantidades['vegano']) }}</small>
                                  <input {{ $request->vegano != null ? 'checked': '' }} name="vegano" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Marisco<small class="azul">11</small>
+                              <label class="container_check">Marisco<small class="azul">{{ count($cantidades['marisco']) }}</small>
                                  <input {{ $request->marisco != null ? 'checked': '' }} name="marisco" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Atún<small class="azul">08</small>
+                              <label class="container_check">Atún<small class="azul">{{ count($cantidades['atun']) }}</small>
                                  <input {{ $request->atun != null ? 'checked': '' }} name="atun" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Sushi<small class="azul">08</small>
+                              <label class="container_check">Sushi<small class="azul">{{ count($cantidades['sushi']) }}</small>
                                  <input {{ $request->sushi != null ? 'checked': '' }} name="sushi" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
-                           </li>
+									</li>
                            <li>
-                              <label class="container_check">Pescado<small class="azul">05</small>
+                              <label class="container_check">Pescado<small class="azul">{{ count($cantidades['pescado']) }}</small>
                                  <input {{ $request->pescado != null ? 'checked': '' }} name="pescado" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Carne<small class="rojo">05</small>
+                              <label class="container_check">Carne<small class="rojo">{{ count($cantidades['carne']) }}</small>
                                  <input {{ $request->carne != null ? 'checked': '' }} name="carne" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Paella<small class="rojo">05</small>
+                              <label class="container_check">Paella<small class="rojo">{{ count($cantidades['paella']) }}</small>
                                  <input {{ $request->paella != null ? 'checked': '' }} name="paella" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Pasta<small class="morado">05</small>
+                              <label class="container_check">Pasta<small class="morado">{{ count($cantidades['pasta']) }}</small>
                                  <input {{ $request->pasta != null ? 'checked': '' }} name="pasta" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Pizza<small class="morado">05</small>
+                              <label class="container_check">Pizza<small class="morado">{{ count($cantidades['pizza']) }}</small>
                                  <input {{ $request->pizza != null ? 'checked': '' }} name="pizza" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>
                            </li>
                            <li>
-                              <label class="container_check">Zumos y Batidos<small class="vinotinto">05</small>
+                              <label class="container_check">Zumos y Batidos<small class="vinotinto">{{ count($cantidades['zumos_y_batidos']) }}</small>
                                  <input {{ $request->zumos_y_batidos != null ? 'checked': '' }} name="zumos_y_batidos" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
                               </label>

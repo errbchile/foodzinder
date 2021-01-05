@@ -24,13 +24,13 @@
 	<link href="{{asset('plantilla/css/bootstrap_customized.min.css')}}" rel="stylesheet">
 	<link href="{{asset('plantilla/css/style.css')}}" rel="stylesheet">
 
-	<!-- SPECIFIC CSS -->
-	<link href="{{asset('plantilla/css/detail-page.css')}}" rel="stylesheet">
-
+	
 	<!-- YOUR CUSTOM CSS -->
 	<link href="{{asset('plantilla/css/custom.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
+	
+	<!-- SPECIFIC CSS -->
+	<link href="{{asset('plantilla/css/detail-page.css')}}" rel="stylesheet">
 </head>
 
 <body>

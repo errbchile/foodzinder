@@ -95,10 +95,34 @@ class DirectorioController extends Controller
         if ($pizza) {array_push($filtro, ['pizza', 'like', 'on']);}
         if ($zumos_y_batidos) {array_push($filtro, ['zumos_y_batidos', 'like', 'on']);}
 
-        
-        $restaurantes = Restaurant::where($filtro)->paginate(6);
 
-        return view('directorio', ["request" => $request, "restaurantes" => $restaurantes]);
+        $restaurantes_sin_paginar = Restaurant::where($filtro)->get();
+        $restaurantes = Restaurant::where($filtro)->paginate(6);
+        
+        $cantidades = $this->TraerCantidades($restaurantes_sin_paginar);
+        return view('directorio', ["request" => $request, "restaurantes" => $restaurantes, 'cantidades' => $cantidades]);
+    }
+
+    public function TraerCantidades($restaurantes)
+    {
+
+        $cantidades = [];
+        $palabras = ['precio1','precio2','precio3','restaurante','cafeteria','bar','admite_reservas','para_llevar','domicilio','terraza_exterior','wifi_gratuito','sin_gluten','accesible','admite_mascotas','plastic_free','desayuno','brunch','almuerzo','cena','dulce','salado','local','nacional','internacional','fusion','vegetariano','vegano','marisco','atun','sushi','pescado','carne','paella','pasta','pizza','zumos_y_batidos'];
+
+        foreach ($palabras as $palabra) {
+            $cantidades[$palabra] = [];
+        }
+        if (count($restaurantes) <= 0) {
+            return $cantidades;
+        }
+        $cantidades['total'] = count($restaurantes);
+
+        foreach ($restaurantes as $restaurant) {
+            foreach ($palabras as $palabra) {
+                if ($restaurant->$palabra == 'on') {array_push($cantidades[$palabra], $restaurant);}
+            }
+        }
+        return $cantidades;
     }
 
     /**
