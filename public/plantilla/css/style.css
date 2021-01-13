@@ -1889,7 +1889,7 @@ header.sticky a.open_close, .header_in a.open_close {
 /*First level styles */
 .main-menu > ul > li > a {
   color: #fff;
-  padding: 8px 20px;
+  padding: 3px 20px;
   margin-top: 6px;
   font-size: 14px;
   font-size: 0.875rem;
@@ -3760,7 +3760,9 @@ ul#top_menu li a.login:before {
 .add_top_menu {
   padding-top: 100px;
 }
-
+.margin_login {
+    padding: 140px 0 40px 0;
+}
 .bg_gray {
   background-color: #f4f4f4;
 }
@@ -5571,4 +5573,14 @@ small.vinotinto {
 
 .telefono::before {
   font-family: "Font Awesome 5 Free"; color: #F67599; font-weight: 900; content: "\f879"; margin-left: -18px; padding-right: 3px;
+}
+
+.user-link {
+    right: 30px;
+    top: 10px;
+    font-weight: 600;
+}
+
+.full-width {
+    max-width: 95% !important;
 }

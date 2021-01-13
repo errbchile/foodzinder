@@ -132,7 +132,7 @@
 		<div class="hero_in detail_page background-image" data-background="url({{asset('plantilla/img/header-detail-page-min.jpg')}})">
 			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
 				
-				<div class="container">
+				<div class="container full-width">
 					<div class="main_info">
 						<div class="row">
 							<div class="col-xl-4 col-lg-5 col-md-6">
@@ -153,7 +153,7 @@
 		</div>
 		<!--/hero_in-->
 		
-		<div class="container margin_detail">
+		<div class="container margin_detail full-width">
 		    <div class="row">
 		        <div class="col-lg-12">
 		            <div class="tabs_detail">

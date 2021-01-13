@@ -65,7 +65,7 @@
 
 		<main class="bg_gray pattern">
 		
-			<div class="container margin_60_40">
+			<div class="container margin_login">
 				 <div class="row justify-content-center">
 					  <div class="col-lg-4">
 						  <div class="sign_up">
@@ -84,7 +84,7 @@
 											  <div class="form-group">
 													<label>Email</label>
 													<input type="email" class="form-control" name="email" id="email" required>
-													<i class="icon_mail_alt"></i>
+													<i class="icon_mail_alt login-icon"></i>
 													@error('email')
 														 <span class="invalid-feedback" role="alert">
 															  <strong>{{ $message }}</strong>
@@ -94,7 +94,7 @@
 											  <div class="form-group">
 													<label>Contraseña</label>
 													<input type="password" class="form-control" name="password" id="password" value="" required>
-													<i class="icon_lock_alt"></i>
+													<i class="icon_lock_alt login-icon"></i>
 													@error('password')
 														 <span class="invalid-feedback" role="alert">
 															  <strong>{{ $message }}</strong>

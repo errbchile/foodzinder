@@ -5577,3 +5577,8 @@ small.vinotinto {
 .telefono::before {
   font-family: "Font Awesome 5 Free"; color: #F67599; font-weight: 900; content: "\f879"; margin-left: -18px; padding-right: 3px;
 }
+
+.full-width {
+    max-width:95% !important;
+}   
+}

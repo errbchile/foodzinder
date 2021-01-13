@@ -13202,10 +13202,10 @@ $.magnificPopup.registerModule(RETINA_NS, {
         props: { type: 'text' },
         toggle: {
           className: 'hideShowPassword-toggle-hide',
-          content: 'Hide',
+          content: 'Ocultar',
           attr: {
             'aria-pressed': 'true',
-            title: 'Hide Password'
+            title: 'Ocultar'
           }
         }
       },
@@ -13215,10 +13215,10 @@ $.magnificPopup.registerModule(RETINA_NS, {
         props: { type: 'password' },
         toggle: {
           className: 'hideShowPassword-toggle-show',
-          content: 'Show',
+          content: 'Mostrar',
           attr: {
             'aria-pressed': 'false',
-            title: 'Show Password'
+            title: 'Mostrar'
           }
         }
       }

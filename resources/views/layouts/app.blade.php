@@ -60,7 +60,7 @@
 						</ul>
 					@else
 						@if(Auth::User()->profile === 1)
-							<div class="dropdown show">
+							<div class="dropdown show user-link">
 								<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Administrador
 								</a>
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 						@else
-							<div class="dropdown show">
+							<div class="dropdown show user-link">
 								<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									{{ Auth::user()->name }}
 								</a>

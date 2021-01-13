@@ -69,8 +69,11 @@
   display: block;
   font-weight: 400 !important;
 }
+.login-icon {
+    top: 45px !important;
+}
 .box_booking_2 .form-group i.icon_mail, .sign_up .form-group i.icon_mail {
-  top: 10px;
+  top: 20px !important;
 }
 
 .box_booking_2.style_2 .head {
