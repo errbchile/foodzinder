@@ -57,6 +57,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('pasta')->nullable();
             $table->string('pizza')->nullable();
             $table->string('zumos_y_batidos')->nullable();
+            $table->string('imagenes')->nullable();
 
             $table->timestamps();
         });

@@ -20,7 +20,7 @@
    <div class="container fluid add_top_menu mt-5">
       <div class="row">
          <div class="col-md-12">
-            <form method="POST" action="{{ route('restaurant.store') }}">
+            <form method="POST" action="{{ route('restaurant.store') }}" enctype="multipart/form-data">
                @csrf
                <div class="form-row">
                   <div class="form-group col-md-4">
@@ -322,9 +322,37 @@
                     </div>
                    </div>{{-- END-COL --}}
                  </div>{{-- END-ROW --}}
+
+                 <div class="row mt-3">
+                   <div class="col text-center">
+                     <h3>Imágenes del Restaurante:</h3>
+                   </div>
+                  </div>
+                   <div class="row">
+                    <div class="col">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Imagen 1</span>
+                        </div>
+                        <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                      </div>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Imagen 2</span>
+                        </div>
+                        <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                      </div>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Imagen 3</span>
+                        </div>
+                        <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                      </div>
+                    </div>
+                  </div>
                </div> {{-- END-CONTAINER --}}
 
-               <div class="container">
+               <div class="container mt-3">
                  <div class="row">
                    <div class="col">
                      <button type="submit" class="btn btn-success">Registrar Restaurant</button>

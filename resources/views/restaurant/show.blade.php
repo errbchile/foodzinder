@@ -298,9 +298,30 @@
                 </div>{{-- END-ROW --}}
               </div> {{-- END-CONTAINER --}}
 
+              @if ($restaurant->imagenes)
+                <div class="container mt-3">
+                  <div class="row d-flex">
+                    @foreach (json_decode($restaurant->imagenes) as $imagen)
+                      <div class="col-4">
+                        <div>
+                          <img src="{{ $imagen }}" class="img-fluid" alt="Responsive image">
+                        </div>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+              @endif
+
+
+
+
+
+
+
+
            </form>
 
-           <div class="container">
+           <div class="container mt-3">
              <div class="row">
                <div class="col">
                 <a href="{{ route('restaurant.edit', ['id' => $restaurant->id]) }}">
@@ -316,7 +337,7 @@
                </div>
              </div>
              <hr>
-             <div class="row mt-3">
+             <div class="row m-3">
               <div class="col text-center">
                 <a href="{{ route('restaurant.create') }}">
                   <button type="button" class="btn btn-info">Registrar Nuevo Restaurant</button>
