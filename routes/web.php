@@ -34,3 +34,6 @@ Route::get('/users/index', 'UserController@index')->name('users.index');
 Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit');
 Route::post('/users/update', 'UserController@update')->name('users.update');
 
+Route::get('/categoria/index/{id}', 'CategoriaController@index')->name('categorias.index');
+Route::post('/categoria/AddNewProductoEntrante', 'CategoriaController@AddNewProductoEntrante')->name('categorias.AddNewProductoEntrante');
+Route::delete('/categoria/eliminarEntrante/{id}', 'CategoriaController@eliminarEntrante')->name('categorias.eliminarEntrante');

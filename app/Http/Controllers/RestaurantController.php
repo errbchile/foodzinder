@@ -14,7 +14,8 @@ class RestaurantController extends Controller
 
     public function create()
     {
-        return view("restaurant.create");
+        $restaurantes = Restaurant::get();
+        return view("restaurant.create", ['restaurantes' => $restaurantes]);
     }
 
     public function store(Request $request)
