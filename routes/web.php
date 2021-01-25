@@ -34,6 +34,30 @@ Route::get('/users/index', 'UserController@index')->name('users.index');
 Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit');
 Route::post('/users/update', 'UserController@update')->name('users.update');
 
+// START CATEGORIAS
 Route::get('/categoria/index/{id}', 'CategoriaController@index')->name('categorias.index');
+
 Route::post('/categoria/AddNewProductoEntrante', 'CategoriaController@AddNewProductoEntrante')->name('categorias.AddNewProductoEntrante');
 Route::delete('/categoria/eliminarEntrante/{id}', 'CategoriaController@eliminarEntrante')->name('categorias.eliminarEntrante');
+
+Route::post('/categoria/AddNewProductoSopa', 'CategoriaController@AddNewProductoSopa')->name('categorias.AddNewProductoSopa');
+Route::delete('/categoria/eliminarSopa/{id}', 'CategoriaController@eliminarSopa')->name('categorias.eliminarSopa');
+
+Route::post('/categoria/AddNewProductoFrito', 'CategoriaController@AddNewProductoFrito')->name('categorias.AddNewProductoFrito');
+Route::delete('/categoria/eliminarFrito/{id}', 'CategoriaController@eliminarFrito')->name('categorias.eliminarFrito');
+
+Route::post('/categoria/AddNewProductoCarne', 'CategoriaController@AddNewProductoCarne')->name('categorias.AddNewProductoCarne');
+Route::delete('/categoria/eliminarCarne/{id}', 'CategoriaController@eliminarCarne')->name('categorias.eliminarCarne');
+
+Route::post('/categoria/AddNewProductoPescado', 'CategoriaController@AddNewProductoPescado')->name('categorias.AddNewProductoPescado');
+Route::delete('/categoria/eliminarPescado/{id}', 'CategoriaController@eliminarPescado')->name('categorias.eliminarPescado');
+
+Route::post('/categoria/AddNewProductoPasta', 'CategoriaController@AddNewProductoPasta')->name('categorias.AddNewProductoPasta');
+Route::delete('/categoria/eliminarPasta/{id}', 'CategoriaController@eliminarPasta')->name('categorias.eliminarPasta');
+
+Route::post('/categoria/AddNewProductoPostre', 'CategoriaController@AddNewProductoPostre')->name('categorias.AddNewProductoPostre');
+Route::delete('/categoria/eliminarPostre/{id}', 'CategoriaController@eliminarPostre')->name('categorias.eliminarPostre');
+
+Route::post('/categoria/AddNewProductoBebida', 'CategoriaController@AddNewProductoBebida')->name('categorias.AddNewProductoBebida');
+Route::delete('/categoria/eliminarBebida/{id}', 'CategoriaController@eliminarBebida')->name('categorias.eliminarBebida');
+// END CATEGORIAS

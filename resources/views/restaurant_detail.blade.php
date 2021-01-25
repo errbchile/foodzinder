@@ -68,7 +68,7 @@
                </div>
                <!-- /row -->
             </form>
-         </div>
+			</div>
          <nav class="main-menu">
             <div id="header_menu">
                <a href="#0" class="open_close">
@@ -158,30 +158,30 @@
 		        <div class="col-lg-12">
 		            <div class="tabs_detail">
 		                <ul class="nav nav-tabs" role="tablist">
-		                    <li class="nav-item">
-		                        <a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
-		                    </li>
-		                    <li class="nav-item">
-		                        <a id="tab-B" href="#sopas" class="nav-link">Sopas</a>
-							</li>
-							<li class="nav-item">
-		                        <a id="tab-C" href="#fritos" class="nav-link">Fritos</a>
-							</li>
-							<li class="nav-item">
-		                        <a id="tab-D" href="#carnes" class="nav-link">Carnes</a>
-							</li>
-							<li class="nav-item">
-		                        <a id="tab-E" href="#pescado" class="nav-link">Pescado</a>
-							</li>
-							<li class="nav-item">
-								<a id="tab-F" href="#pastas" class="nav-link">Pastas</a>
-							</li>
-							<li class="nav-item">
-		                        <a id="tab-G" href="#postres" class="nav-link">Postres</a>
-							</li>
-							<li class="nav-item">
-		                        <a id="tab-H" href="#bebidas" class="nav-link">Bebidas</a>
-		                    </li>
+								<li class="nav-item">
+									<a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-B" href="#sopas" class="nav-link">Sopas</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-C" href="#fritos" class="nav-link">Fritos</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-D" href="#carnes" class="nav-link">Carnes</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-E" href="#pescado" class="nav-link">Pescado</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-F" href="#pastas" class="nav-link">Pastas</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-G" href="#postres" class="nav-link">Postres</a>
+								</li>
+								<li class="nav-item">
+									<a id="tab-H" href="#bebidas" class="nav-link">Bebidas</a>
+								</li>
 		                </ul>
 
 		                <div class="tab-content" role="tablist">
@@ -201,46 +201,24 @@
 										</div>
 										
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($entrantes)
+													@foreach ($entrantes as $entrante)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $entrante->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $entrante->nombre }}</h3>
+																			<span>{{ $entrante->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 
 											<div class="main_title add_top_30" id="sopas">
 												<span><em></em></span>
@@ -248,88 +226,24 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($sopas)
+													@foreach ($sopas as $sopa)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $sopa->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $sopa->nombre }}</h3>
+																			<span>{{ $sopa->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 											
 											<div class="main_title add_top_30" id="fritos">
 												<span><em></em></span>
@@ -337,88 +251,24 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($fritos)
+													@foreach ($fritos as $frito)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $frito->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $frito->nombre }}</h3>
+																			<span>{{ $frito->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 
 											<div class="main_title add_top_30" id="carnes">
 												<span><em></em></span>
@@ -426,88 +276,24 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($carnes)
+													@foreach ($carnes as $carne)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $carne->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $carne->nombre }}</h3>
+																			<span>{{ $carne->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 
 											<div class="main_title add_top_30" id="pescado">
 												<span><em></em></span>
@@ -515,88 +301,24 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($pescados)
+													@foreach ($pescados as $pescado)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $pescado->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $pescado->nombre }}</h3>
+																			<span>{{ $pescado->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 
 											<div class="main_title add_top_30" id="pastas">
 												<span><em></em></span>
@@ -604,88 +326,24 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($pastas)
+													@foreach ($pastas as $pasta)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $pasta->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $pasta->nombre }}</h3>
+																			<span>{{ $pasta->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 												
 											<div class="main_title add_top_30" id="postres">
 												<span><em></em></span>
@@ -693,180 +351,55 @@
 											</div>
 	
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($postres)
+													@foreach ($postres as $postres)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $postres->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $postres->nombre }}</h3>
+																			<span>{{ $postres->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
 
 											<div class="main_title add_top_30" id="bebidas">
 												<span><em></em></span>
 												<h2>Bebidas</h2>
 											</div>
 	
+										
 											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
+												@if ($bebidas)
+													@foreach ($bebidas as $bebida)
+														<div class="col-md-4">
+															<div class="item">
+																<div class="strip">
+																	<a href="#" class="strip_info">
+																		<img src="{{ $bebida->imagen }}" class="owl-lazy plate-100" alt="">
+																		<div class="item_title_ind">
+																			<h3>{{ $bebida->nombre }}</h3>
+																			<span>{{ $bebida->precio }}€</span>
+																		</div>
+																	</a>
 																</div>
-															</a>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="col-md-4">
-													<div class="item">
-														<div class="strip">
-															<a href="#" class="strip_info">
-																<img src="{{asset('plantilla/img/places/arrebol-min.jpg')}}" class="owl-lazy plate-100" alt="">
-																<div class="item_title_ind">
-																	<h3>Pan de ajo con mozarella</h3>
-																	<span>35€</span>
-																</div>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-		                            </div>
-		                        </div>
-		                    </div>
+													@endforeach
+												@endif
+											</div>{{-- end row --}}
+										
+											
+										</div>
+									</div>
+								</div>
 		                    <!-- /tab -->
 
 		                   

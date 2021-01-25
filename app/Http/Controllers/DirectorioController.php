@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Directorio;
 use Illuminate\Http\Request;
 use App\Restaurant;
+use Illuminate\Support\Facades\DB;
 
 class DirectorioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
 
@@ -95,10 +91,9 @@ class DirectorioController extends Controller
         if ($pizza) {array_push($filtro, ['pizza', 'like', 'on']);}
         if ($zumos_y_batidos) {array_push($filtro, ['zumos_y_batidos', 'like', 'on']);}
 
-
         $restaurantes_sin_paginar = Restaurant::where($filtro)->get();
         $restaurantes = Restaurant::where($filtro)->paginate(6);
-        
+
         $cantidades = $this->TraerCantidades($restaurantes_sin_paginar);
         return view('directorio', ["request" => $request, "restaurantes" => $restaurantes, 'cantidades' => $cantidades]);
     }
@@ -125,69 +120,50 @@ class DirectorioController extends Controller
         return $cantidades;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Directorio  $directorio
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request, $id)
     {
         $restaurant = Restaurant::find($id);
+        $entrantes = DB::table('entrantes')->where('restaurant_id', $id)->get();
+        $sopas = DB::table('sopas')->where('restaurant_id', $id)->get();
+        $fritos = DB::table('fritos')->where('restaurant_id', $id)->get();
+        $carnes = DB::table('carnes')->where('restaurant_id', $id)->get();
+        $pescados = DB::table('pescados')->where('restaurant_id', $id)->get();
+        $pastas = DB::table('pastas')->where('restaurant_id', $id)->get();
+        $postres = DB::table('postres')->where('restaurant_id', $id)->get();
+        $bebidas = DB::table('bebidas')->where('restaurant_id', $id)->get();
 
-        return view("restaurant_detail", ['restaurant' => $restaurant]);
+        return view("restaurant_detail", ['restaurant' => $restaurant, 
+                                         'entrantes'   => $entrantes,
+                                         'sopas'       => $sopas,
+                                         'fritos'      => $fritos,
+                                         'carnes'      => $carnes,
+                                         'pescados'    => $pescados,
+                                         'pastas'      => $pastas,
+                                         'postres'     => $postres,
+                                         'bebidas'     => $bebidas
+                                         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Directorio  $directorio
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Directorio $directorio)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Directorio  $directorio
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Directorio $directorio)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Directorio  $directorio
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Directorio $directorio)
     {
         //

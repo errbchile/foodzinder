@@ -426,39 +426,41 @@
 					</div>
 					@foreach ($restaurantes as $restaurant)
 						<div class="row resultados">
+							
 							{{-- START - SLIDER --}}
 							<div class="col-md-8">
 								<div id="carouselExampleIndicators_{{ $restaurant->id }}" class="carousel slide" data-ride="carousel">
 									<ol class="carousel-indicators">
-									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="0" class="active"></li>
-									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="1"></li>
-									<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="2"></li>
+										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="0" class="active"></li>
+										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="1"></li>
+										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="2"></li>
 									</ol>
 									<div class="carousel-inner">
-									<div class="carousel-item d-flex active">
-										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id }}/768/236" alt="First slide">
-										{{-- <img class="d-block w-100" src="..." alt="First slide"> --}}
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 2 }}/768/236" alt="Second slide">
-										{{-- <img class="d-block w-100" src="..." alt="Second slide"> --}}
-									</div>
-									<div class="carousel-item">
-										<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 3 }}/768/236" alt="Third slide">
-										{{-- <img class="d-block w-100" src="..." alt="Third slide"> --}}
-									</div>
+										<div class="carousel-item d-flex active">
+											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id }}/768/236" alt="First slide">
+											{{-- <img class="d-block w-100" src="..." alt="First slide"> --}}
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 2 }}/768/236" alt="Second slide">
+											{{-- <img class="d-block w-100" src="..." alt="Second slide"> --}}
+										</div>
+										<div class="carousel-item">
+											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 3 }}/768/236" alt="Third slide">
+											{{-- <img class="d-block w-100" src="..." alt="Third slide"> --}}
+										</div>
 									</div>
 									<a class="carousel-control-prev" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="prev">
-									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-									<span class="sr-only">Previous</span>
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="sr-only">Previous</span>
 									</a>
 									<a class="carousel-control-next" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="next">
-									<span class="carousel-control-next-icon" aria-hidden="true"></span>
-									<span class="sr-only">Next</span>
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="sr-only">Next</span>
 									</a>
 								</div>
 							</div>
 							{{-- END - SLIDER --}}
+
 							<div class="col-md-4 info">
 								<h2>
 									{{ $restaurant->nombre }}

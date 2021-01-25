@@ -142,6 +142,18 @@ class RestaurantController extends Controller
         $restaurant->pizza = !empty($request->input("pizza")) ? $request->input("pizza") : null;
         $restaurant->zumos_y_batidos = !empty($request->input("zumos_y_batidos")) ? $request->input("zumos_y_batidos") : null;
 
+        // Actualizamos las imagenes
+        if($request->hasfile('filenames'))
+        {
+            foreach($request->file('filenames') as $pos => $file)
+            {
+                $name = $pos.time().'.'.$file->extension();
+                $file->move(public_path().'/images/restaurantes/', $name);  
+                $data[] = '/images/restaurantes/'.$name;  
+            }
+            $restaurant->imagenes = json_encode($data);
+        }
+
         $restaurant->update();
 
         return view('restaurant.show', ['restaurant' => $restaurant]);

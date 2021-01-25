@@ -35,7 +35,7 @@
                <div class="form-row">
                   <div class="form-group col-md-4">
                      <label for="ciudad">Ciudad</label>
-                     <select name="ciudad" id="ciudad" value="{{ old('ciudad') }}" class="form-control">
+                     <select required name="ciudad" id="ciudad" value="{{ old('ciudad') }}" class="form-control">
                        <option value="">-- Seleccione --</option>
                        <option value="Madrid">Madrid</option>
                        <option value="Barcelona">Barcelona</option>
@@ -390,7 +390,9 @@
           <tbody>
             @foreach ($restaurantes as $resto)
             <tr>
-              <td>{{ $resto->nombre }}</td>
+              <td>
+                <a href="{{ url('/restaurant/show/'.$resto->id) }}">{{ $resto->nombre }}</a>
+              </td>
               <td>{{ $resto->direccion }}</td>
               <td>{{ $resto->telefono }}</td>
               <td class="text-center d-flex">

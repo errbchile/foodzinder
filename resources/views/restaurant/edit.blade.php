@@ -13,7 +13,7 @@
    <div class="container fluid">
       <div class="row">
          <div class="col-md-12">
-            <form method="POST" action="{{ route('restaurant.update', ['id' => $restaurant->id]) }}">
+            <form method="POST" action="{{ route('restaurant.update', ['id' => $restaurant->id]) }}" enctype="multipart/form-data">
                @csrf
                <div class="form-row">
                   <div class="form-group col-md-4">
@@ -328,7 +328,53 @@
                 </div>{{-- END-ROW --}}
               </div> {{-- END-CONTAINER --}}
 
-              <div class="container">
+              @if ($restaurant->imagenes)
+                <div class="container mt-3">
+                  <div class="row d-flex">
+                    @foreach (json_decode($restaurant->imagenes) as $imagen)
+                      <div class="col-4">
+                        <div>
+                          <img src="{{ $imagen }}" class="img-fluid" alt="Responsive image">
+                        </div>
+                      </div>
+                    @endforeach
+                  </div>
+                </div>
+              @endif
+
+              <div class="container m-3">
+
+                <div class="row mt-3">
+                  <div class="col text-center">
+                    <h3>Imágenes del Restaurante:</h3>
+                  </div>
+                 </div>
+                  <div class="row">
+                   <div class="col">
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" id="basic-addon1">Imagen 1</span>
+                       </div>
+                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                     </div>
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" id="basic-addon1">Imagen 2</span>
+                       </div>
+                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                     </div>
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" id="basic-addon1">Imagen 3</span>
+                       </div>
+                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                     </div>
+                   </div>
+                 </div>
+
+              </div>
+
+              <div class="container m-3">
                 <div class="row">
                   <div class="col">
                     <button type="submit" class="btn btn-success">Actualizar</button>
@@ -342,7 +388,7 @@
 
             <hr>
 
-            <div class="container">
+            <div class="container m-3">
               <div class="row">
                 <div class="col">
                   <div class="row mt-3">
