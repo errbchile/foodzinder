@@ -422,7 +422,7 @@
 				</aside>
 				<div class="col-lg-9">
 					<div class="row">
-						<h2 class="title-directorio">{{count($restaurantes)}} resultados</h2>
+						<h2 class="title-directorio">{{count($restaurantes_sin_paginar)}} resultados</h2>
 					</div>
 					@foreach ($restaurantes as $restaurant)
 						<div class="row resultados">

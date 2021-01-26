@@ -95,7 +95,11 @@ class DirectorioController extends Controller
         $restaurantes = Restaurant::where($filtro)->paginate(6);
 
         $cantidades = $this->TraerCantidades($restaurantes_sin_paginar);
-        return view('directorio', ["request" => $request, "restaurantes" => $restaurantes, 'cantidades' => $cantidades]);
+        return view('directorio', ["request" => $request, 
+                                   "restaurantes" => $restaurantes, 
+                                   'cantidades' => $cantidades,
+                                   "restaurantes_sin_paginar" => $restaurantes_sin_paginar
+                                   ]);
     }
 
     public function TraerCantidades($restaurantes)
