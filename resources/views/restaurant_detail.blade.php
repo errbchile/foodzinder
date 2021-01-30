@@ -207,7 +207,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $entrante->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($entrante->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $entrante->nombre }}</h3>
 																			<span>{{ $entrante->precio }}€</span>
@@ -232,7 +232,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $sopa->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($sopa->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $sopa->nombre }}</h3>
 																			<span>{{ $sopa->precio }}€</span>
@@ -257,7 +257,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $frito->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($frito->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $frito->nombre }}</h3>
 																			<span>{{ $frito->precio }}€</span>
@@ -282,7 +282,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $carne->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($carne->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $carne->nombre }}</h3>
 																			<span>{{ $carne->precio }}€</span>
@@ -307,7 +307,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $pescado->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($pescado->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $pescado->nombre }}</h3>
 																			<span>{{ $pescado->precio }}€</span>
@@ -332,7 +332,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $pasta->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($pasta->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $pasta->nombre }}</h3>
 																			<span>{{ $pasta->precio }}€</span>
@@ -357,7 +357,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $postres->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($postres->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $postres->nombre }}</h3>
 																			<span>{{ $postres->precio }}€</span>
@@ -383,7 +383,7 @@
 															<div class="item">
 																<div class="strip">
 																	<a href="#" class="strip_info">
-																		<img src="{{ $bebida->imagen }}" class="owl-lazy plate-100" alt="">
+																		<img src="{{ url($bebida->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $bebida->nombre }}</h3>
 																			<span>{{ $bebida->precio }}€</span>
