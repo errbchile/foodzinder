@@ -91,11 +91,11 @@
 						<div class="col">
 							<div class="input-group input-group-sm mb-3">
 								<div class="input-group-prepend">
-									<button @click="restarCantidadItemDelCarrito(item.id)" class="input-group-text">-</button>
+									<button @click="restarCantidadItemDelCarrito(item.nombre)" class="input-group-text">-</button>
 								</div>
 								<input type="text" class="form-control text-center" :value="item.cantidad" aria-label="Username" aria-describedby="basic-addon1">
 								<div class="input-group-append">
-									<button @click="sumarCantidadItemDelCarrito(item.id)" class="input-group-text">+</button>
+									<button @click="sumarCantidadItemDelCarrito(item.nombre)" class="input-group-text">+</button>
 								 </div>
 							 </div>
 						</div>
@@ -103,7 +103,7 @@
 							<p>Monto Total: @{{ item.precioCantidad }}</p>
 						</div>
 						<div class="col">
-							<a href="#" @click.prevent="borrarItemDelCarrito(item.id)"><i class="fas fa-trash-alt"></i></a>
+							<a href="#" @click.prevent="borrarItemDelCarrito(item.nombre)"><i class="fas fa-trash-alt"></i></a>
 						</div>
 					</div>
 				</div>
@@ -778,14 +778,14 @@
 					};
 				},
 
-				borrarItemDelCarrito: function (id){
-					this.carritoActual = this.carritoActual.filter(item => item.id !== id);
+				borrarItemDelCarrito: function (nombre){
+					this.carritoActual = this.carritoActual.filter(item => item.nombre !== nombre);
 				},
 
-				restarCantidadItemDelCarrito: function(id){
+				restarCantidadItemDelCarrito: function(nombre){
 					for (let i = 0; i < this.carritoActual.length; i++) {
 						const elemento = this.carritoActual[i];
-						if (elemento.id === id && elemento.cantidad >= 2) {
+						if (elemento.nombre === nombre && elemento.cantidad >= 2) {
 							//restar cantidad
 							this.carritoActual[i].cantidad--;
 							//restar monto total
@@ -794,10 +794,10 @@
 					}
 				},
 
-				sumarCantidadItemDelCarrito: function (id){
+				sumarCantidadItemDelCarrito: function (nombre){
 					for (let i = 0; i < this.carritoActual.length; i++) {
 						const elemento = this.carritoActual[i];
-						if (elemento.id === id) {
+						if (elemento.nombre === nombre) {
 							//restar cantidad
 							this.carritoActual[i].cantidad++;
 							//restar monto total
