@@ -13,4 +13,8 @@ class Restaurant extends Model
         'pais',
         'telefono'
     ];
+
+    public function entrantes(){
+        return $this->hasMany(Entrante::class, 'restaurant_id', 'id');
+    }
 }

@@ -9,6 +9,11 @@
 	 <meta name="author" content="Ansonika">
 	 <meta name="csrf-token" content="{{ csrf_token() }}">
 	 <title>Lista de restaurantes en imágenes - Food Zinder</title>
+
+	 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	 
 	 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -28,7 +33,10 @@
     <link href="{{asset('plantilla/css/style.css')}}" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
-    <link href="{{asset('plantilla/css/listing.css')}}" rel="stylesheet">
+	 <link href="{{asset('plantilla/css/listing.css')}}" rel="stylesheet">
+	 
+	 {{-- slider css --}}
+	 <link rel="stylesheet"  href="{{ asset('css/lightslider.css') }}"/>
 
     <!-- YOUR CUSTOM CSS -->
 	<link href="{{asset('plantilla/css/custom.css')}}" rel="stylesheet">
@@ -429,35 +437,22 @@
 							
 							{{-- START - SLIDER --}}
 							<div class="col-md-8">
-								<div id="carouselExampleIndicators_{{ $restaurant->id }}" class="carousel slide" data-ride="carousel">
-									<ol class="carousel-indicators">
-										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="0" class="active"></li>
-										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="1"></li>
-										<li data-target="#carouselExampleIndicators_{{ $restaurant->id }}" data-slide-to="2"></li>
-									</ol>
-									<div class="carousel-inner">
-										<div class="carousel-item d-flex active">
-											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id }}/768/236" alt="First slide">
-											{{-- <img class="d-block w-100" src="..." alt="First slide"> --}}
-										</div>
-										<div class="carousel-item">
-											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 2 }}/768/236" alt="Second slide">
-											{{-- <img class="d-block w-100" src="..." alt="Second slide"> --}}
-										</div>
-										<div class="carousel-item">
-											<img class="d-block w-768" src="https://picsum.photos/id/{{ $restaurant->id * 3 }}/768/236" alt="Third slide">
-											{{-- <img class="d-block w-100" src="..." alt="Third slide"> --}}
-										</div>
+
+
+						 
+							 <div class="content-slider ulslider">
+								 @foreach ($restaurant->entrantes as $entrante)
+									<div class="li-slider">
+										<img class="img-fluid" src="{{ $entrante->imagen }}" alt="">
 									</div>
-									<a class="carousel-control-prev" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span class="sr-only">Previous</span>
-									</a>
-									<a class="carousel-control-next" href="#carouselExampleIndicators_{{ $restaurant->id }}" role="button" data-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"></span>
-										<span class="sr-only">Next</span>
-									</a>
-								</div>
+								 @endforeach
+							 </div> 
+						 
+
+									
+
+
+
 							</div>
 							{{-- END - SLIDER --}}
 
@@ -550,14 +545,19 @@
 	
 	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
 		
-	<!-- COMMON SCRIPTS -->
-    <script src="{{asset('plantilla/js/common_scripts.min.js')}}"></script>
-    <script src="{{asset('plantilla/js/common_func.js')}}"></script>
+
+
+
+		<!-- COMMON SCRIPTS -->
+    {{-- <script src="{{asset('plantilla/js/common_scripts.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('plantilla/js/common_func.js')}}"></script> --}}
     <script src="{{asset('plantilla/assets/validate.js')}}"></script>
 
     <!-- SPECIFIC SCRIPTS -->
     <script src="{{asset('plantilla/js/sticky_sidebar.min.js')}}"></script>
 	 <script src="{{asset('plantilla/js/specific_listing.js')}}"></script>
+
+	 <script src="{{ asset('js/lightslider.js') }}"></script>
 	 
 	<script>
 
@@ -586,9 +586,14 @@
 		
 
 	</script>
-	{{-- <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> --}}
+	<script>
+		$(document).ready(function() {
+			$(".content-slider").lightSlider({
+					loop:true,
+					keyPress:true
+				});
+		});
+	</script>
 
 </body>
 </html>
