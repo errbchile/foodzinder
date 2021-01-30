@@ -443,7 +443,7 @@
 							 <div class="content-slider ulslider">
 								 @foreach ($restaurant->entrantes as $entrante)
 									<div class="li-slider">
-										<img class="img-fluid" src="{{ $entrante->imagen }}" alt="">
+										<img class="img-fluid" src="{{ url($entrante->imagen) }}" alt="">
 									</div>
 								 @endforeach
 							 </div> 

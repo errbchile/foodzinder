@@ -607,6 +607,8 @@
       const postres = {!! json_decode($postres) !!};
       const bebidas = {!! json_decode($bebidas) !!};
 
+      const urlAddNewProductoEntrante = "{{ route('categorias.AddNewProductoEntrante') }}";
+
       const app = new Vue({
          el: '#app',
          data: {
@@ -730,7 +732,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newEntranteImageFile);
                
-               fetch("/categoria/AddNewProductoEntrante", {
+               fetch(urlAddNewProductoEntrante, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -764,7 +766,7 @@
                this.categorias.entrantes = this.categorias.entrantes.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarEntrante/${id}`, {
+               fetch(`{{ url('/categoria/eliminarEntrante') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -787,7 +789,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newSopaImageFile);
                
-               fetch("/categoria/AddNewProductoSopa", {
+               fetch("{{ url('/categoria/AddNewProductoSopa') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -821,7 +823,7 @@
                this.categorias.sopas = this.categorias.sopas.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarSopa/${id}`, {
+               fetch(`{{ url('/categoria/eliminarSopa') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -844,7 +846,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newFritoImageFile);
                
-               fetch("/categoria/AddNewProductoFrito", {
+               fetch("{{ url('categoria/AddNewProductoFrito') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -878,7 +880,7 @@
                this.categorias.fritos = this.categorias.fritos.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarFrito/${id}`, {
+               fetch(`{{ url('/categoria/eliminarFrito') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -901,7 +903,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newCarneImageFile);
                
-               fetch("/categoria/AddNewProductoCarne", {
+               fetch("{{ url('categoria/AddNewProductoCarne') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -935,7 +937,7 @@
                this.categorias.carnes = this.categorias.carnes.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarCarne/${id}`, {
+               fetch(`{{ url('/categoria/eliminarCarne') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -958,7 +960,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPescadoImageFile);
                
-               fetch("/categoria/AddNewProductoPescado", {
+               fetch("{{ url('/categoria/AddNewProductoPescado') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -992,7 +994,7 @@
                this.categorias.pescados = this.categorias.pescados.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarPescado/${id}`, {
+               fetch(`{{ url('/categoria/eliminarPescado') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1015,7 +1017,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPastaImageFile);
 
-               fetch("/categoria/AddNewProductoPasta", {
+               fetch("{{ url('/categoria/AddNewProductoPasta') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1049,7 +1051,7 @@
                this.categorias.pastas = this.categorias.pastas.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarPasta/${id}`, {
+               fetch(`{{ url('/categoria/eliminarPasta') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1072,7 +1074,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPostreImageFile);
                
-               fetch("/categoria/AddNewProductoPostre", {
+               fetch("{{ url('categoria/AddNewProductoPostre') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1106,7 +1108,7 @@
                this.categorias.postres = this.categorias.postres.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarPostre/${id}`, {
+               fetch(`{{ url('/categoria/eliminarPostre') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1129,7 +1131,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newBebidaImageFile);
                
-               fetch("/categoria/AddNewProductoBebida", {
+               fetch("{{ url('/categoria/AddNewProductoBebida') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1163,7 +1165,7 @@
                this.categorias.bebidas = this.categorias.bebidas.filter(producto => producto.id !== id);
 
                // eliminar en la base de datos:
-               fetch(`/categoria/eliminarBebida/${id}`, {
+               fetch(`{{ url('/categoria/eliminarBebida') }}/${id}`, {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",

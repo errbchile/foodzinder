@@ -334,7 +334,7 @@
                     @foreach (json_decode($restaurant->imagenes) as $imagen)
                       <div class="col-4">
                         <div>
-                          <img src="{{ $imagen }}" class="img-fluid" alt="Responsive image">
+                          <img src="{{ url($imagen) }}" class="img-fluid" alt="Responsive image">
                         </div>
                       </div>
                     @endforeach
