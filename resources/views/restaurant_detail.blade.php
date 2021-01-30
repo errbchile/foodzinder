@@ -805,6 +805,21 @@
 						}
 					}
 				}
+			},
+			mounted(){
+				// buscamos el item en local storage:
+				let carritoEnLocalStorage = localStorage.getItem(`carrito-resto-${restauranteID}`);
+				if (!carritoEnLocalStorage) {
+					// no existe en local storage
+					localStorage.setItem(`carrito-resto-${restaurantId}`, JSON.stringify( this.carritoActual ));
+				} else {
+					this.carritoActual = JSON.parse( carritoEnLocalStorage );
+				}
+			},
+			watch: {
+				carritoActual: function(){
+					localStorage.setItem(`carrito-resto-${restaurantId}`, JSON.stringify( this.carritoActual ));
+				}
 			}
 		})
 	</script>
