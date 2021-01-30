@@ -10,6 +10,9 @@
 	<title>Mamma Pronto - Food Zinder</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
 
+	<!-- VUEJS -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
 	<!-- Favicons-->
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.ico')}}" >
 	<link rel="apple-touch-icon" type="image/x-icon" href="{{asset('plantilla/img/apple-touch-icon-57x57-precomposed.png')}}">
@@ -19,6 +22,9 @@
 
 	<!-- GOOGLE WEB FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 	<!-- BASE CSS -->
 	<link href="{{asset('plantilla/css/bootstrap_customized.min.css')}}" rel="stylesheet">
@@ -35,10 +41,149 @@
 		html {
 			scroll-behavior: smooth;
 		}
+
+		.botonflotanteparaguardado {
+			display:scroll;
+			position:fixed;
+			bottom:95px;
+			right:35px;
+			opacity: 1;
+			cursor: pointer;
+			z-index: 20;
+			background-color: #F67599;
+			color: #fff;
+			border-radius: 25px;
+		}
 	</style>
 </head>
 
 <body>
+	<div id="app">
+
+
+
+
+
+
+	{{-- botón flotante --}}
+	<button type="button" class="btn btn-default botonflotanteparaguardado" data-toggle="modal" data-target="#modalLista">Ver mi lista</button> {{-- end botón flotante --}}
+
+	<!-- Modal-mi-lista -->
+	<div class="modal fade" id="modalLista" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">MI LISTA</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div v-for="item in carritoActual" class="row">
+						<div class="col">
+							<img class="img-fluid" :src="item.imagen" alt="">
+						</div>
+						<div class="col">
+							<h5>@{{ item.nombre }}</h5>
+							<p class="text-muted">Precio unitario: @{{ item.precioUnitario }}</p>
+						</div>
+						<div class="col">
+							<div class="input-group input-group-sm mb-3">
+								<div class="input-group-prepend">
+									<button @click="restarCantidadItemDelCarrito(item.id)" class="input-group-text">-</button>
+								</div>
+								<input type="text" class="form-control text-center" :value="item.cantidad" aria-label="Username" aria-describedby="basic-addon1">
+								<div class="input-group-append">
+									<button @click="sumarCantidadItemDelCarrito(item.id)" class="input-group-text">+</button>
+								 </div>
+							 </div>
+						</div>
+						<div class="col">
+							<p>Monto Total: @{{ item.precioCantidad }}</p>
+						</div>
+						<div class="col">
+							<a href="#" @click.prevent="borrarItemDelCarrito(item.id)"><i class="fas fa-trash-alt"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+		</div>
+	</div><!-- end Modal-mi-lista -->
+
+
+
+
+	<!-- Modal-new-item -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">
+					
+				</h5>
+				<button id="botonCerrarModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col text-center">
+							<img class="img-fluid" :src="newItem.imagen" alt="Imagen responsive">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center">
+							<h5>@{{ newItem.nombre }}</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<button @click="restarCantidad" class="input-group-text">-</button>
+								</div>
+								<input type="text" class="form-control text-center" :value="newItem.cantidad" aria-label="Username" aria-describedby="basic-addon1">
+								<div class="input-group-append">
+									<button @click="sumarCantidad" class="input-group-text">+</button>
+								 </div>
+							 </div>
+						</div>
+						<div class="col d-flex align-items-center justify-content-center">
+							<h5>@{{ newItem.precioCantidad }} €</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col d-flex justify-content-center">
+							<button @click="agregarAMiLista" type="button" class="btn btn-primary">Agregar a mi lista</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		</div>
+	</div>{{-- end Modal-new-item --}}
+
+
+
+
+
+
+
+
+
+
 	<header class="header_in clearfix is_sticky">
       <div id="logo">
          <a href="{{url('/')}}">
@@ -206,11 +351,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
-																		<img src="{{ url($entrante->imagen) }}" class="owl-lazy plate-100" alt="">
+																	<a @click="itemClicado('entrantes', '{{ $entrante->id }}', '{{ url($entrante->imagen) }}', '{{ $entrante->nombre }}', '{{ $entrante->precio }}' )" href="#" class="strip_info" data-toggle="modal" data-target="#exampleModalCenter">
+																		<img  src="{{ url($entrante->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $entrante->nombre }}</h3>
-																			<span>{{ $entrante->precio }}€</span>
+																			<span>{{ $entrante->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -231,11 +376,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('sopa', '{{ $sopa->id }}', '{{ url($sopa->imagen) }}', '{{ $sopa->nombre }}', '{{ $sopa->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($sopa->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $sopa->nombre }}</h3>
-																			<span>{{ $sopa->precio }}€</span>
+																			<span>{{ $sopa->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -256,11 +401,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('frito', '{{ $frito->id }}', '{{ url($frito->imagen) }}', '{{ $frito->nombre }}', '{{ $frito->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($frito->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $frito->nombre }}</h3>
-																			<span>{{ $frito->precio }}€</span>
+																			<span>{{ $frito->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -281,11 +426,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('carne', '{{ $carne->id }}', '{{ url($carne->imagen) }}', '{{ $carne->nombre }}', '{{ $carne->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($carne->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $carne->nombre }}</h3>
-																			<span>{{ $carne->precio }}€</span>
+																			<span>{{ $carne->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -306,11 +451,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('pescado', '{{ $pescado->id }}', '{{ url($pescado->imagen) }}', '{{ $pescado->nombre }}', '{{ $pescado->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($pescado->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $pescado->nombre }}</h3>
-																			<span>{{ $pescado->precio }}€</span>
+																			<span>{{ $pescado->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -331,11 +476,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('pasta', '{{ $pasta->id }}', '{{ url($pasta->imagen) }}', '{{ $pasta->nombre }}', '{{ $pasta->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($pasta->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $pasta->nombre }}</h3>
-																			<span>{{ $pasta->precio }}€</span>
+																			<span>{{ $pasta->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -352,15 +497,15 @@
 	
 											<div class="row">
 												@if ($postres)
-													@foreach ($postres as $postres)
+													@foreach ($postres as $postre)
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
-																		<img src="{{ url($postres->imagen) }}" class="owl-lazy plate-100" alt="">
+																	<a @click="itemClicado('postre', '{{ $postre->id }}', '{{ url($postre->imagen) }}', '{{ $postre->nombre }}', '{{ $postre->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
+																		<img src="{{ url($postre->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
-																			<h3>{{ $postres->nombre }}</h3>
-																			<span>{{ $postres->precio }}€</span>
+																			<h3>{{ $postre->nombre }}</h3>
+																			<span>{{ $postre->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -382,11 +527,11 @@
 														<div class="col-md-4">
 															<div class="item">
 																<div class="strip">
-																	<a href="#" class="strip_info">
+																	<a @click="itemClicado('bebida', '{{ $bebida->id }}', '{{ url($bebida->imagen) }}', '{{ $bebida->nombre }}', '{{ $bebida->precio }}' )" href="#" class="strip_info"  data-toggle="modal" data-target="#exampleModalCenter">
 																		<img src="{{ url($bebida->imagen) }}" class="owl-lazy plate-100" alt="">
 																		<div class="item_title_ind">
 																			<h3>{{ $bebida->nombre }}</h3>
-																			<span>{{ $bebida->precio }}€</span>
+																			<span>{{ $bebida->precio }} €</span>
 																		</div>
 																	</a>
 																</div>
@@ -518,7 +663,9 @@
 		<!--form -->
 	</div>
 	<!-- /Sign In Modal -->
-	
+
+</div> {{-- end vuejs --}}
+
 	<!-- COMMON SCRIPTS -->
     <script src="{{asset('plantilla/js/common_scripts.min.js')}}"></script>
     <script src="{{asset('plantilla/js/common_func.js')}}"></script>
@@ -560,6 +707,109 @@
 		}
 
 	</script>
+
+	{{-- STARTS VUEJS --}}
+	<script>
+
+		const restauranteID = "{{ $restaurant->id }}";
+
+		const app = new Vue({
+			el: "#app",
+			data: {
+				carritoActual: [],
+				mostrarCarrito: false,
+				newItem: {
+					categoria: "", 
+					id: "", 
+					imagen: "", 
+					nombre: "", 
+					precioUnitario: 0,
+					cantidad: 1,
+					precioCantidad: 0
+				}
+			},
+			methods: {
+				itemClicado: function (categoria, id, imagen, nombre, precio){
+					this.newItem = {
+						categoria: categoria, 
+						id: id, 
+						imagen: imagen, 
+						nombre: nombre, 
+						precioUnitario: precio,
+						cantidad: 1,
+						precioCantidad: precio
+					}
+				},
+
+				restarCantidad: function (){
+					if (this.newItem.cantidad >= 2) {
+						this.newItem.cantidad--;
+						this.newItem.precioCantidad = this.newItem.precioUnitario * this.newItem.cantidad;
+					}
+				},
+
+				sumarCantidad: function (){
+					this.newItem.cantidad++;
+					this.newItem.precioCantidad = this.newItem.precioUnitario * this.newItem.cantidad;
+				},
+
+				agregarAMiLista: function (){
+					if (this.carritoActual.length === 0) {
+						this.carritoActual.push(this.newItem);
+					} else {
+						for (let i = 0; i < this.carritoActual.length; i++) {
+							const elementoEnElcarrito = this.carritoActual[i];
+							if (elementoEnElcarrito.id === this.newItem.id) {
+								this.carritoActual[i].cantidad += this.newItem.cantidad;
+								this.carritoActual[i].precioCantidad = this.carritoActual[i].cantidad * this.carritoActual[i].precioUnitario;
+							}
+						}
+						this.carritoActual.push(this.newItem);
+					}
+					document.querySelector('#botonCerrarModal').click();
+					this.newItem = {
+						categoria: "", 
+						id: "", 
+						imagen: "", 
+						nombre: "", 
+						precioUnitario: 0,
+						cantidad: 1,
+						precioCantidad: 0
+					};
+				},
+
+				borrarItemDelCarrito: function (id){
+					this.carritoActual = this.carritoActual.filter(item => item.id !== id);
+				},
+
+				restarCantidadItemDelCarrito: function(id){
+					for (let i = 0; i < this.carritoActual.length; i++) {
+						const elemento = this.carritoActual[i];
+						if (elemento.id === id && elemento.cantidad >= 2) {
+							//restar cantidad
+							this.carritoActual[i].cantidad--;
+							//restar monto total
+							this.carritoActual[i].precioCantidad = this.carritoActual[i].cantidad * this.carritoActual[i].precioUnitario;
+						}
+					}
+				},
+
+				sumarCantidadItemDelCarrito: function (id){
+					for (let i = 0; i < this.carritoActual.length; i++) {
+						const elemento = this.carritoActual[i];
+						if (elemento.id === id) {
+							//restar cantidad
+							this.carritoActual[i].cantidad++;
+							//restar monto total
+							this.carritoActual[i].precioCantidad = this.carritoActual[i].cantidad * this.carritoActual[i].precioUnitario;
+						}
+					}
+				}
+			}
+		})
+	</script>
+
+
 
 </body>
 </html>
