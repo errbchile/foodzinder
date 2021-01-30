@@ -76,7 +76,7 @@
 
                          <div v-for="(producto, index) in categorias.entrantes" :key="producto.id" class="col-md-3 d-flex">
                            <div  class="card" style="width: 18rem;">
-                              <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                              <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                               <div class="card-body">
                                  <h5 class="card-title">@{{ producto.nombre }}</h5>
                                  <p class="card-text">@{{ producto.precio }}€</p>
@@ -138,7 +138,7 @@
 
                         <div v-for="(producto, index) in categorias.sopas" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -203,7 +203,7 @@
 
                         <div v-for="(producto, index) in categorias.fritos" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -267,7 +267,7 @@
 
                         <div v-for="(producto, index) in categorias.carnes" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -332,7 +332,7 @@
 
                         <div v-for="(producto, index) in categorias.pescados" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -398,7 +398,7 @@
 
                         <div v-for="(producto, index) in categorias.pastas" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -465,7 +465,7 @@
 
                         <div v-for="(producto, index) in categorias.postres" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -530,7 +530,7 @@
 
                         <div v-for="(producto, index) in categorias.bebidas" :key="producto.id" class="col-md-3 d-flex">
                           <div  class="card" style="width: 18rem;">
-                             <img class="card-img-top" :src="producto.imagen" alt="Imagen de ejemplo">
+                             <img class="card-img-top" :src="imageWithUrl(producto.imagen)" alt="Imagen de ejemplo">
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
@@ -608,6 +608,7 @@
       const bebidas = {!! json_decode($bebidas) !!};
 
       const urlAddNewProductoEntrante = "{{ route('categorias.AddNewProductoEntrante') }}";
+      const url = "{{ url('') }}";
 
       const app = new Vue({
          el: '#app',
@@ -662,6 +663,8 @@
             newBebidaImageFile: {},
             newBebidaNombre: '',
             newBebidaPrecio: '',
+
+            url: url
          },
          methods: {
             onImageChangeEntrante(e) {
@@ -732,7 +735,7 @@
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newEntranteImageFile);
                
-               fetch(urlAddNewProductoEntrante, {
+               fetch("{{ url('/categoria/AddNewProductoEntrante') }}", {
                   headers: {
                      "Accept": "application/json",
                      "X-Requested-With": "XMLHttpRequest",
@@ -1176,6 +1179,9 @@
                  .then(data => console.log(data));
             },
             // END BEBIDAS
+            imageWithUrl: function (imagen){
+               return `${this.url}${imagen}`;
+            }
          }
       });
    </script>
