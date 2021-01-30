@@ -19,12 +19,12 @@ class UserSeeder extends Seeder
         $user->profile = 1;
         $user->save();
 
-        $user = new User();
-        $user->name = "Usuario";
-        $user->email = "usuario@usuario.com";
-        $user->password = Hash::make('usuario');
-        $user->profile = 2;
-        $user->save();
+        // $user = new User();
+        // $user->name = "Usuario";
+        // $user->email = "usuario@usuario.com";
+        // $user->password = Hash::make('usuario');
+        // $user->profile = 2;
+        // $user->save();
 
     }
 }
