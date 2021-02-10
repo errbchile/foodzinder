@@ -66,16 +66,16 @@ class RestaurantController extends Controller
         $restaurant->zumos_y_batidos = !empty($request->input("zumos_y_batidos")) ? $request->input("zumos_y_batidos") : null;
 
         // Guardamos las imagenes
-        if($request->hasfile('filenames'))
-        {
-           foreach($request->file('filenames') as $pos => $file)
-           {
-               $name = $pos.time().'.'.$file->extension();
-               $file->move(public_path().'/images/restaurantes/', $name);  
-               $data[] = '/images/restaurantes/'.$name;  
-           }
-        }
-        $restaurant->imagenes = json_encode($data);
+        // if($request->hasfile('filenames'))
+        // {
+        //    foreach($request->file('filenames') as $pos => $file)
+        //    {
+        //        $name = $pos.time().'.'.$file->extension();
+        //        $file->move(public_path().'/images/restaurantes/', $name);  
+        //        $data[] = '/images/restaurantes/'.$name;  
+        //    }
+        //    $restaurant->imagenes = json_encode($data) || null;
+        // }
 
         $restaurant->save();
 

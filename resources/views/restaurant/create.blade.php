@@ -323,7 +323,7 @@
                    </div>{{-- END-COL --}}
                  </div>{{-- END-ROW --}}
 
-                 <div class="row mt-3">
+                 {{-- <div class="row mt-3">
                    <div class="col text-center">
                      <h3>Imágenes del Restaurante:</h3>
                    </div>
@@ -349,7 +349,8 @@
                         <input id="imagen1" type="file" name="filenames[]" class="form-control">
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
+
                </div> {{-- END-CONTAINER --}}
 
                <div class="container mt-3">
