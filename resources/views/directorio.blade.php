@@ -467,7 +467,7 @@
 									{{ $restaurant->nombre }}
 								</h2>
 								<p class="icon ubicacion">
-									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="#">VER MAPA</a>
+									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="{{ !is_null($restaurant->google_maps) ? $restaurant->google_maps : "#" }}" target="{{ !is_null($restaurant->google_maps) ? "_blank" : "" }}">VER MAPA</a>
 								</p>
 								<p class="icon telefono">
 									<a title="Ir a WhatsApp" href="https://api.whatsapp.com/send?phone=34{{ $restaurant->telefono }}"> {{ $restaurant->telefono }}</a>

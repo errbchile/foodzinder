@@ -72,6 +72,12 @@
 
                   </div>
                </div>
+               <div class="form-row">
+                 <div class="form-group col-md-12">
+                    <label for="google_maps">Enlace a Google Maps:</label>
+                    <input name="google_maps" type="text" class="form-control" value="{{ old('google_maps') }}" id="google_maps" placeholder="Ejemplo: https://goo.gl/maps/U4ovQFQCftxehew8A">
+                 </div>
+               </div>
 
                <hr>
 
