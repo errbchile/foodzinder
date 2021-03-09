@@ -50,6 +50,7 @@
                        <option value="Toledo">Toledo</option>
                        <option value="Burgos">Burgos</option>
                        <option value="Málaga">Málaga</option>
+                       <option value="Tarifa">Tarifa</option>
                      </select>
                   </div>
                   <div class="form-group col-md-4">
@@ -60,8 +61,15 @@
                      </select>
                   </div>
                   <div class="form-group col-md-4">
-                     <label for="telefono">Teléfono (+34)</label>
-                     <input name="telefono" type="text" class="form-control" id="telefono" placeholder="936 3636 3625">
+                    
+                    <label for="telefono">Teléfono</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">+34</div>
+                      </div>
+                      <input name="telefono" type="text" class="form-control" id="telefono" placeholder="936 3636 3625">
+                    </div>
+
                   </div>
                </div>
 
@@ -134,6 +142,12 @@
                       <input name="almuerzo" class="form-check-input" type="checkbox" id="almuerzo">
                       <label class="form-check-label" for="almuerzo">
                         Almuerzo
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input name="merienda" class="form-check-input" type="checkbox" id="merienda">
+                      <label class="form-check-label" for="merienda">
+                        Merienda
                       </label>
                     </div>
                     <div class="form-check">
@@ -323,33 +337,36 @@
                    </div>{{-- END-COL --}}
                  </div>{{-- END-ROW --}}
 
-                 {{-- <div class="row mt-3">
-                   <div class="col text-center">
-                     <h3>Imágenes del Restaurante:</h3>
+                 <div class="row mt-3">
+                   <div class="col text-center m-4">
+                     <h3>Imágen Para Portada del Restaurante:</h3>
                    </div>
                   </div>
                    <div class="row">
                     <div class="col">
                       <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">Imagen 1</span>
+                          <span class="input-group-text" id="basic-addon1">Imagen</span>
                         </div>
-                        <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                        <input id="imagen1" type="file" name="filenames" class="form-control" required>
                       </div>
-                      <div class="input-group">
+
+                      {{-- <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">Imagen 2</span>
                         </div>
                         <input id="imagen1" type="file" name="filenames[]" class="form-control">
                       </div>
+
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">Imagen 3</span>
                         </div>
                         <input id="imagen1" type="file" name="filenames[]" class="form-control">
-                      </div>
+                      </div> --}}
+
                     </div>
-                  </div> --}}
+                  </div>
 
                </div> {{-- END-CONTAINER --}}
 
@@ -385,24 +402,31 @@
                   <th>Restaurant</th>
                   <th>Dirección</th>
                   <th>Teléfono</th>
+                  <th>Status</th>
                   <th>Acciones</th>
               </tr>
           </thead>
           <tbody>
             @foreach ($restaurantes as $resto)
             <tr>
-              <td>
+              <td class="text-center">
                 <a href="{{ url('/restaurant/show/'.$resto->id) }}">{{ $resto->nombre }}</a>
               </td>
-              <td>{{ $resto->direccion }}</td>
-              <td>{{ $resto->telefono }}</td>
-              <td class="text-center d-flex">
-                <a href="{{ route('restaurant.edit', ['id' => $resto->id]) }}">
+              <td class="text-center">{{ $resto->direccion }}</td>
+              <td class="text-center">{{ $resto->telefono }}</td>
+              <td class="text-center">{{ $resto->status === "1" ? "Habilitado" : "No aparecerá en el buscador" }}</td>
+              <td class="text-center d-flex justify-content-center">
+                <a class="m-1" href="{{ route('restaurant.edit', ['id' => $resto->id]) }}">
                   <button type="button" class="btn btn-success btn-sm">Editar Restaurante</button>
                 </a>
-                <a href="{{ route('categorias.index', ['id' => $resto->id]) }}">
+                <a class="m-1" href="{{ route('categorias.index', ['id' => $resto->id]) }}">
                   <button type="button" class="btn btn-info btn-sm">Ver Categorías</button>
                 </a>
+
+                <a class="m-1" href="{{ route('restaurant.cambiar_status', ['id' => $resto->id]) }}">
+                  <button type="button" class="btn btn-{{ $resto->status === "2" ? "success" : "danger" }} btn-sm">{{ $resto->status === "1" ? "Inhabilitar" : "Habilitar" }}</button>
+                </a>
+
               </td>
             </tr>
             @endforeach
@@ -412,6 +436,7 @@
                 <th>Restaurant</th>
                 <th>Dirección</th>
                 <th>Teléfono</th>
+                <th>Status</th>
                 <th>Acciones</th>
               </tr>
           </tfoot>

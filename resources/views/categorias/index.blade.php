@@ -17,8 +17,15 @@
                   <input disabled name="direccion" type="text" class="form-control" :value="restaurante.direccion">
                </div>
                <div class="form-group col-md-4">
-                  <label for="telefono">Teléfono (+34)</label>
-                  <input disabled :value="restaurante.telefono" name="telefono" type="text" class="form-control" id="telefono">
+
+                  <label for="telefono">Teléfono</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">+34</div>
+                    </div>
+                    <input disabled :value="restaurante.telefono" name="telefono" type="text" class="form-control" id="telefono">
+                  </div>
+
                </div>
             </div>
           </div>
@@ -80,7 +87,12 @@
                               <div class="card-body">
                                  <h5 class="card-title">@{{ producto.nombre }}</h5>
                                  <p class="card-text">@{{ producto.precio }}€</p>
-                                 <a @click="eliminarEntrante(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click.prevent="cambiarStatus(producto.id, 'entrantes')" href="#">
+                                    <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                                 </a>
+                                 <div class="d-flex justify-content-end align-items-center">
+                                    <a @click="eliminarEntrante(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 </div>
                               </div>
                            </div>
                          </div>
@@ -142,6 +154,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'sopas')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarSopa(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -207,6 +222,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'fritos')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarFrito(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -271,6 +289,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'carnes')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarCarne(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -336,6 +357,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'pescados')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarPescado(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -402,6 +426,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'pastas')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarPasta(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -469,6 +496,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'postres')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarPostre(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -534,6 +564,9 @@
                              <div class="card-body">
                                 <h5 class="card-title">@{{ producto.nombre }}</h5>
                                 <p class="card-text">@{{ producto.precio }}€</p>
+                                <a @click.prevent="cambiarStatus(producto.id, 'bebidas')" href="#">
+                                 <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
+                              </a>
                                 <a @click="eliminarBebida(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
@@ -627,42 +660,42 @@
             addNewCardEntrante: false,
             newEntranteImageFile: {},
             newEntranteNombre: '',
-            newEntrantePrecio: '',
+            newEntrantePrecio: null,
             
             addNewCardSopa: false,
             newSopaImageFile: {},
             newSopaNombre: '',
-            newSopaPrecio: '',
+            newSopaPrecio: null,
             
             addNewCardFrito: false,
             newFritoImageFile: {},
             newFritoNombre: '',
-            newFritoPrecio: '',
+            newFritoPrecio: null,
             
             addNewCardCarne: false,
             newCarneImageFile: {},
             newCarneNombre: '',
-            newCarnePrecio: '',
+            newCarnePrecio: null,
             
             addNewCardPescado: false,
             newPescadoImageFile: {},
             newPescadoNombre: '',
-            newPescadoPrecio: '',
+            newPescadoPrecio: null,
             
             addNewCardPasta: false,
             newPastaImageFile: {},
             newPastaNombre: '',
-            newPastaPrecio: '',
+            newPastaPrecio: null,
             
             addNewCardPostre: false,
             newPostreImageFile: {},
             newPostreNombre: '',
-            newPostrePrecio: '',
+            newPostrePrecio: null,
             
             addNewCardBebida: false,
             newBebidaImageFile: {},
             newBebidaNombre: '',
-            newBebidaPrecio: '',
+            newBebidaPrecio: null,
 
             url: url
          },
@@ -731,7 +764,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newEntranteNombre);
-               form.append('precio', app.newEntrantePrecio);
+               form.append('precio', parseFloat(app.newEntrantePrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newEntranteImageFile);
                
@@ -750,7 +783,7 @@
                  });
 
                this.newEntranteNombre = '';
-               this.newEntrantePrecio = '';
+               this.newEntrantePrecio = null;
                this.newEntranteImageFile = '';
                this.addNewCardEntrante = false;
             },
@@ -759,8 +792,9 @@
                this.categorias.entrantes.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -779,6 +813,24 @@
                }).then(response => response.json())
                  .then(data => console.log(data));
             },
+
+            cambiarStatus: function(id, nombre){
+               for (let i = 0; i < this.categorias[`${nombre}`].length; i++) {
+                  if (this.categorias[`${nombre}`][i].id === id) {
+                     this.categorias[`${nombre}`][i].status = ( this.categorias[`${nombre}`][i].status === "1" ) ? "2" : "1";
+                  }
+               }
+
+               fetch(`{{ url('/categoria/cambiarstatus') }}/${id}/${nombre}`, {
+                  headers: {
+                     "Accept": "application/json",
+                     "X-Requested-With": "XMLHttpRequest",
+                     "X-CSRF-Token": token
+                  },
+                  method: "post",
+               }).then(response => response.json())
+                 .then(data => console.log(data));
+            },
             // END ENTRANTES
             // START SOPA
             AddNewProductoSopa: function(){
@@ -788,7 +840,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newSopaNombre);
-               form.append('precio', app.newSopaPrecio);
+               form.append('precio', parseFloat(app.newSopaPrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newSopaImageFile);
                
@@ -807,7 +859,7 @@
                  });
 
                this.newSopaNombre = '';
-               this.newSopaPrecio = '';
+               this.newSopaPrecio = null;
                this.newSopaImageFile = '';
                this.addNewCardSopa = false;
             },
@@ -816,8 +868,9 @@
                this.categorias.sopas.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -845,7 +898,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newFritoNombre);
-               form.append('precio', app.newFritoPrecio);
+               form.append('precio', parseFloat(app.newFritoPrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newFritoImageFile);
                
@@ -864,7 +917,7 @@
                  });
 
                this.newFritoNombre = '';
-               this.newFritoPrecio = '';
+               this.newFritoPrecio = null;
                this.newFritoImageFile = '';
                this.addNewCardFrito = false;
             },
@@ -873,8 +926,9 @@
                this.categorias.fritos.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -902,7 +956,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newCarneNombre);
-               form.append('precio', app.newCarnePrecio);
+               form.append('precio', parseFloat(app.newCarnePrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newCarneImageFile);
                
@@ -921,7 +975,7 @@
                  });
 
                this.newCarneNombre = '';
-               this.newCarnePrecio = '';
+               this.newCarnePrecio = null;
                this.newCarneImageFile = '';
                this.addNewCardCarne = false;
             },
@@ -930,8 +984,9 @@
                this.categorias.carnes.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -959,7 +1014,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newPescadoNombre);
-               form.append('precio', app.newPescadoPrecio);
+               form.append('precio', parseFloat(app.newPescadoPrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPescadoImageFile);
                
@@ -978,7 +1033,7 @@
                  });
 
                this.newPescadoNombre = '';
-               this.newPescadoPrecio = '';
+               this.newPescadoPrecio = null;
                this.newPescadoImageFile = '';
                this.addNewCardPescado = false;
             },
@@ -987,8 +1042,9 @@
                this.categorias.pescados.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -1016,7 +1072,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newPastaNombre);
-               form.append('precio', app.newPastaPrecio);
+               form.append('precio', parseFloat(app.newPastaPrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPastaImageFile);
 
@@ -1035,7 +1091,7 @@
                  });
 
                this.newPastaNombre = '';
-               this.newPastaPrecio = '';
+               this.newPastaPrecio = null;
                this.newPastaImageFile = '';
                this.addNewCardPasta = false;
             },
@@ -1044,8 +1100,9 @@
                this.categorias.pastas.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -1073,7 +1130,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newPostreNombre);
-               form.append('precio', app.newPostrePrecio);
+               form.append('precio', parseFloat(app.newPostrePrecio).toFixed(2) );
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newPostreImageFile);
                
@@ -1092,7 +1149,7 @@
                  });
 
                this.newPostreNombre = '';
-               this.newPostrePrecio = '';
+               this.newPostrePrecio = null;
                this.newPostreImageFile = '';
                this.addNewCardPostre = false;
             },
@@ -1101,8 +1158,9 @@
                this.categorias.postres.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 
@@ -1130,7 +1188,7 @@
 
                let form = new FormData();
                form.append('nombre', app.newBebidaNombre);
-               form.append('precio', app.newBebidaPrecio);
+               form.append('precio', parseFloat(app.newBebidaPrecio).toFixed(2));
                form.append('restauranteId', app.restaurante.id);
                form.append('file', app.newBebidaImageFile);
                
@@ -1149,7 +1207,7 @@
                  });
 
                this.newBebidaNombre = '';
-               this.newBebidaPrecio = '';
+               this.newBebidaPrecio = null;
                this.newBebidaImageFile = '';
                this.addNewCardBebida = false;
             },
@@ -1158,8 +1216,9 @@
                this.categorias.bebidas.push({
                   id: producto.id,
                   nombre: producto.nombre,
-                  precio: producto.precio,
-                  imagen: producto.imagen
+                  precio: parseFloat(producto.precio).toFixed(2),
+                  imagen: producto.imagen,
+                  status: "1"
                })
             },
 

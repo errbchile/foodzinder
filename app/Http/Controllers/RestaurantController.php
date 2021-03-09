@@ -46,6 +46,7 @@ class RestaurantController extends Controller
         $restaurant->desayuno = !empty($request->input("desayuno")) ? $request->input("desayuno") : null;
         $restaurant->brunch = !empty($request->input("brunch")) ? $request->input("brunch") : null;
         $restaurant->almuerzo = !empty($request->input("almuerzo")) ? $request->input("almuerzo") : null;
+        $restaurant->merienda = !empty($request->input("merienda")) ? $request->input("merienda") : null;
         $restaurant->cena = !empty($request->input("cena")) ? $request->input("cena") : null;
         $restaurant->dulce = !empty($request->input("dulce")) ? $request->input("dulce") : null;
         $restaurant->salado = !empty($request->input("salado")) ? $request->input("salado") : null;
@@ -66,16 +67,19 @@ class RestaurantController extends Controller
         $restaurant->zumos_y_batidos = !empty($request->input("zumos_y_batidos")) ? $request->input("zumos_y_batidos") : null;
 
         // Guardamos las imagenes
-        // if($request->hasfile('filenames'))
-        // {
+        if($request->hasfile('filenames'))
+        {
         //    foreach($request->file('filenames') as $pos => $file)
         //    {
         //        $name = $pos.time().'.'.$file->extension();
         //        $file->move(public_path().'/images/restaurantes/', $name);  
         //        $data[] = '/images/restaurantes/'.$name;  
         //    }
-        //    $restaurant->imagenes = json_encode($data) || null;
-        // }
+            $file = $request->file('filenames');
+            $name = time().'.'.$file->extension();
+            $file->move(public_path().'/images/restaurantes/', $name);  
+            $restaurant->imagenes = '/images/restaurantes/'.$name;
+        }
 
         $restaurant->save();
 
@@ -123,6 +127,7 @@ class RestaurantController extends Controller
         $restaurant->desayuno = !empty($request->input("desayuno")) ? $request->input("desayuno") : null;
         $restaurant->brunch = !empty($request->input("brunch")) ? $request->input("brunch") : null;
         $restaurant->almuerzo = !empty($request->input("almuerzo")) ? $request->input("almuerzo") : null;
+        $restaurant->merienda = !empty($request->input("merienda")) ? $request->input("merienda") : null;
         $restaurant->cena = !empty($request->input("cena")) ? $request->input("cena") : null;
         $restaurant->dulce = !empty($request->input("dulce")) ? $request->input("dulce") : null;
         $restaurant->salado = !empty($request->input("salado")) ? $request->input("salado") : null;
@@ -145,13 +150,16 @@ class RestaurantController extends Controller
         // Actualizamos las imagenes
         if($request->hasfile('filenames'))
         {
-            foreach($request->file('filenames') as $pos => $file)
-            {
-                $name = $pos.time().'.'.$file->extension();
-                $file->move(public_path().'/images/restaurantes/', $name);  
-                $data[] = '/images/restaurantes/'.$name;  
-            }
-            $restaurant->imagenes = json_encode($data);
+            // foreach($request->file('filenames') as $pos => $file)
+            // {
+            //     $name = $pos.time().'.'.$file->extension();
+            //     $file->move(public_path().'/images/restaurantes/', $name);  
+            //     $data[] = '/images/restaurantes/'.$name;  
+            // }
+            $file = $request->file('filenames');
+            $name = time().'.'.$file->extension();
+            $file->move(public_path().'/images/restaurantes/', $name);  
+            $restaurant->imagenes = '/images/restaurantes/'.$name;
         }
 
         $restaurant->update();
@@ -177,7 +185,23 @@ class RestaurantController extends Controller
             case '2':
                 $nombre = "Barcelona";
             break;
+            case '3':
+                $nombre = "Tarifa";
+            break;
         }
         return $nombre;
+    }
+
+    public function cambiarStatus($id)
+    {
+        $restaurant = Restaurant::find($id);
+
+        if ($restaurant->status === "1") {
+            $restaurant->status = "2";
+        } else {
+            $restaurant->status = "1";
+        }
+        $restaurant->update();
+        return redirect()->back();
     }
 }

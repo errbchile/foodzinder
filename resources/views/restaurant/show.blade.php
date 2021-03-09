@@ -35,8 +35,15 @@
                      <input readonly name="pais" type="text" class="form-control" value="{{ $restaurant->pais }}" id="pais" >
                   </div>
                   <div class="form-group col-md-4">
-                     <label for="telefono">Teléfono (+34)</label>
-                     <input readonly name="telefono" type="text" value="{{ $restaurant->telefono }}" class="form-control" id="telefono">
+             
+                     <label for="telefono">Teléfono</label>
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <div class="input-group-text">+34</div>
+                       </div>
+                       <input readonly name="telefono" type="text" value="{{ $restaurant->telefono }}" class="form-control" id="telefono">
+                     </div>
+
                   </div>
                </div>
 
@@ -108,6 +115,12 @@
                       <input readonly name="almuerzo"  {{ ($restaurant->almuerzo === "on") ? "checked" : "" }} class="form-check-input" type="checkbox" disabled id="almuerzo">
                       <label class="form-check-label" for="almuerzo">
                         Almuerzo
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input readonly name="merienda"  {{ ($restaurant->merienda === "on") ? "checked" : "" }} class="form-check-input" type="checkbox" disabled id="merienda">
+                      <label class="form-check-label" for="merienda">
+                        Merienda
                       </label>
                     </div>
                     <div class="form-check">
@@ -301,13 +314,13 @@
               @if ($restaurant->imagenes)
                 <div class="container mt-3">
                   <div class="row d-flex">
-                    @foreach (json_decode($restaurant->imagenes) as $imagen)
+                    {{-- @foreach (json_decode($restaurant->imagenes) as $imagen) --}}
                       <div class="col-4">
                         <div>
-                          <img src="{{ url($imagen) }}" class="img-fluid" alt="Responsive image">
+                          <img src="{{ url($restaurant->imagenes) }}" class="img-fluid" alt="Responsive image">
                         </div>
                       </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                   </div>
                 </div>
               @endif

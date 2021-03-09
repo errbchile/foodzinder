@@ -274,8 +274,8 @@
 	
 	<main class="bg_gray pattern add_top_menu_90">
 
-		<div class="hero_in detail_page background-image" data-background="url({{asset('plantilla/img/header-detail-page-min.jpg')}})">
-			<div class="wrapper opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+		<div class="hero_in detail_page background-image" data-background="url({{asset( isset($restaurant->imagenes) ? $restaurant->imagenes : 'plantilla/img/header-detail-page-min.jpg')}})">
+			<div class="wrapper opacity-mask img-fluid" data-opacity-mask="rgba(0, 0, 0, 0)">
 				
 				<div class="container full-width">
 					<div class="main_info">

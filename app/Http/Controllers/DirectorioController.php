@@ -32,6 +32,7 @@ class DirectorioController extends Controller
         $desayuno = (!empty($request->input('desayuno'))) ? 'on' : null;
         $brunch = (!empty($request->input('brunch'))) ? 'on' : null;
         $almuerzo = (!empty($request->input('almuerzo'))) ? 'on' : null;
+        $merienda = (!empty($request->input('merienda'))) ? 'on' : null;
         $cena = (!empty($request->input('cena'))) ? 'on' : null;
         $dulce = (!empty($request->input('dulce'))) ? 'on' : null;
         $salado = (!empty($request->input('salado'))) ? 'on' : null;
@@ -72,6 +73,7 @@ class DirectorioController extends Controller
         if ($desayuno) {array_push($filtro, ['desayuno', 'like', 'on']);}
         if ($brunch) {array_push($filtro, ['brunch', 'like', 'on']);}
         if ($almuerzo) {array_push($filtro, ['almuerzo', 'like', 'on']);}
+        if ($merienda) {array_push($filtro, ['merienda', 'like', 'on']);}
         if ($cena) {array_push($filtro, ['cena', 'like', 'on']);}
         if ($dulce) {array_push($filtro, ['dulce', 'like', 'on']);}
         if ($salado) {array_push($filtro, ['salado', 'like', 'on']);}
@@ -91,8 +93,8 @@ class DirectorioController extends Controller
         if ($pizza) {array_push($filtro, ['pizza', 'like', 'on']);}
         if ($zumos_y_batidos) {array_push($filtro, ['zumos_y_batidos', 'like', 'on']);}
 
-        $restaurantes_sin_paginar = Restaurant::where($filtro)->get();
-        $restaurantes = Restaurant::where($filtro)->paginate(6);
+        $restaurantes_sin_paginar = Restaurant::where($filtro)->where('status', 1)->get();
+        $restaurantes = Restaurant::where($filtro)->where('status', 1)->paginate(6);
 
         $cantidades = $this->TraerCantidades($restaurantes_sin_paginar);
         return view('directorio', ["request" => $request, 
@@ -106,7 +108,7 @@ class DirectorioController extends Controller
     {
 
         $cantidades = [];
-        $palabras = ['precio1','precio2','precio3','restaurante','cafeteria','bar','admite_reservas','para_llevar','domicilio','terraza_exterior','wifi_gratuito','sin_gluten','accesible','admite_mascotas','plastic_free','desayuno','brunch','almuerzo','cena','dulce','salado','local','nacional','internacional','fusion','vegetariano','vegano','marisco','atun','sushi','pescado','carne','paella','pasta','pizza','zumos_y_batidos'];
+        $palabras = ['precio1','precio2','precio3','restaurante','cafeteria','bar','admite_reservas','para_llevar','domicilio','terraza_exterior','wifi_gratuito','sin_gluten','accesible','admite_mascotas','plastic_free','desayuno','brunch','almuerzo', 'merienda', 'cena','dulce','salado','local','nacional','internacional','fusion','vegetariano','vegano','marisco','atun','sushi','pescado','carne','paella','pasta','pizza','zumos_y_batidos'];
 
         foreach ($palabras as $palabra) {
             $cantidades[$palabra] = [];
@@ -137,14 +139,14 @@ class DirectorioController extends Controller
     public function show(Request $request, $id)
     {
         $restaurant = Restaurant::find($id);
-        $entrantes = DB::table('entrantes')->where('restaurant_id', $id)->get();
-        $sopas = DB::table('sopas')->where('restaurant_id', $id)->get();
-        $fritos = DB::table('fritos')->where('restaurant_id', $id)->get();
+        $entrantes = DB::table('entrantes')->where('restaurant_id', $id)->where('status', 1)->get();
+        $sopas = DB::table('sopas')->where('restaurant_id', $id)->where('status', 1)->get();
+        $fritos = DB::table('fritos')->where('restaurant_id', $id)->where('status', 1)->get();
         $carnes = DB::table('carnes')->where('restaurant_id', $id)->get();
-        $pescados = DB::table('pescados')->where('restaurant_id', $id)->get();
-        $pastas = DB::table('pastas')->where('restaurant_id', $id)->get();
-        $postres = DB::table('postres')->where('restaurant_id', $id)->get();
-        $bebidas = DB::table('bebidas')->where('restaurant_id', $id)->get();
+        $pescados = DB::table('pescados')->where('restaurant_id', $id)->where('status', 1)->get();
+        $pastas = DB::table('pastas')->where('restaurant_id', $id)->where('status', 1)->get();
+        $postres = DB::table('postres')->where('restaurant_id', $id)->where('status', 1)->get();
+        $bebidas = DB::table('bebidas')->where('restaurant_id', $id)->where('status', 1)->get();
 
         return view("restaurant_detail", ['restaurant' => $restaurant, 
                                          'entrantes'   => $entrantes,

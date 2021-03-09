@@ -29,6 +29,7 @@ Route::get('/restaurant/show/{id}', 'RestaurantController@show')->name('restaura
 Route::get('/restaurant/edit/{id}', 'RestaurantController@edit')->name('restaurant.edit');
 Route::post('/restaurant/update/{id}', 'RestaurantController@update')->name('restaurant.update');
 Route::post('/restaurant/destroy/{id}', 'RestaurantController@destroy')->name('restaurant.destroy');
+Route::get('/restaurant/changestatus/{id}', 'RestaurantController@cambiarStatus')->name('restaurant.cambiar_status');
 
 Route::get('/users/index', 'UserController@index')->name('users.index');
 Route::get('/users/edit/{id}', 'UserController@edit')->name('users.edit');
@@ -39,6 +40,7 @@ Route::get('/categoria/index/{id}', 'CategoriaController@index')->name('categori
 
 Route::post('/categoria/AddNewProductoEntrante', 'CategoriaController@AddNewProductoEntrante')->name('categorias.AddNewProductoEntrante');
 Route::delete('/categoria/eliminarEntrante/{id}', 'CategoriaController@eliminarEntrante')->name('categorias.eliminarEntrante');
+Route::post('/categoria/cambiarstatus/{id}/{nombre}', 'CategoriaController@cambiarStatus')->name('categorias.cambiarstatus');
 
 Route::post('/categoria/AddNewProductoSopa', 'CategoriaController@AddNewProductoSopa')->name('categorias.AddNewProductoSopa');
 Route::delete('/categoria/eliminarSopa/{id}', 'CategoriaController@eliminarSopa')->name('categorias.eliminarSopa');

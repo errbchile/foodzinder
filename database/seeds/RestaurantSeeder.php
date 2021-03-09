@@ -14,7 +14,7 @@ class RestaurantSeeder extends Seeder
     {
         factory(Restaurant::class, 100)->create();
 
-        $filtros = ['precio1', 'precio2', 'precio3', 'restaurante', 'cafeteria', 'bar', 'admite_reservas', 'para_llevar', 'domicilio', 'terraza_exterior', 'wifi_gratuito', 'sin_gluten', 'accesible', 'admite_mascotas', 'plastic_free', 'desayuno', 'brunch', 'almuerzo', 'cena', 'dulce', 'salado', 'local', 'nacional', 'internacional', 'fusion', 'vegetariano', 'vegano', 'marisco', 'atun', 'sushi', 'pescado', 'carne', 'paella', 'pasta', 'pizza', 'zumos_y_batidos'];
+        $filtros = ['precio1', 'precio2', 'precio3', 'restaurante', 'cafeteria', 'bar', 'admite_reservas', 'para_llevar', 'domicilio', 'terraza_exterior', 'wifi_gratuito', 'sin_gluten', 'accesible', 'admite_mascotas', 'plastic_free', 'desayuno', 'brunch', 'almuerzo', 'merienda', 'cena', 'dulce', 'salado', 'local', 'nacional', 'internacional', 'fusion', 'vegetariano', 'vegano', 'marisco', 'atun', 'sushi', 'pescado', 'carne', 'paella', 'pasta', 'pizza', 'zumos_y_batidos'];
 
         $res = new Restaurant();
         $res->nombre = "Restaurante barato";

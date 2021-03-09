@@ -43,6 +43,7 @@
                        <option {{ $restaurant->ciudad === 'Toledo' ? 'selected' : '' }} value="Toledo">Toledo</option>
                        <option {{ $restaurant->ciudad === 'Burgos' ? 'selected' : '' }} value="Burgos">Burgos</option>
                        <option {{ $restaurant->ciudad === 'Malaga' ? 'selected' : '' }} value="Malaga">Málaga</option>
+                       <option {{ $restaurant->ciudad === 'Tarifa' ? 'selected' : '' }} value="Tarifa">Tarifa</option>
                      </select>
                   </div>
                   <div class="form-group col-md-4">
@@ -53,8 +54,15 @@
                      </select>
                   </div>
                   <div class="form-group col-md-4">
-                     <label for="telefono">Teléfono (+34)</label>
-                     <input value="{{ $restaurant->telefono }}" name="telefono" type="text" class="form-control" id="telefono">
+
+                     <label for="telefono">Teléfono</label>
+                     <div class="input-group">
+                       <div class="input-group-prepend">
+                         <div class="input-group-text">+34</div>
+                       </div>
+                       <input value="{{ $restaurant->telefono }}" name="telefono" type="text" class="form-control" id="telefono">
+                     </div>
+
                   </div>
                </div>
 
@@ -138,6 +146,12 @@
                       <input {{ $restaurant->almuerzo === 'on' ? 'checked' : '' }} name="almuerzo" class="form-check-input" type="checkbox" id="almuerzo">
                       <label class="form-check-label" for="almuerzo">
                         Almuerzo
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input {{ $restaurant->merienda === 'on' ? 'checked' : '' }} name="merienda" class="form-check-input" type="checkbox" id="merienda">
+                      <label class="form-check-label" for="merienda">
+                        Merienda
                       </label>
                     </div>
                     <div class="form-check">
@@ -331,46 +345,32 @@
               @if ($restaurant->imagenes)
                 <div class="container mt-3">
                   <div class="row d-flex">
-                    @foreach (json_decode($restaurant->imagenes) as $imagen)
                       <div class="col-4">
                         <div>
-                          <img src="{{ url($imagen) }}" class="img-fluid" alt="Responsive image">
+                          <img src="{{ url($restaurant->imagenes) }}" class="img-fluid" alt="Responsive image">
                         </div>
                       </div>
-                    @endforeach
                   </div>
                 </div>
               @endif
 
               <div class="container m-3">
 
-                {{-- <div class="row mt-3">
+                <div class="row mt-3">
                   <div class="col text-center">
-                    <h3>Imágenes del Restaurante:</h3>
+                    <h3>Portada del Restaurante</h3>
                   </div>
                  </div>
                   <div class="row">
                    <div class="col">
                      <div class="input-group">
                        <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Imagen 1</span>
+                         <span class="input-group-text" id="basic-addon1">Imagen</span>
                        </div>
-                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
-                     </div>
-                     <div class="input-group">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Imagen 2</span>
-                       </div>
-                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
-                     </div>
-                     <div class="input-group">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" id="basic-addon1">Imagen 3</span>
-                       </div>
-                       <input id="imagen1" type="file" name="filenames[]" class="form-control">
+                       <input id="imagen1" type="file" name="filenames" class="form-control">
                      </div>
                    </div>
-                 </div> --}}
+                 </div>
 
               </div>
 

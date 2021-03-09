@@ -291,6 +291,12 @@
                               </label>
                            </li>
                            <li>
+                              <label class="container_check">Merienda<small>{{ count($cantidades['merienda']) }}</small>
+                                 <input {{ $request->merienda != null ? 'checked': '' }} name="merienda" class="inputs" onchange="consultar()" type="checkbox">
+                                 <span class="checkmark"></span>
+                              </label>
+                           </li>
+                           <li>
                               <label class="container_check">Cena<small>{{ count($cantidades['cena']) }}</small>
                                  <input {{ $request->cena != null ? 'checked': '' }} name="cena" class="inputs" onchange="consultar()" type="checkbox">
                                  <span class="checkmark"></span>
@@ -464,7 +470,7 @@
 									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="#">VER MAPA</a>
 								</p>
 								<p class="icon telefono">
-									<a href="#">{{ $restaurant->telefono }}</a>
+									<a title="Ir a WhatsApp" href="https://api.whatsapp.com/send?phone=34{{ $restaurant->telefono }}"> {{ $restaurant->telefono }}</a>
 								</p>
 								<p>
 								<a class="btn_1" href="{{ route('directorio.detail', ['id' => $restaurant->id]) }}">Ver menú completo »</a>

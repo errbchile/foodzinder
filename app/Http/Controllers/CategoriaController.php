@@ -64,6 +64,21 @@ class CategoriaController extends Controller
             $id => 'Fue borrado exitosamente'
         ]);
     }
+
+    public function cambiarStatus($id, $nombre)
+    {
+        $categoria = DB::table($nombre)->where('id', $id)->first();
+
+        $actualizacion = $categoria->status == "1" ? ['status' => 2] : ['status' => 1];
+        
+        DB::table($nombre)->where('id', $id)->update($actualizacion);
+
+        return response()->json([
+            $actualizacion,
+            "categoria" => $nombre,
+            "categoria_id" => $id
+        ]);
+    }
     // END ENTRANTES
 
     // START SOPA
