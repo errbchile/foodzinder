@@ -184,7 +184,7 @@
 
 
 
-	<header class="header_in clearfix is_sticky">
+	<header class="header_in clearfix">
       <div id="logo">
          <a href="{{url('/')}}">
             <img src="{{asset('plantilla/img/logo.svg')}}" width="200" height="50" alt="">
@@ -302,7 +302,7 @@
 		    <div class="row">
 		        <div class="col-lg-12">
 		            <div class="tabs_detail">
-		                <ul class="nav nav-tabs" role="tablist">
+		                <ul class="nav nav-tabs sticky-tabs" role="tablist">
 								<li class="nav-item">
 									<a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
 								</li>
