@@ -14,7 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	 
+
 	 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
@@ -34,7 +34,7 @@
 
     <!-- SPECIFIC CSS -->
 	 <link href="{{asset('plantilla/css/listing.css')}}" rel="stylesheet">
-	 
+
 	 {{-- slider css --}}
 	 <link rel="stylesheet"  href="{{ asset('css/lightslider.css') }}"/>
 
@@ -52,7 +52,7 @@
             </a>
          </div>
          <div class="row justify-content-center text-center">
-            <div class="col-xl-8 col-lg-10 col-md-8">						
+            <div class="col-xl-8 col-lg-10 col-md-8">
 					<form id="form_principal" method="post" action="{{ route('directorio') }}" class="form-busqueda">
 						<input name="_method" type="hidden" value="get">
                   <div class="row no-gutters custom-search-input">
@@ -71,6 +71,9 @@
                      <div class="col-lg-2">
                         <input type="submit" value="Buscar">
                      </div>
+                     <div class="col-12">
+						<a href="#0" class="open_filters btn_filters">Ver Filtros</a>
+					</div>
                   </div>
                   <!-- /row -->
                </form>
@@ -132,16 +135,13 @@
          </div>
 		</header>
 	<!-- /header -->
-	
+
 	<main class="bg_gray pattern add_top_menu">
-		
+
 		<!-- /page_header -->
-		<div class="container margin_30_40">			
+		<div class="container margin_30_40">
 			<div class="row">
 				<aside class="col-lg-3" id="sidebar">
-					<div class="clearfix">					
-						<a href="#0" class="open_filters btn_filters"><i class="icon_adjust-vert"></i><span>Filtros</span></a>
-					</div>
 					<div class="filter_col">
                         <div class="inner_bt"><a href="#" class="open_filters"><i class="icon_close"></i></a></div>
                         <!-- /filter_type -->
@@ -211,55 +211,55 @@
 							<div class="collapse show" id="filter_4">
 								<ul>
 										<li>
-											<label class="container_check">Admite reservas<small>{{ count($cantidades['admite_reservas']) }}</small>
+											<label class="container_check">Admite reservas <img src="{{ asset('plantilla/img/filtros_img/admite-reservas.png') }}"><small>{{ count($cantidades['admite_reservas']) }}</small>
 											  <input {{ $request->admite_reservas != null ? 'checked': '' }} name="admite_reservas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Para llevar<small>{{ count($cantidades['para_llevar']) }}</small>
+											<label class="container_check">Para llevar <img src="{{ asset('plantilla/img/filtros_img/para-llevar.png') }}"><small>{{ count($cantidades['para_llevar']) }}</small>
 											  <input {{ $request->para_llevar != null ? 'checked': '' }} name="para_llevar" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">A domicilio<small>{{ count($cantidades['domicilio']) }}</small>
+											<label class="container_check">A domicilio <img src="{{ asset('plantilla/img/filtros_img/a-domicilio.png') }}"><small>{{ count($cantidades['domicilio']) }}</small>
 											  <input {{ $request->domicilio != null ? 'checked': '' }} name="domicilio" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Terraza Exterior<small>{{ count($cantidades['terraza_exterior']) }}</small>
+											<label class="container_check">Terraza Exterior <img src="{{ asset('plantilla/img/filtros_img/terraza-exterior.png') }}"><small>{{ count($cantidades['terraza_exterior']) }}</small>
 											  <input {{ $request->terraza_exterior != null ? 'checked': '' }} name="terraza_exterior" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Wifi gratuito<small>{{ count($cantidades['wifi_gratuito']) }}</small>
+											<label class="container_check">Wifi gratuito <img src="{{ asset('plantilla/img/filtros_img/wifi-gratis.png') }}"><small>{{ count($cantidades['wifi_gratuito']) }}</small>
 											  <input {{ $request->wifi_gratuito != null ? 'checked': '' }} name="wifi_gratuito" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
                                         </li>
                                         <li>
-											<label class="container_check">Sin gluten<small>{{ count($cantidades['sin_gluten']) }}</small>
+											<label class="container_check">Sin gluten <img src="{{ asset('plantilla/img/filtros_img/gluten-free.png') }}"><small>{{ count($cantidades['sin_gluten']) }}</small>
 											  <input {{ $request->sin_gluten != null ? 'checked': '' }} name="sin_gluten" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Accesible<small>{{ count($cantidades['accesible']) }}</small>
+											<label class="container_check">Accesible <img src="{{ asset('plantilla/img/filtros_img/accesible.png') }}"><small>{{ count($cantidades['accesible']) }}</small>
 											  <input {{ $request->accesible != null ? 'checked': '' }} name="accesible" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Admite mascotas<small>{{ count($cantidades['admite_mascotas']) }}</small>
+											<label class="container_check">Admite mascotas <img src="{{ asset('plantilla/img/filtros_img/admite-mascotas.png') }}"><small>{{ count($cantidades['admite_mascotas']) }}</small>
 											  <input {{ $request->admite_mascotas != null ? 'checked': '' }} name="admite_mascotas" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
 										</li>
 										<li>
-											<label class="container_check">Plastic Free<small>{{ count($cantidades['plastic_free']) }}</small>
+											<label class="container_check">Plastic Free <img src="{{ asset('plantilla/img/filtros_img/plastic-free.png') }}"><small>{{ count($cantidades['plastic_free']) }}</small>
 											  <input {{ $request->plastic_free != null ? 'checked': '' }} name="plastic_free" class="inputs" onchange="consultar()" type="checkbox">
 											  <span class="checkmark"></span>
 											</label>
@@ -429,7 +429,7 @@
                               </label>
                            </li>
                         </ul>
-                     </div>   
+                     </div>
                   </div>
                   <!-- /filter_type -->
 					</div>
@@ -440,24 +440,41 @@
 					</div>
 					@foreach ($restaurantes as $restaurant)
 						<div class="row resultados">
-							
+
 							{{-- START - SLIDER --}}
-							<div class="col-md-8">
+							<div class="col-md-8 p-0" style="overflow:hidden;">
 
+							 <div class="content-slider ul-slider">
+                                 <div class="cont-flechas">
+                                     <span>
+                                         <div class="arrow arrow--left"></div>
+                                     </span>
+                                     <span>
+                                        <div class="arrow arrow--right"></div>
+                                     </span>
+                                 </div>
+                                 <ul>
+                                     @foreach ($restaurant->entrantes->slice(0, 4) as $entrante)
 
-						 
-							 <div class="content-slider ulslider">
-								 @foreach ($restaurant->entrantes as $entrante)
-									<div class="li-slider">
-										<img class="img-fluid" src="{{ url($entrante->imagen) }}" alt="">
-									</div>
-								 @endforeach
-							 </div> 
-						 
+                                        @if($loop->index == 3)
+                                            <div
+                                                class="li-slider"
+                                                style=" background-image:url({{ url($entrante->imagen) }});"
+                                            >
+                                            <a href="{{ route('directorio.detail', ['id' => $restaurant->id]) }}" class="ver-menu">VER MENÚ COMPLETO</a>
+                                            </div>
+                                        @else
+                                            <div
+                                                class="li-slider"
+                                                style=" background-image:url({{ url($entrante->imagen) }});"
+                                            >
+                                        </div>
+                                        @endif
+                                     @endforeach
 
-									
+                                 </ul>
 
-
+							 </div>
 
 							</div>
 							{{-- END - SLIDER --}}
@@ -493,10 +510,10 @@
 					</div> --}}
 				</div>
 				<!-- /col -->
-			</div>		
+			</div>
 		</div>
 		<!-- /container -->
-		
+
 	</main>
 	<!-- /main -->
 
@@ -514,11 +531,11 @@
 						<li><a href="#0">Términos y condiciones</a></li>
 						<li><a href="#0">Políticas de privacidad</a></li>
 						<li><span>2020 © Foond Zinder</span></li>
-					</ul>	
+					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3 data-target="#collapse_3">Contáctanos</h3>
-					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+					<h3 >Contáctanos</h3>
+					<div class="contacts" id="collapse_3">
 						<ul>
 							<li><i class="icon_house_alt"></i>La Cocotera Coworking<br>San Rosendo N° 12<br>Tarifa, Cádiz - España</li>
 							<li><i class="icon_mail_alt"></i><a href="#0">info@foodzinder.com</a></li>
@@ -526,8 +543,8 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_4">Suscribirme al boletín</h3>
-					<div class="collapse dont-collapse-sm" id="collapse_4">
+						<h3>Suscribirme al boletín</h3>
+					<div class="" id="collapse_4">
 						<div id="newsletter">
 							<div id="message-newsletter"></div>
 							<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
@@ -537,7 +554,7 @@
 								</div>
 							</form>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -548,9 +565,9 @@
 	<!--/footer-->
 
 	<div id="toTop"></div><!-- Back to top button -->
-	
+
 	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
-		
+
 
 
 
@@ -564,7 +581,7 @@
 	 <script src="{{asset('plantilla/js/specific_listing.js')}}"></script>
 
 	 <script src="{{ asset('js/lightslider.js') }}"></script>
-	 
+
 	<script>
 
 		function consultar()
@@ -589,17 +606,10 @@
 				}
 			})
 		}
-		
+
 
 	</script>
-	<script>
-		$(document).ready(function() {
-			$(".content-slider").lightSlider({
-					loop:true,
-					keyPress:true
-				});
-		});
-	</script>
+
 
 </body>
 </html>

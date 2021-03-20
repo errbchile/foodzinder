@@ -4,7 +4,7 @@ Theme URI: http://www.ansonika.com/foogra/
 Author: Ansonika
 Author URI: http://themeforest.net/user/Ansonika/
 
-[Table of contents] 
+[Table of contents]
 
 0. ICONS
 
@@ -1679,6 +1679,7 @@ body {
   font-size: 0.875rem;
   font-family: "Poppins", Helvetica, sans-serif;
   color: #444;
+  overflow-x: hidden;
 }
 
 h1,
@@ -3887,7 +3888,7 @@ a.btn_1.gray:hover,
   width: 100%;
   min-width: 100%;
   min-height: 100%;
-  z-index: 999;
+  z-index: 998;
   background-color: rgba(0, 0, 0, 0.35);
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
@@ -4177,16 +4178,8 @@ footer h3 {
     padding: 15px 15px 15px 15px;
     display: block;
   }
-  footer h3:after {
-    font-family: 'ElegantIcons';
-    content: "\4c";
-    width: 20px;
-    display: block;
-    float: right;
-  }
-  footer h3.opened:after {
-    content: "\4b";
-  }
+
+
 }
 footer .links ul {
   margin: 0 0 25px 0;
@@ -5470,9 +5463,9 @@ a.social_bt.google {
 }
 @keyframes slider {
     0%, 25%, 100%{left: 0}
-    
+
     30%, 55%{left: -100%}
-    
+
     60%, 85%{left: -200%}
 }
 
@@ -5532,6 +5525,7 @@ small.vinotinto {
   font-size:2.5rem;
   font-weight: 600;
   margin-bottom:30px;
+  margin-left: 15px;
 }
 
 .form-busqueda {
@@ -5604,5 +5598,105 @@ small.vinotinto {
 @media (max-width: 991px) {
   .add_top_menu {
     padding-top: 0px;
-}  
+}
+}
+
+@media (max-width: 768px) {
+   .titulo{
+       font-size: 1.5rem;
+   }
+
+   .slider-home{
+        width: 100%;
+        height: 300px;
+        position: relative;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+   }
+
+   .home .box_booking_2{
+       max-width: 100%;
+   }
+
+   .follow_us ul{
+       padding-top: 1rem;
+   }
+
+   .title-directorio{
+       font-size: 1.5rem;
+   }
+}
+
+.content-slider{
+    width: 100%;
+    position: relative;
+}
+
+.content-slider ul{
+    width: 200%;
+    display: flex;
+    padding:0;
+    margin:0;
+    transition: all 0.2s ease-out;
+}
+
+.li-slider{
+    width: 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cont-flechas{
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.cont-flechas span{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: max-content;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.cont-flechas span:hover{
+    background-color: #00000024;
+}
+
+.ver-menu{
+    background-color: #ffb5c380;
+    color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.ver-menu:hover{
+    color:#fff;
+    background-color: #ffb5c3cc;
+}
+
+.arrow {
+    position: relative;
+    display: inline-block;
+    padding: 22px;
+    box-shadow: 11px -11px 0 0 white inset;
+    margin: 0 20px;
+}
+
+.arrow--left {
+transform: rotate(45deg);
+
+}
+.arrow--right {
+transform: rotate(225deg);
 }

@@ -494,9 +494,7 @@
   .tabs_detail .tab-content .card-header a.collapsed:after {
     content: "\50";
   }
-  .tabs_detail .tab-content .card-header a:after {
-    content: "\4f";
-  }
+
   .tabs_detail .tab-content .fade:not(.show) {
     opacity: 1;
   }
