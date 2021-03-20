@@ -486,8 +486,16 @@
 								<p class="icon ubicacion">
 									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="{{ !is_null($restaurant->google_maps) ? $restaurant->google_maps : "#" }}" target="{{ !is_null($restaurant->google_maps) ? "_blank" : "" }}">VER MAPA</a>
 								</p>
-								<p class="icon telefono">
-									<a title="Ir a WhatsApp" href="https://api.whatsapp.com/send?phone=34{{ $restaurant->telefono }}"> {{ $restaurant->telefono }}</a>
+								<p class="icon telefono d-flex align-items-center">
+									<span href="#"> {{ $restaurant->telefono }}</span>
+									@if ($restaurant->tiene_whatsapp === 1)
+										<a target="_blank" title="Ir a Whatsapp" href="https://api.whatsapp.com/send?phone=34{{ $restaurant->telefono }}" class="ml-4">
+											<img class="img-fluid" style="max-width: 20px;" src="{{ asset('plantilla/img/whatsapp.png') }}" alt="">
+										</a>
+									@endif
+								</p>
+								<p>
+									{{ $restaurant->horario }}
 								</p>
 								<p>
 								<a class="btn_1" href="{{ route('directorio.detail', ['id' => $restaurant->id]) }}">Ver menú completo »</a>
@@ -530,7 +538,7 @@
 					<ul class="additional_links">
 						<li><a href="#0">Términos y condiciones</a></li>
 						<li><a href="#0">Políticas de privacidad</a></li>
-						<li><span>2020 © Food Zinder</span></li>
+						<li><span>{{date('Y')}} © Food Zinder</span></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">

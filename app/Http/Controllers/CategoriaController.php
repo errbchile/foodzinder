@@ -54,7 +54,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/entrantes/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -132,7 +132,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/sopas/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -191,7 +191,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/fritos/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -251,7 +251,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/carnes/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -311,7 +311,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/pescados/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -371,7 +371,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/pastas/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -431,7 +431,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/postres/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
@@ -491,7 +491,7 @@ class CategoriaController extends Controller
             // this just to help us get file info.
             $tmpFile = new File($tmpFilePath);
 
-            $name = $tmpFile->getFilename();
+            $name = $tmpFile->getFilename().'.png';
             $tmpFile->move(public_path().'/images/categorias/bebidas/', $name);
             // Preparamos el producto:
             $entrante['nombre'] = $request->input('nombre');
