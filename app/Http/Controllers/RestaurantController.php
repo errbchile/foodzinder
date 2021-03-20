@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\File;
 
 class RestaurantController extends Controller
 {
@@ -67,7 +71,7 @@ class RestaurantController extends Controller
         $restaurant->pizza = !empty($request->input("pizza")) ? $request->input("pizza") : null;
         $restaurant->zumos_y_batidos = !empty($request->input("zumos_y_batidos")) ? $request->input("zumos_y_batidos") : null;
 
-        // Guardamos las imagenes
+        // Guardamos las imagenes que vienen como ARCHIVO
         if($request->hasfile('filenames'))
         {
         //    foreach($request->file('filenames') as $pos => $file)
@@ -80,7 +84,26 @@ class RestaurantController extends Controller
             $name = time().'.'.$file->extension();
             $file->move(public_path().'/images/restaurantes/', $name);  
             $restaurant->imagenes = '/images/restaurantes/'.$name;
+        } else if ($request->input('filenames')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('filenames');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename().'.png';
+            $tmpFile->move(public_path().'/images/restaurantes/', $name);
+            $restaurant->imagenes = '/images/restaurantes/'.$name;
         }
+        $restaurant->tiene_whatsapp = !empty($request->input('tiene_whatsapp')) ? 1 : 0;
+        $restaurant->horario = !empty($request->input("horario")) ? $request->input("horario") : null;
 
         $restaurant->save();
 
@@ -162,8 +185,27 @@ class RestaurantController extends Controller
             $name = time().'.'.$file->extension();
             $file->move(public_path().'/images/restaurantes/', $name);  
             $restaurant->imagenes = '/images/restaurantes/'.$name;
-        }
+        } else if ($request->input('filenames')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('filenames');
 
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename().'.png';
+            $tmpFile->move(public_path().'/images/restaurantes/', $name);
+            $restaurant->imagenes = '/images/restaurantes/'.$name;
+        }
+        $restaurant->tiene_whatsapp = !empty($request->input('tiene_whatsapp')) ? 1 : 0;
+        $restaurant->horario = !empty($request->input("horario")) ? $request->input("horario") : null;
+        
         $restaurant->update();
 
         return view('restaurant.show', ['restaurant' => $restaurant]);

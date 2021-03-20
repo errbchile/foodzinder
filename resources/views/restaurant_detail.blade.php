@@ -286,7 +286,7 @@
 							</div>
 							<div class="col-xl-8 col-lg-7 col-md-6">
 								<div class="buttons clearfix">
-									<a id="agregar_a_favoritos" onclick="guardarEnLocalStorage()" data-restaurantid="{{ $restaurant->id }}" href="#0" class="btn_hero wishlist"><i class="icon_heart"></i>Agregar a favoritos</a>
+									<a id="boton_para_favorito" onclick="guardarEnLocalStorage(event)" data-restaurantid="{{ $restaurant->id }}" href="#" class="btn_hero wishlist"><i class="icon_heart"></i>Agregar a favoritos</a>
 								</div>
 							</div>
 						</div>
@@ -303,30 +303,46 @@
 		        <div class="col-lg-12">
 		            <div class="tabs_detail">
 		                <ul class="nav nav-tabs sticky-tabs" role="tablist">
-								<li class="nav-item">
-									<a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-B" href="#sopas" class="nav-link">Sopas</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-C" href="#fritos" class="nav-link">Fritos</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-D" href="#carnes" class="nav-link">Carnes</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-E" href="#pescado" class="nav-link">Pescado</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-F" href="#pastas" class="nav-link">Pastas</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-G" href="#postres" class="nav-link">Postres</a>
-								</li>
-								<li class="nav-item">
-									<a id="tab-H" href="#bebidas" class="nav-link">Bebidas</a>
-								</li>
+								@if (count($entrantes) > 0)
+									<li class="nav-item">
+										<a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
+									</li>
+								@endif
+								@if (count($sopas) > 0)
+									<li class="nav-item">
+										<a id="tab-B" href="#sopas" class="nav-link">Sopas</a>
+									</li>
+								@endif
+								@if (count($fritos) > 0)
+									<li class="nav-item">
+										<a id="tab-C" href="#fritos" class="nav-link">Fritos</a>
+									</li>
+								@endif
+								@if (count($carnes) > 0)
+									<li class="nav-item">
+										<a id="tab-D" href="#carnes" class="nav-link">Carnes</a>
+									</li>
+								@endif
+								@if (count($pescados) > 0)
+									<li class="nav-item">
+										<a id="tab-E" href="#pescado" class="nav-link">Pescado</a>
+									</li>
+								@endif
+								@if (count($pastas) > 0)
+									<li class="nav-item">
+										<a id="tab-F" href="#pastas" class="nav-link">Pastas</a>
+									</li>
+								@endif
+								@if (count($postres) > 0)
+									<li class="nav-item">
+										<a id="tab-G" href="#postres" class="nav-link">Postres</a>
+									</li>
+								@endif
+								@if (count($bebidas) > 0)
+									<li class="nav-item">
+										<a id="tab-H" href="#bebidas" class="nav-link">Bebidas</a>
+									</li>
+								@endif
 		                </ul>
 
 		                <div class="tab-content" role="tablist">
@@ -338,15 +354,17 @@
 		                                </a>
 		                            </h5>
 		                        </div>
-		                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
-		                            <div class="card-body info_content">
-		                            	<div class="main_title" id="entrantes">
-											<span><em></em></span>
-											<h2>Entrantes</h2>
-										</div>
+										@if (count($entrantes) > 0)
+											<div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+												<div class="card-body info_content">
+													<div class="main_title" id="entrantes">
+												<span><em></em></span>
+												<h2>Entrantes</h2>
+											</div>
+										@endif
 										
 											<div class="row">
-												@if ($entrantes)
+												@if (count($entrantes) > 0)
 													@foreach ($entrantes as $entrante)
 														<div class="col-md-4">
 															<div class="item">
@@ -365,10 +383,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="sopas">
-												<span><em></em></span>
-												<h2>Sopas</h2>
-											</div>
+											@if (count($sopas) > 0)
+												<div class="main_title add_top_30" id="sopas">
+													<span><em></em></span>
+													<h2>Sopas</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($sopas)
@@ -390,10 +410,12 @@
 												@endif
 											</div>{{-- end row --}}
 											
-											<div class="main_title add_top_30" id="fritos">
-												<span><em></em></span>
-												<h2>Fritos</h2>
-											</div>
+											@if (count($fritos) > 0)
+												<div class="main_title add_top_30" id="fritos">
+													<span><em></em></span>
+													<h2>Fritos</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($fritos)
@@ -415,10 +437,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="carnes">
-												<span><em></em></span>
-												<h2>Carnes</h2>
-											</div>
+											@if (count($carnes) > 0)
+												<div class="main_title add_top_30" id="carnes">
+													<span><em></em></span>
+													<h2>Carnes</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($carnes)
@@ -440,10 +464,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="pescado">
-												<span><em></em></span>
-												<h2>Pescado</h2>
-											</div>
+											@if (count($pescados) > 0)
+												<div class="main_title add_top_30" id="pescado">
+													<span><em></em></span>
+													<h2>Pescado</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($pescados)
@@ -465,10 +491,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="pastas">
-												<span><em></em></span>
-												<h2>Pastas</h2>
-											</div>
+											@if (count($pastas) > 0)
+												<div class="main_title add_top_30" id="pastas">
+													<span><em></em></span>
+													<h2>Pastas</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($pastas)
@@ -490,10 +518,12 @@
 												@endif
 											</div>{{-- end row --}}
 												
-											<div class="main_title add_top_30" id="postres">
-												<span><em></em></span>
-												<h2>Postres</h2>
-											</div>
+											@if (count($postres) > 0)
+												<div class="main_title add_top_30" id="postres">
+													<span><em></em></span>
+													<h2>Postres</h2>
+												</div>
+											@endif
 	
 											<div class="row">
 												@if ($postres)
@@ -515,10 +545,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="bebidas">
-												<span><em></em></span>
-												<h2>Bebidas</h2>
-											</div>
+											@if (count($bebidas) > 0)
+												<div class="main_title add_top_30" id="bebidas">
+													<span><em></em></span>
+													<h2>Bebidas</h2>
+												</div>
+											@endif
 	
 										
 											<div class="row">
@@ -678,31 +710,34 @@
 	<script src="{{asset('plantilla/js/datepicker_func_1.js')}}"></script>
 
 	<script>
-		let agregar_a_favoritos = document.querySelector('#agregar_a_favoritos');
-		let restaurantId = agregar_a_favoritos.dataset.restaurantid;
+		let boton_favorito = document.querySelector('#boton_para_favorito');
+		let restaurantId = boton_favorito.dataset.restaurantid;
 
 		// buscamos el item en local storage:
-		let favorito = localStorage.getItem(`restaurantid${restaurantId}`);
-		if (!favorito) {
+		let FAVORITO = localStorage.getItem(`restaurantid${restaurantId}`);
+		if (!FAVORITO) {
 			// no existe en local storage
 			localStorage.setItem(`restaurantid${restaurantId}`, 'unliked');
 		} else {
 			revisarLocalStorage();
 		}
 
-		function guardarEnLocalStorage(){
-			if (agregar_a_favoritos.classList.contains('liked')) {
+		function guardarEnLocalStorage(event){
+			event.preventDefault();
+			if (document.querySelector('#boton_para_favorito').classList.contains('liked')) {
 				localStorage.setItem(`restaurantid${restaurantId}`, 'unliked');
+				document.querySelector('#boton_para_favorito').classList.remove('liked');
 			} else {
 				localStorage.setItem(`restaurantid${restaurantId}`, 'liked');
+				document.querySelector('#boton_para_favorito').classList.add('liked');
 			}
 		}
 
 		function revisarLocalStorage(){
-			if (favorito == 'liked') {
-				agregar_a_favoritos.classList.add('liked');
+			if (FAVORITO == 'liked') {
+				boton_favorito.classList.add('liked');
 			} else {
-				agregar_a_favoritos.classList.remove('liked');
+				boton_favorito.classList.remove('liked');
 			}
 		}
 

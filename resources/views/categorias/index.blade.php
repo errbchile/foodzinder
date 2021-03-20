@@ -127,11 +127,17 @@
                         
                                  <div class="input-group mb-3">
                                     
-                                    <input @change="onImageChangeEntrante" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                    <input @change="onImageBase64Change($event, 'newEntranteImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
+
+                                    {{-- <input @change="onImageFileChangeEntrante" type="file" name="files[]" id="file-selector" class="form-control d-none"/> --}}
                                  </div>
-                                 <div class="input-group mb-3">
+                                 <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newEntranteImageFile" src="" alt="">
+                                 </div>
+                                 <div class="input-group mb-3 d-flex justify-content-center">
                                     <input @click="AddNewProductoEntrante" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                  </div>
+
 
 
 
@@ -191,10 +197,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                   <input @change="onImageBase64Change($event, 'newSopaImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangeSopa" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangeSopa" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newSopaImageFile" src="" alt="">
+                                </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoSopa" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -259,10 +270,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                    <input @change="onImageBase64Change($event, 'newFritoImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangeFrito" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangeFrito" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newFritoImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoFrito" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -326,10 +342,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                    <input @change="onImageBase64Change($event, 'newCarneImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangeCarne" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangeCarne" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newCarneImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoCarne" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -394,10 +415,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                  <input @change="onImageBase64Change($event, 'newPescadoImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangePescado" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangePescado" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newPescadoImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoPescado" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -463,10 +489,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                 <input @change="onImageBase64Change($event, 'newPastaImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangePasta" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangePasta" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newPastaImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoPasta" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -533,10 +564,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                  <input @change="onImageBase64Change($event, 'newPostreImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangePostre" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangePostre" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newPostreImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoPostre" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -601,10 +637,15 @@
                                 </div>
                        
                                 <div class="input-group mb-3">
+
+                                   <input @change="onImageBase64Change($event, 'newBebidaImageFile')" type="file" name="imagen" id="original_image" class="form-control"/>
                                    
-                                   <input @change="onImageChangeBebida" type="file" name="files[]" id="file-selector" class="form-control"/>
+                                   {{-- <input @change="onImageChangeBebida" type="file" name="files[]" id="file-selector" class="form-control"/> --}}
                                 </div>
-                                <div class="input-group mb-3">
+                                <div class="input-group mb-3 d-flex justify-content-center">
+                                    <img class="imagen_en_categoria" id="imagen_final_newBebidaImageFile" src="" alt="">
+                                 </div>
+                                <div class="input-group mb-3 d-flex justify-content-center">
                                    <input @click="AddNewProductoBebida" class="btn btn-success btn-sm" type="submit" value="Registrar Producto">
                                 </div>
 
@@ -624,6 +665,33 @@
        </div>
     </div>
 
+       <!-- Modal -->
+       <div class="modal fade" id="ventanaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Seleccione el área de la imágen final (800 x 800)</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <img class="imagen_en_categoria" id="imagen_original_izquierda" src="" alt="">
+                     </div>
+                     <div class="col-md-4 d-flex justify-content-center">
+                        <div class="preview_imagen_recortada"></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button @click="recortarImagen" id="crop" type="button" class="btn btn-primary">Recortar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal -->
+
 @endsection
 
 @section('customJS')
@@ -639,9 +707,10 @@
       const pastas = {!! json_decode($pastas) !!};
       const postres = {!! json_decode($postres) !!};
       const bebidas = {!! json_decode($bebidas) !!};
+      let CROPPER;
 
       const urlAddNewProductoEntrante = "{{ route('categorias.AddNewProductoEntrante') }}";
-      const url = "{{ url('') }}";
+      const url_home = "{{ url('') }}";
 
       const app = new Vue({
          el: '#app',
@@ -658,7 +727,7 @@
                bebidas: bebidas
             },
             addNewCardEntrante: false,
-            newEntranteImageFile: {},
+            newEntranteImageFile: null,
             newEntranteNombre: '',
             newEntrantePrecio: null,
             
@@ -697,16 +766,52 @@
             newBebidaNombre: '',
             newBebidaPrecio: null,
 
-            url: url
+            url: url_home,
+
+            fileUploaded: null,
+            categoria_que_esta_mostrando_la_ventana_modal: null,
+
          },
          methods: {
-            onImageChangeEntrante(e) {
+            onImageFileChangeEntrante(e) {
                let files = e.target.files || e.dataTransfer.files;
                if (!files.length)
                return;
                this.newEntranteImageFile = files[0];
                
             },
+            onImageBase64Change(e, nombre_de_la_categoria_actual){
+               let files = e.target.files;
+               if (files && files.length > 0) {
+                  this.fileUploaded = files[0];
+                  let reader = new FileReader();
+                  reader.onload = function(e){
+                     app.showImageInModal(reader.result, 'imagen_original_izquierda', '#ventanaModal');
+                     app.categoria_que_esta_mostrando_la_ventana_modal = nombre_de_la_categoria_actual;
+                  };
+                  reader.readAsDataURL(this.fileUploaded);
+                  
+               }
+            },
+            recortarImagen(){
+               canvas = CROPPER.getCroppedCanvas({
+                  width: 800,
+                  height: 800
+               })
+
+               canvas.toBlob(function(blob) {
+                  url = URL.createObjectURL(blob);
+                  let reader = new FileReader();
+                  reader.readAsDataURL(blob);
+                  reader.onloadend = function() {
+                     let base64data = reader.result;
+                     app[app.categoria_que_esta_mostrando_la_ventana_modal] = base64data;
+                     document.getElementById(`imagen_final_${app.categoria_que_esta_mostrando_la_ventana_modal}`).src = base64data;
+                     $('#ventanaModal').modal('hide');
+                  };
+               })
+            },
+
             onImageChangeSopa(e) {
                let files = e.target.files || e.dataTransfer.files;
                if (!files.length)
@@ -758,7 +863,7 @@
             },
             // START ENTRANTES
             AddNewProductoEntrante: function(){
-               if (this.newEntranteImageFile === {} || this.newEntranteNombre === '' || this.newEntrantePrecio === '') {
+               if (this.newEntranteImageFile === null || this.newEntranteNombre === '' || this.newEntrantePrecio === null) {
                   return;
                }
 
@@ -1240,9 +1345,30 @@
             // END BEBIDAS
             imageWithUrl: function (imagen){
                return `${this.url}${imagen}`;
-            }
+            },
+
+            showImageInModal: function(source, image_izquierda_modal, modal){
+               document.getElementById(image_izquierda_modal).src = source;
+               $(modal).modal('show');
+            },
          }
       });
+
+
+      // CROPPER      
+      $('#ventanaModal').on('shown.bs.modal', function() {
+         CROPPER = new Cropper(document.getElementById('imagen_original_izquierda'), {
+            aspectRatio: 1,
+            viewmode: 3,
+            preview: ".preview_imagen_recortada",
+         });
+      }).on('hidden.bs.modal', function() {
+         document.querySelector('#original_image').value = "";
+         CROPPER.destroy();
+         CROPPER = null;
+         app.categoria_que_esta_mostrando_la_ventana_modal = null;
+      });
+
    </script>
 @endsection
 

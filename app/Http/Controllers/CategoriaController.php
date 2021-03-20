@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Restaurant;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\File;
 
 class CategoriaController extends Controller
 {
@@ -37,24 +40,55 @@ class CategoriaController extends Controller
     // START ENTRANTES
     public function AddNewProductoEntrante(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
 
-        $file = $request->file('file'); // capturo el archivo
-        $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
 
-        // Guardo la imagen en la siguiente carpeta
-        $file->move(public_path().'/images/categorias/entrantes/', $name);
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
 
-        // Preparamos el producto:
-        $entrante['nombre'] = $request->input('nombre');
-        $entrante['precio'] = $request->input('precio');
-        $entrante['restaurant_id'] = $request->input('restauranteId');
-        $entrante['imagen'] = '/images/categorias/entrantes/'.$name;
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
 
-        $entrante_id = DB::table('entrantes')->insertGetId($entrante);
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/entrantes/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/entrantes/'.$name;
+    
+            $entrante_id = DB::table('entrantes')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
-        $entrante['id'] = $entrante_id;
-
-        return response()->json($entrante);
+        if ($request->file('file')) {
+            // Esto es una imagen de tipo file
+            $file = $request->file('file'); // capturo el archivo
+            $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
+    
+            // Guardo la imagen en la siguiente carpeta
+            $file->move(public_path().'/images/categorias/entrantes/', $name);
+    
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/entrantes/'.$name;
+    
+            $entrante_id = DB::table('entrantes')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
     }
 
     public function eliminarEntrante($id)
@@ -84,6 +118,34 @@ class CategoriaController extends Controller
     // START SOPA
     public function AddNewProductoSopa(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/sopas/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/sopas/'.$name;
+    
+            $entrante_id = DB::table('sopas')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -115,6 +177,34 @@ class CategoriaController extends Controller
     // START FRITO
     public function AddNewProductoFrito(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/fritos/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/fritos/'.$name;
+    
+            $entrante_id = DB::table('fritos')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -147,6 +237,34 @@ class CategoriaController extends Controller
     // START CARNE
     public function AddNewProductoCarne(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/carnes/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/carnes/'.$name;
+    
+            $entrante_id = DB::table('carnes')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -179,6 +297,34 @@ class CategoriaController extends Controller
     // START PESCADO
     public function AddNewProductoPescado(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/pescados/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/pescados/'.$name;
+    
+            $entrante_id = DB::table('pescados')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -211,6 +357,34 @@ class CategoriaController extends Controller
     // START PASTA
     public function AddNewProductoPasta(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/pastas/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/pastas/'.$name;
+    
+            $entrante_id = DB::table('pastas')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -243,6 +417,34 @@ class CategoriaController extends Controller
     // START POSTRE
     public function AddNewProductoPostre(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/postres/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/postres/'.$name;
+    
+            $entrante_id = DB::table('postres')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo
@@ -275,6 +477,34 @@ class CategoriaController extends Controller
     // START BEBIDAS
     public function AddNewProductoBebida(Request $request)
     {
+        if ($request->input('file')) {
+            // Esto es una imagen de tipo base 64
+            $base64File = $request->input('file');
+
+            // decode the base64 file
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64File));
+
+            // save it to temporary dir first.
+            $tmpFilePath = sys_get_temp_dir() . '/' . Str::uuid()->toString();
+            file_put_contents($tmpFilePath, $fileData);
+
+            // this just to help us get file info.
+            $tmpFile = new File($tmpFilePath);
+
+            $name = $tmpFile->getFilename();
+            $tmpFile->move(public_path().'/images/categorias/bebidas/', $name);
+            // Preparamos el producto:
+            $entrante['nombre'] = $request->input('nombre');
+            $entrante['precio'] = $request->input('precio');
+            $entrante['restaurant_id'] = $request->input('restauranteId');
+            $entrante['imagen'] = '/images/categorias/bebidas/'.$name;
+    
+            $entrante_id = DB::table('bebidas')->insertGetId($entrante);
+    
+            $entrante['id'] = $entrante_id;
+    
+            return response()->json($entrante);
+        }
 
         $file = $request->file('file'); // capturo el archivo
         $name = time().$request->input('restauranteId').$file->getClientOriginalName(); // le pongo imagen al archivo

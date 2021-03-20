@@ -47,10 +47,25 @@
                   </div>
                </div>
                <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-8">
                    <label for="google_maps">Enlace a Google Maps:</label>
                    <input readonly name="google_maps" type="text" class="form-control" value="{{ $restaurant->google_maps }}" id="google_maps" >
                 </div>
+                <div class="form-group col-md-4 text-center">
+                  <label for="google_maps">¿Tiene WhatsApp?  </label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="tiene_whatsapp" id="checkbox_si" {{ $restaurant->tiene_whatsapp === 1 ? "checked" : "" }} disabled>
+                    <label class="form-check-label" for="checkbox_si">
+                      SI
+                    </label>
+                  </div>
+               </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="google_maps">Horario de Atención:</label>
+                    <input name="horario" type="text" class="form-control" value="{{ $restaurant->horario }}" id="horario" disabled>
+                  </div>
               </div>
 
                <hr>
