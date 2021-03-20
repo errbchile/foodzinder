@@ -30,11 +30,11 @@
 	<link href="{{asset('plantilla/css/bootstrap_customized.min.css')}}" rel="stylesheet">
 	<link href="{{asset('plantilla/css/style.css')}}" rel="stylesheet">
 
-	
+
 	<!-- YOUR CUSTOM CSS -->
 	<link href="{{asset('plantilla/css/custom.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-	
+
 	<!-- SPECIFIC CSS -->
 	<link href="{{asset('plantilla/css/detail-page.css')}}" rel="stylesheet">
 	<style>
@@ -124,7 +124,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLongTitle">
-					
+
 				</h5>
 				<button id="botonCerrarModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -169,7 +169,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		</div>
@@ -191,7 +191,7 @@
          </a>
       </div>
       <div class="row justify-content-center text-center">
-         <div class="col-xl-8 col-lg-10 col-md-8">						
+         <div class="col-xl-8 col-lg-10 col-md-8">
             <form id="form_principal" method="post" action="{{ route('directorio') }}" class="form-busqueda">
                <input name="_method" type="hidden" value="get">
                <div class="row no-gutters custom-search-input">
@@ -271,12 +271,12 @@
       </div>
    </header>
 <!-- /header -->
-	
+
 	<main class="bg_gray pattern add_top_menu_90">
 
 		<div class="hero_in detail_page background-image" data-background="url({{asset( isset($restaurant->imagenes) ? $restaurant->imagenes : 'plantilla/img/header-detail-page-min.jpg')}})">
-			<div class="wrapper opacity-mask img-fluid" data-opacity-mask="rgba(0, 0, 0, 0)">
-				
+			<div class="wrapper opacity-mask img-fluid" data-opacity-mask="#00000078">
+
 				<div class="container full-width">
 					<div class="main_info">
 						<div class="row">
@@ -297,35 +297,35 @@
 			</div>
 		</div>
 		<!--/hero_in-->
-		
+
 		<div class="container margin_detail full-width">
 		    <div class="row">
 		        <div class="col-lg-12">
 		            <div class="tabs_detail">
-		                <ul class="nav nav-tabs sticky-tabs" role="tablist">
+		                <ul class="nav navigation nav-tabs sticky-tabs" id="mainNav" role="tablist">
 								<li class="nav-item">
-									<a id="tab-A" href="#entrantes" class="nav-link active">Entrantes</a>
+									<a id="tab-A" href="#1" class="navigation__link nav-link active">Entrantes</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-B" href="#sopas" class="nav-link">Sopas</a>
+									<a id="tab-B" href="#2" class="navigation__link nav-link">Sopas</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-C" href="#fritos" class="nav-link">Fritos</a>
+									<a id="tab-C" href="#3" class="navigation__link nav-link">Fritos</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-D" href="#carnes" class="nav-link">Carnes</a>
+									<a id="tab-D" href="#4" class="navigation__link nav-link">Carnes</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-E" href="#pescado" class="nav-link">Pescado</a>
+									<a id="tab-E" href="#5" class="navigation__link nav-link">Pescado</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-F" href="#pastas" class="nav-link">Pastas</a>
+									<a id="tab-F" href="#6" class="navigation__link nav-link">Pastas</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-G" href="#postres" class="nav-link">Postres</a>
+									<a id="tab-G" href="#7" class="navigation__link nav-link">Postres</a>
 								</li>
 								<li class="nav-item">
-									<a id="tab-H" href="#bebidas" class="nav-link">Bebidas</a>
+									<a id="tab-H" href="#8" class="navigation__link nav-link">Bebidas</a>
 								</li>
 		                </ul>
 
@@ -333,18 +333,18 @@
 		                    <div id="pane-A" class="card tab-pane fade show active" role="tabpanel" aria-labelledby="tab-A">
 		                        <div class="card-header" role="tab" id="heading-A">
 		                            <h5>
-		                                <a class="collapsed" data-toggle="collapse" href="#collapse-A" aria-expanded="true" aria-controls="collapse-A">
+		                                <a aria-expanded="true" >
 		                                    Platos
 		                                </a>
 		                            </h5>
 		                        </div>
-		                        <div id="collapse-A" class="collapse" role="tabpanel" aria-labelledby="heading-A">
+		                        <div role="tabpanel" aria-labelledby="heading-A">
 		                            <div class="card-body info_content">
-		                            	<div class="main_title" id="entrantes">
+		                            	<div class="main_title page-section" id="entrantes 1">
 											<span><em></em></span>
 											<h2>Entrantes</h2>
 										</div>
-										
+
 											<div class="row">
 												@if ($entrantes)
 													@foreach ($entrantes as $entrante)
@@ -365,11 +365,11 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="sopas">
+											<div class="main_title page-section add_top_30" id="sopas 2">
 												<span><em></em></span>
 												<h2>Sopas</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($sopas)
 													@foreach ($sopas as $sopa)
@@ -389,12 +389,12 @@
 													@endforeach
 												@endif
 											</div>{{-- end row --}}
-											
-											<div class="main_title add_top_30" id="fritos">
+
+											<div class="main_title page-section add_top_30" id="fritos 3">
 												<span><em></em></span>
 												<h2>Fritos</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($fritos)
 													@foreach ($fritos as $frito)
@@ -415,11 +415,11 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="carnes">
+											<div class="main_title page-section add_top_30" id="carnes 4">
 												<span><em></em></span>
 												<h2>Carnes</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($carnes)
 													@foreach ($carnes as $carne)
@@ -440,11 +440,11 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="pescado">
+											<div class="main_title page-section add_top_30" id="pescado 5">
 												<span><em></em></span>
 												<h2>Pescado</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($pescados)
 													@foreach ($pescados as $pescado)
@@ -465,11 +465,11 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="pastas">
+											<div class="main_title page-section add_top_30" id="pastas 6">
 												<span><em></em></span>
 												<h2>Pastas</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($pastas)
 													@foreach ($pastas as $pasta)
@@ -489,12 +489,12 @@
 													@endforeach
 												@endif
 											</div>{{-- end row --}}
-												
-											<div class="main_title add_top_30" id="postres">
+
+											<div class="main_title page-section add_top_30" id="postres 7">
 												<span><em></em></span>
 												<h2>Postres</h2>
 											</div>
-	
+
 											<div class="row">
 												@if ($postres)
 													@foreach ($postres as $postre)
@@ -515,12 +515,12 @@
 												@endif
 											</div>{{-- end row --}}
 
-											<div class="main_title add_top_30" id="bebidas">
+											<div class="main_title page-section add_top_30" id="bebidas 8">
 												<span><em></em></span>
 												<h2>Bebidas</h2>
 											</div>
-	
-										
+
+
 											<div class="row">
 												@if ($bebidas)
 													@foreach ($bebidas as $bebida)
@@ -540,14 +540,14 @@
 													@endforeach
 												@endif
 											</div>{{-- end row --}}
-										
-											
+
+
 										</div>
 									</div>
 								</div>
 		                    <!-- /tab -->
 
-		                   
+
 		                </div>
 		                <!-- /tab-content -->
 		            </div>
@@ -555,13 +555,13 @@
 		        </div>
 		        <!-- /col -->
 
-		        
+
 
 		    </div>
 		    <!-- /row -->
 		</div>
 		<!-- /container -->
-		
+
 	</main>
 	<!-- /main -->
 
@@ -579,11 +579,11 @@
 						<li><a href="#0">Términos y condiciones</a></li>
 						<li><a href="#0">Políticas de privacidad</a></li>
 						<li><span>2020 © Foond Zinder</span></li>
-					</ul>	
+					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3 data-target="#collapse_3">Contáctanos</h3>
-					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+					<h3 >Contáctanos</h3>
+					<div class=" contacts" id="collapse_3">
 						<ul>
 							<li><i class="icon_house_alt"></i>La Cocotera Coworking<br>San Rosendo N° 12<br>Tarifa, Cádiz - España</li>
 							<li><i class="icon_mail_alt"></i><a href="#0">info@foodzinder.com</a></li>
@@ -591,8 +591,8 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_4">Suscribirme al boletín</h3>
-					<div class="collapse dont-collapse-sm" id="collapse_4">
+						<h3 >Suscribirme al boletín</h3>
+					<div class="" id="collapse_4">
 						<div id="newsletter">
 							<div id="message-newsletter"></div>
 							<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
@@ -602,7 +602,7 @@
 								</div>
 							</form>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -613,9 +613,9 @@
 	<!--/footer-->
 
 	<div id="toTop"></div><!-- Back to top button -->
-	
+
 	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
-	
+
 	<!-- Sign In Modal -->
 	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 		<div class="modal_header">
@@ -719,10 +719,10 @@
 				carritoActual: [],
 				mostrarCarrito: false,
 				newItem: {
-					categoria: "", 
-					id: "", 
-					imagen: "", 
-					nombre: "", 
+					categoria: "",
+					id: "",
+					imagen: "",
+					nombre: "",
 					precioUnitario: 0,
 					cantidad: 1,
 					precioCantidad: 0
@@ -731,10 +731,10 @@
 			methods: {
 				itemClicado: function (categoria, id, imagen, nombre, precio){
 					this.newItem = {
-						categoria: categoria, 
-						id: id, 
-						imagen: imagen, 
-						nombre: nombre, 
+						categoria: categoria,
+						id: id,
+						imagen: imagen,
+						nombre: nombre,
 						precioUnitario: precio,
 						cantidad: 1,
 						precioCantidad: precio
@@ -768,10 +768,10 @@
 					}
 					document.querySelector('#botonCerrarModal').click();
 					this.newItem = {
-						categoria: "", 
-						id: "", 
-						imagen: "", 
-						nombre: "", 
+						categoria: "",
+						id: "",
+						imagen: "",
+						nombre: "",
 						precioUnitario: 0,
 						cantidad: 1,
 						precioCantidad: 0
@@ -824,7 +824,31 @@
 		})
 	</script>
 
+        <!-- Scroll Spy -->
+        <script>
 
+
+$(window).scroll(function() {
+		var scrollDistance = $(window).scrollTop() - $(window).height();
+
+		// Show/hide menu on scroll
+		//if (scrollDistance >= 850) {
+		//		$('nav').fadeIn("fast");
+		//} else {
+		//		$('nav').fadeOut("fast");
+		//}
+
+		// Assign active class to nav links while scolling
+		$('.page-section').each(function(i) {
+				if ($(this).position().top <= scrollDistance) {
+						$('.navigation a.active').removeClass('active');
+						$('.navigation a').eq(i).addClass('active');
+				}
+		});
+}).scroll();
+        </script>
 
 </body>
 </html>
+
+

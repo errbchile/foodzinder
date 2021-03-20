@@ -36,7 +36,7 @@
 	</head>
 
 	<body>
-					
+
 		<header class="header_in clearfix is_sticky">
 			<div>
 				<div id="logo">
@@ -104,7 +104,7 @@
 			</div>
 		</header>
 		<!-- /header -->
-		
+
 		<main class="bg_gray pattern add_top_menu">
 
 			<div class="container home">
@@ -127,7 +127,7 @@
 									<button type="submit" class="btn_1 full-width mb_5">Buscar</button>
 								</div>
 							</form>
-						
+
 
 
 						</div>
@@ -141,8 +141,8 @@
 						</div>
 					</div>
 				</div>
-			
-				<div class="container margin_60_40"></div>	    
+
+				<div class="container margin_60_40"></div>
 			</div>
 			<!-- /container -->
 			<div class="call_section lazy" data-bg="url({{asset('plantilla/img/bg-duenos-cta-min.jpg')}})">
@@ -156,7 +156,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</main>
 		<!-- /main -->
 
@@ -174,11 +174,11 @@
 							<li><a href="#0">Términos y condiciones</a></li>
 							<li><a href="#0">Políticas de privacidad</a></li>
 							<li><span>{{ date('Y') }} © Foond Zinder</span></li>
-						</ul>	
+						</ul>
 					</div>
 					<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_3">Contáctanos</h3>
-						<div class="collapse dont-collapse-sm contacts" id="collapse_3">
+						<h3>Contáctanos</h3>
+						<div class="dont-collapse-sm contacts" id="collapse_3">
 							<ul>
 								<li><i class="icon_house_alt"></i>La Cocotera Coworking<br>San Rosendo N° 12<br>Tarifa, Cádiz - España</li>
 								<li><i class="icon_mail_alt"></i><a href="#0">info@foodzinder.com</a></li>
@@ -186,8 +186,8 @@
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
-							<h3 data-target="#collapse_4">Suscribirme al boletín</h3>
-						<div class="collapse dont-collapse-sm" id="collapse_4">
+							<h3>Suscribirme al boletín</h3>
+						<div class="dont-collapse-sm" id="collapse_4">
 							<div id="newsletter">
 								<div id="message-newsletter"></div>
 								<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
@@ -197,7 +197,7 @@
 									</div>
 								</form>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -208,9 +208,9 @@
 		<!--/footer-->
 
 		<div id="toTop"></div><!-- Back to top button -->
-		
+
 		<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
-		
+
 		<!-- COMMON SCRIPTS -->
 		<script src="{{asset('plantilla/js/common_scripts.min.js')}}"></script>
 		<script src="{{asset('plantilla/js/common_func.js')}}"></script>
@@ -232,4 +232,4 @@
 		setInterval(sliderhome, 5000);</script>
 
 	</body>
-</html>	
+</html>
