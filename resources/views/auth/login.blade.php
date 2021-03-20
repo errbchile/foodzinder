@@ -155,7 +155,7 @@
 						<ul class="additional_links">
 							<li><a href="#0">Términos y condiciones</a></li>
 							<li><a href="#0">Políticas de privacidad</a></li>
-							<li><span>{{ date('Y') }} © Foond Zinder</span></li>
+							<li><span>{{ date('Y') }} © Food Zinder</span></li>
 						</ul>
 					</div>
 					<div class="col-lg-3 col-md-6">
