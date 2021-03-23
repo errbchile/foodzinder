@@ -484,13 +484,16 @@
 									{{ $restaurant->nombre }}
 								</h2>
 								<p class="icon ubicacion">
-									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} <a href="{{ !is_null($restaurant->google_maps) ? $restaurant->google_maps : "#" }}" target="{{ !is_null($restaurant->google_maps) ? "_blank" : "" }}">VER MAPA</a>
+									{{ $restaurant->direccion }} - {{ $restaurant->ciudad }} 
+									@if ($restaurant->google_maps)
+										<a href="{{ $restaurant->google_maps }}" target="_blank">VER MAPA</a>
+									@endif
 								</p>
 								<p class="icon telefono d-flex align-items-center">
 									<span href="#"> {{ $restaurant->telefono }}</span>
 									@if ($restaurant->tiene_whatsapp === 1)
 										<a target="_blank" title="Ir a Whatsapp" href="https://api.whatsapp.com/send?phone=34{{ $restaurant->telefono }}" class="ml-4">
-											<img class="img-fluid" style="max-width: 20px;" src="{{ asset('plantilla/img/whatsapp.png') }}" alt="">
+											<img class="img-fluid" style="max-width: 20px;" src="{{ asset('plantilla/img/whatsapp.png') }}" alt="Logo de Whatsapp">
 										</a>
 									@endif
 								</p>
