@@ -37,10 +37,11 @@ Route::post('/users/update', 'UserController@update')->name('users.update');
 
 // START CATEGORIAS
 Route::get('/categoria/index/{id}', 'CategoriaController@index')->name('categorias.index');
+Route::post('/categoria/cambiarstatus/{id}/{nombre}', 'CategoriaController@cambiarStatus')->name('categorias.cambiarstatus');
 
 Route::post('/categoria/AddNewProductoEntrante', 'CategoriaController@AddNewProductoEntrante')->name('categorias.AddNewProductoEntrante');
+Route::post('/categoria/editarEntrante', 'CategoriaController@editarEntrante')->name('categorias.editarEntrante');
 Route::delete('/categoria/eliminarEntrante/{id}', 'CategoriaController@eliminarEntrante')->name('categorias.eliminarEntrante');
-Route::post('/categoria/cambiarstatus/{id}/{nombre}', 'CategoriaController@cambiarStatus')->name('categorias.cambiarstatus');
 
 Route::post('/categoria/AddNewProductoSopa', 'CategoriaController@AddNewProductoSopa')->name('categorias.AddNewProductoSopa');
 Route::delete('/categoria/eliminarSopa/{id}', 'CategoriaController@eliminarSopa')->name('categorias.eliminarSopa');

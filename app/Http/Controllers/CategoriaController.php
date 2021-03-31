@@ -99,6 +99,16 @@ class CategoriaController extends Controller
         ]);
     }
 
+    public function editarEntrante(Request $request)
+    {
+        $producto = $request->input('producto');
+        $data['nombre'] = $producto['nombre'];
+        $data['precio'] = $producto['precio'];
+
+        DB::table($producto['nombre_de_la_tabla_db'])->where('id', $producto['id'])->update($data);
+        return $producto;
+    }
+
     public function cambiarStatus($id, $nombre)
     {
         $categoria = DB::table($nombre)->where('id', $id)->first();

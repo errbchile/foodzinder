@@ -91,6 +91,7 @@
                                     <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                                  </a>
                                  <div class="d-flex justify-content-end align-items-center">
+                                    <a @click="handleEdicionDeProductoEnCategoria(producto, 'entrantes')" href="#" class="btn btn-info btn-sm">Editar</a>
                                     <a @click="eliminarEntrante(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                                  </div>
                               </div>
@@ -163,7 +164,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'sopas')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarSopa(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'sopas')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarSopa(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -236,7 +238,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'fritos')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarFrito(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'fritos')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarFrito(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -308,7 +311,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'carnes')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarCarne(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'carnes')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarCarne(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -381,7 +385,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'pescados')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarPescado(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'pescados')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarPescado(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -455,7 +460,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'pastas')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarPasta(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'pastas')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarPasta(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -530,7 +536,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'postres')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarPostre(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'postres')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarPostre(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -603,7 +610,8 @@
                                 <a @click.prevent="cambiarStatus(producto.id, 'bebidas')" href="#">
                                  <p class="card-text" :class="producto.status == '1' ? 'text-success' : 'text-danger' ">@{{ producto.status == "1" ? "Habilitado" : "Inhabilitado" }}</p>
                               </a>
-                                <a @click="eliminarBebida(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
+                                 <a @click="handleEdicionDeProductoEnCategoria(producto, 'bebidas')" href="#" class="btn btn-info btn-sm">Editar</a>
+                                 <a @click="eliminarBebida(producto.id)" href="#" class="btn btn-danger btn-sm">Borrar</a>
                              </div>
                           </div>
                         </div>
@@ -692,6 +700,33 @@
       </div>
       <!-- Modal -->
 
+       <!-- Modal de edición -->
+       <div class="modal fade" id="modal_de_edicion" tabindex="-1" aria-labelledby="modal_de_edicion" aria-hidden="true">
+         <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="modal_de_edicion">Modo Edición</h5>
+               </div>
+               <div class="modal-body">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" v-model="editando.nombre" class="form-control">
+
+                        <label for="nombre">Precio:</label>
+                        <input type="number" v-model="editando.precio" class="form-control" min="0">
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button @click="cerrarModalDeEdicion" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button @click="editarProductoDeCategoria()" type="button" class="btn btn-success">Guardar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Modal de edición -->
+
 @endsection
 
 @section('customJS')
@@ -770,6 +805,13 @@
 
             fileUploaded: null,
             categoria_que_esta_mostrando_la_ventana_modal: null,
+
+            editando: {
+               id: null,
+               nombre: null,
+               precio: null,
+               nombre_de_la_tabla_db: null,
+            }
 
          },
          methods: {
@@ -917,6 +959,36 @@
                   method: "delete",
                }).then(response => response.json())
                  .then(data => console.log(data));
+            },
+
+            handleEdicionDeProductoEnCategoria(producto, nombre_de_la_tabla_db){
+               this.editando.id = producto.id;
+               this.editando.nombre = producto.nombre;
+               this.editando.precio = producto.precio;
+               this.editando.nombre_de_la_tabla_db = nombre_de_la_tabla_db;
+               $('#modal_de_edicion').modal('show');
+            },
+
+            editarProductoDeCategoria(){
+               axios.post( "{{route('categorias.editarEntrante')}}", {'producto': this.editando})
+                  .then(res => {
+                     this.categorias[res.data.nombre_de_la_tabla_db].map(producto => {
+                        if (res.data.id === producto.id) {
+                           producto.nombre = res.data.nombre;
+                           producto.precio = res.data.precio;
+                        }
+                     })
+                  })
+                  .catch(err => {console.log(err)})
+               $('#modal_de_edicion').modal('hide');
+               this.editando.id = null;
+               this.editando.nombre = null;
+               this.editando.precio = null;
+               this.editando.nombre_de_la_tabla_db = null;
+            },
+
+            cerrarModalDeEdicion(){
+               $('#modal_de_edicion').modal('hide');
             },
 
             cambiarStatus: function(id, nombre){
